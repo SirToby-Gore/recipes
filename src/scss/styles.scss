@@ -1,0 +1,260 @@
+html {
+    body {
+        padding: 0;
+        margin: 0;
+
+        overflow-x: hidden;
+        
+        main {
+            padding: 1.6rem;
+
+            max-width: 100vw;
+        }
+    }
+}
+
+.error {
+    display: block;
+    
+    padding: 0.6rem;
+
+    border-radius: 0.6rem;
+    
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1rem;
+
+    background-color: rgba($color: #cc3333, $alpha: 0.6);
+
+    backdrop-filter: blur(3px);
+}
+
+.title {
+    text-decoration: underline;
+
+    text-transform: capitalize;
+}
+
+.recipes {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.4rem;
+}
+
+.recipe {
+    width: 90%;
+    
+    display: block;
+
+    border-radius: 2rem;
+    border: grey 3px solid;
+    
+    padding: 1.5rem;
+
+    &.full-screen {
+        max-width: 100%;
+        width: none;
+
+        padding: 2.6rem;
+
+        border: none;
+
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            margin-bottom: 0.5rem;
+        }
+
+        .user {
+            margin-bottom: 1.6rem;
+        }
+    }
+    
+    .details {
+        display: flex;
+        flex-direction: column;
+        
+        svg {
+            display: inline;
+            aspect-ratio: 1;
+            width: 2rem;
+        }
+
+        span {
+            display: flex;
+            flex-direction: row;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        .portions {
+            svg {
+                .st0{
+                    fill:#000000;
+                }
+            }
+        }
+        
+        .time {
+            svg {
+                .st0{
+                    fill-rule:evenodd;
+                    clip-rule:evenodd;
+                }
+            }
+        }
+    }
+
+    .comments {
+        display: flex;
+        flex-direction: column;
+
+        .likes {
+            svg {
+                fill: #000;
+            }
+        }
+    }
+}
+
+.nav-bar {
+    position: sticky;
+
+    top: 0;
+
+    max-width: 100vw;
+    
+    padding: 0.6rem 6.4rem; 
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-between;
+    
+    background-color: green;
+
+    * {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home {
+        &:focus-within,
+        &:hover,
+        &:active {
+            svg,
+            svg * {
+                fill: #000;
+            }
+        }
+        
+        svg,
+        svg * {
+            aspect-ratio: 1;
+            width: 2rem;
+
+            fill: #333;
+
+            transition: fill linear 0.2s;
+        }
+    }
+
+    .search-form {
+        display: inline-flex;
+        flex-direction: row;
+        gap: 0.6rem;
+        align-items: center;
+        
+        .search-input {
+            width: 30rem;
+            
+            padding: 0.25rem 0.6rem;
+
+            border: none;
+            border-radius: 1rem;
+            
+            background-color: rgba(white, 0.75);
+
+            transition: background-color 0.2s linear;
+
+            &:focus-within,
+            &:hover,
+            &:active {
+                background-color: white;
+            }
+        }
+
+        .search-button {
+            border-radius: 50%;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            aspect-ratio: 1;
+            width: 2.3rem;
+            
+            background-color: transparent;
+            border: none;
+
+            &:hover,
+            &:active,
+            &:focus-within {
+                svg {
+                    fill: #000
+                }
+            }
+            
+            svg {
+                fill: #333;
+                aspect-ratio: 1;
+                width: 80%;
+
+                transform: translate(0, 0.16rem);
+
+                transition: fill linear 0.2s;
+            }
+        }
+    }
+
+    .nav-account-links {
+        .account {
+            align-self: right;
+            
+            &:hover,
+            &:active,
+            &:focus-visible {
+                svg,
+                svg * {
+                    stroke: #000
+                }
+            }
+            
+            svg,
+            svg * {
+                aspect-ratio: 1;
+                width: 1.6rem;
+
+                stroke: #333;
+                stroke-width: 1.6;
+
+                transition: stroke linear 0.2s;
+            }
+
+            .create-recipe-link {
+                svg,
+                svg * {
+                    aspect-ratio: 1;
+                    width: 80px;
+                    fill: #000;
+                }
+            }
+        }
+    }
+}
