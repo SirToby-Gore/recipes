@@ -1,0 +1,17 @@
+<?php
+
+require_once __DIR__ . '/allergen.php';
+require_once __DIR__ . '/allergy.php';
+require_once __DIR__ . '/comment.php';
+require_once __DIR__ . '/ingredient.php';
+require_once __DIR__ . '/ingredients_list.php';
+require_once __DIR__ . '/lik.php';
+require_once __DIR__ . '/recip.php';
+require_once __DIR__ . '/recipe_tag.php';
+require_once __DIR__ . '/step.php';
+require_once __DIR__ . '/substitution.php';
+require_once __DIR__ . '/tag.php';
+require_once __DIR__ . '/token.php';
+require_once __DIR__ . '/unit.php';
+require_once __DIR__ . '/unit_conversion.php';
+require_once __DIR__ . '/user.php';
