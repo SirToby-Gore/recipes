@@ -1,80 +1,96 @@
 # Users
-* id (100 char)
-* name (100 char)
-* email (150 char)
-* password hash (255 char): uses sha 255
-* salt (10 char)
-* created on (datetime)
 
+- user_id (string:100)
+
+* name (string:100)
+* email (string:150)
+* password_hash (string:255) // uses sha 255
+* salt (string:10)
+* created_on (string)
 
 # Tokens
-* token (200 char)
-* user id (ref -> users.id)
-* created on (date): delete after 24hr
 
+- token (string:200)
+
+* user_id -> Users.user_id
+* created_on (string) // delete after 24hr
 
 # Recipes
-* id (100 chars)
-* title (100 chars)
-* description (text)
-* number of steps (int)
-* total time (int)
-* portions (int)
-* parent (ref -> recipes.id)?: used for when recipes have variants
-* user id (ref -> users.id)
 
+- recipe_id (string:100)
+
+* title (string:100)
+* description (string)
+* number_of_steps (int)
+* total_time (int)
+* portions (int)
+* parent -> Recipes.recipe_id? // used for when recipes have variants
+* user_id -> Users.user_id
 
 # Steps
-* step number (int): the step e.g. 1
-* recipe id (ref -> recipes.id)
-* step (text)
 
+- step_number (int) // the step e.g. 1
+- recipe_id -> Recipes.recipe_id
+
+* step (string)
 
 # Tags
-* recipe id (ref -> recipes.id)
-* tag name (100 char)
 
+- recipe_id -> Recipes.recipe_id
+- tag_name (string:100)
 
 # Ingredients
-* id (100 char)
-* name (50 char)
-* description (text)
 
+- ingredient_id (string:100)
 
-# Ingredients list
-* recipe id (ref -> recipes.id)
-* ingredient id (ref -> ingredients.id)
-* amount (double)
-* unit id (ref -> units.id)
+* name (string:50)
+* description (string)
 
+# IngredientsList
+
+- recipe_id -> Recipes.recipe_id
+- ingredient_id -> Ingredients.ingredient_id
+
+* amount (float)
+* unit_id -> Units.unit_id
 
 # Units
-* id (int)
-* short hand (char 10)
 
+- unit_id (int)
+
+* short_hand (string:10)
 
 # Allergy
-* ingredient id (ref -> ingredients.id)
-* allergen id (ref -> allergens.id)
 
+- ingredient_id -> Ingredients.ingredient_id
+- allergen_id -> Allergens.allergen_id
 
 # Allergens
-* id (int)
-* name (text)
-* description (text)
 
+- allergen_id (int)
+
+* name (string)
+* description (string)
 
 # Substitutions
-* ingredient id (ref -> ingredients.id): the parent id e.g. linguini
-* substitution id (ref -> ingredients.id): the substitution e.g. spaghetti
-* description (text): on how it can be used a sub
 
+- ingredient_id -> Ingredients.ingredient_id // the parent id e.g. linguini
+- substitution_id -> Ingredients.ingredient_id // the substitution e.g. spaghetti
 
-# Comment
-* recipe id (ref -> recipes.id)
-* body (text)
-* user id (ref -> users.id)
-* likes (int)
-* created on (datetime)
-* last edited (datetime)?
+* description (string) // on how it can be used a sub
 
+# Comments
+
+- comment_id (string:100)
+- recipe_id -> Recipes.recipe_id
+- user_id -> Users.user_id
+- created_on (string)
+
+* body (string)
+* last_edited (string)?
+
+# Likes (Like)
+
+- recipe_id -> Recipes.recipe_id
+- comment_id -> Comments.comment_id
+- user_id -> Users.user_id
