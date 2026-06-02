@@ -32,7 +32,7 @@ class Lik
     {
         global $conn;
         $stmt = $conn->prepare('UPDATE `Likes` SET  WHERE `comment_id` = ? AND `recipe_id` = ? AND `user_id` = ?');
-        $stmt->bind_param('sss', , $this->comment_id, $this->recipe_id, $this->user_id);
+        $stmt->bind_param('sss', $this->comment_id, $this->recipe_id, $this->user_id);
         return $stmt->execute();
     }
 

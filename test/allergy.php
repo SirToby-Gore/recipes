@@ -31,7 +31,7 @@ class Allergy
     {
         global $conn;
         $stmt = $conn->prepare('UPDATE `Allergy` SET  WHERE `ingredient_id` = ? AND `allergen` = ?');
-        $stmt->bind_param('ss', , $this->ingredient_id, $this->allergen);
+        $stmt->bind_param('ss', $this->ingredient_id, $this->allergen);
         return $stmt->execute();
     }
 

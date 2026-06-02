@@ -31,7 +31,7 @@ class RecipeTag
     {
         global $conn;
         $stmt = $conn->prepare('UPDATE `Recipetags` SET  WHERE `recipe_id` = ? AND `tag_id` = ?');
-        $stmt->bind_param('ss', , $this->recipe_id, $this->tag_id);
+        $stmt->bind_param('ss', $this->recipe_id, $this->tag_id);
         return $stmt->execute();
     }
 
