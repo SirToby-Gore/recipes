@@ -1,11 +1,19 @@
+```uuid
+ (string:128)
+```
+
+```uuid
+ (string:64)
+```
+
 # Users
 
-- user_id (string:100)
+- user_id %uuid%
 
 * name (string:100)
 * email (string:150)
 * password_hash (string:255) // uses sha 255
-* salt (string:10)
+* salt (string:32)
 * created_on (string)
 
 # Tokens
@@ -17,7 +25,7 @@
 
 # Recipes
 
-- recipe_id (string:100)
+- recipe_id %uuid%
 
 * title (string:100)
 * description (string)
@@ -29,24 +37,33 @@
 
 # Steps
 
-- step_number (int) // the step e.g. 1
-- recipe_id -> Recipes.recipe_id
+- step_id $long_uuid%
 
+* step_number (int) // the step e.g. 1
+* recipe_id -> Recipes.recipe_id
 * step (string)
+
+# IngredientsUsedInSteps
+
+- step_id -> Steps.step_id
+
+* ingredient_id -> Ingredients.ingredient_id
+* amount (float)
+* unit -> Units.unit_id
 
 # Tags
 
 - recipe_id -> Recipes.recipe_id
-- tag_name (string:100)
+- tag_name (string:20)
 
 # Ingredients
 
-- ingredient_id (string:100)
+- ingredient_id %uuid%
 
 * name (string:50)
 * description (string)
 
-# IngredientsList
+# IngredientsLists
 
 - recipe_id -> Recipes.recipe_id
 - ingredient_id -> Ingredients.ingredient_id
@@ -60,10 +77,10 @@
 
 * short_hand (string:10)
 
-# Allergy
+# CompatibleUnits
 
-- ingredient_id -> Ingredients.ingredient_id
-- allergen_id -> Allergens.allergen_id
+- base_unit -> Units.unit_id
+- new_unit -> Units.unit_id
 
 # Allergens
 
@@ -71,6 +88,11 @@
 
 * name (string)
 * description (string)
+
+# Allergies
+
+- ingredient_id -> Ingredients.ingredient_id
+- allergen_id -> Allergens.allergen_id
 
 # Substitutions
 
@@ -94,3 +116,10 @@
 - recipe_id -> Recipes.recipe_id
 - comment_id -> Comments.comment_id
 - user_id -> Users.user_id
+
+# ShoppingListItem
+
+- user_id -> Users.user_id
+- recipe_id -> Recipes.recipe_id
+
+* amount (int)
