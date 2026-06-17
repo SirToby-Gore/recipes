@@ -85,7 +85,7 @@ function updateBasketDOM(recipeId: string, newCount: number): void {
 		const addButton = document.createElement('button');
 		addButton.className = 'add-button';
 		addButton.setAttribute('aria-label', 'Add to Basket');
-		addButton.setAttribute('onclick', `handleBasketAdd(this, '/basket/add/${recipeId}')`);
+		addButton.setAttribute('onclick', `handleBasketAdd('${recipeId}', this)`);
 		addButton.textContent = 'Add To Basket';
 
 		managementGroup.replaceWith(addButton);
@@ -95,9 +95,11 @@ function updateBasketDOM(recipeId: string, newCount: number): void {
 /**
  * Handles adding items to the basket asynchronously.
  */
-function handleBasketAdd(button: HTMLButtonElement, url: string): void {
-	button.disabled = true;
-	button.textContent = 'Adding...';
+function handleBasketAdd(url: string, button: HTMLButtonElement | null = null): void {
+	if (button) {
+		button.disabled = true;
+		button.textContent = 'Adding...';
+	}
 
 	fetch(url, {
 		method: 'GET',
@@ -121,12 +123,16 @@ function handleBasketAdd(button: HTMLButtonElement, url: string): void {
                 <a href="javascript:void(0)" onclick="handleBasketRemove('${recipeId}')" class="remove-btn" aria-label="Remove item">Remove</a>
             `;
 
-			button.replaceWith(managementGroup);
+			if (button) {
+				button.replaceWith(managementGroup);
+			}
 		})
 		.catch((error: Error) => {
 			console.error('Error adding to basket:', error);
-			button.textContent = 'Failed';
-			button.disabled = false;
+			if (button) {
+				button.textContent = 'Failed';
+				button.disabled = false;
+			}
 		});
 }
 

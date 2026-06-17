@@ -78,7 +78,7 @@ function updateBasketDOM(recipeId, newCount) {
         var addButton = document.createElement('button');
         addButton.className = 'add-button';
         addButton.setAttribute('aria-label', 'Add to Basket');
-        addButton.setAttribute('onclick', "handleBasketAdd(this, '/basket/add/".concat(recipeId, "')"));
+        addButton.setAttribute('onclick', "handleBasketAdd('".concat(recipeId, "', this)"));
         addButton.textContent = 'Add To Basket';
         managementGroup.replaceWith(addButton);
     }
@@ -86,9 +86,12 @@ function updateBasketDOM(recipeId, newCount) {
 /**
  * Handles adding items to the basket asynchronously.
  */
-function handleBasketAdd(button, url) {
-    button.disabled = true;
-    button.textContent = 'Adding...';
+function handleBasketAdd(url, button) {
+    if (button === void 0) { button = null; }
+    if (button) {
+        button.disabled = true;
+        button.textContent = 'Adding...';
+    }
     fetch(url, {
         method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' },
@@ -103,12 +106,16 @@ function handleBasketAdd(button, url) {
         managementGroup.className = 'basket-management-group';
         managementGroup.setAttribute('data-recipe-id', recipeId);
         managementGroup.innerHTML = "\n                <a href=\"javascript:void(0)\" onclick=\"handleBasketDecrement('".concat(recipeId, "')\" class=\"decrement-btn\" aria-label=\"Decrease quantity\">-</a>\n                <span class=\"recipe-count-display\">1</span>\n                <a href=\"javascript:void(0)\" onclick=\"handleBasketIncrement('").concat(recipeId, "')\" class=\"increment-btn\" aria-label=\"Increase quantity\">+</a>\n                <a href=\"javascript:void(0)\" onclick=\"handleBasketRemove('").concat(recipeId, "')\" class=\"remove-btn\" aria-label=\"Remove item\">Remove</a>\n            ");
-        button.replaceWith(managementGroup);
+        if (button) {
+            button.replaceWith(managementGroup);
+        }
     })
         .catch(function (error) {
         console.error('Error adding to basket:', error);
-        button.textContent = 'Failed';
-        button.disabled = false;
+        if (button) {
+            button.textContent = 'Failed';
+            button.disabled = false;
+        }
     });
 }
 /**

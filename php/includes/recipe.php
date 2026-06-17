@@ -65,7 +65,7 @@ foreach ($recipe->get_tags() as $tag) {
             <?php $basket_item = $user_id ? Basket::from_id($recipe->recipe_id, $user_id) : null; ?>
 
             <?php if (!$basket_item): ?>
-                <button onclick="handleBasketAdd(this, '/add/<?= $recipe->recipe_id ?>')" class="add-button"
+                <button onclick="handleBasketAdd('<?= $recipe->recipe_id ?>', this)" class="add-button"
                     aria-label="Add to Basket">
                     Add To Basket
                 </button>

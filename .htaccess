@@ -1,13 +1,14 @@
+# Enable rewriting engine
 RewriteEngine On
 
-# Optional: Force HTTPS securely on InfinityFree
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# Force base path to prevent alias resolution loss on free servers
+RewriteBase /
 
-# Stop rewriting if the request points to an actual asset file or directory
-# (This ensures your assets/, css/, and js/ folders load natively)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# Stop processing if the request is an actual existing file or folder
+# (Allows assets, compiled CSS, and JS scripts to load directly)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 
-# Quietly forward everything else to your root index.php
+# Route all other URLs to index.php cleanly
 RewriteRule ^(.*)$ index.php [QSA,L]
