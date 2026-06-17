@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.recipes,
+.users {
+	display: flex;
+	flex-wrap: wrap;
+
+	gap: 1.5rem;
+	margin-top: 1rem;
+	width: 100%;
+}
+
+.recipe-card,
+.user-card {
+	@include mix.card-base;
+	display: flex;
+	flex-direction: column;
+	padding: 1.5rem;
+	width: 20rem;
+
+	@include mix.recipe-details();
+}

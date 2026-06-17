@@ -1,0 +1,26 @@
+// 1. Abstract System Layer Configuration
+@use "abstracts/variables";
+@use "abstracts/mixins";
+
+// 2. Base Structural Resets Pipeline
+@use "base/boilerplate";
+
+// 3. Encapsulated Presentation Element Modules
+@use "components/header";
+@use "components/cards";
+@use "components/forms";
+@use "components/comments";
+
+// 4. Standalone Catch-All Page Specific Layout Targets
+.user-full, .recipe-full, .error-full {
+  background-color: variables.$bg-card;
+  border: 1px solid variables.$border-color;
+  border-radius: variables.$radius-md;
+  padding: 2.5rem;
+  box-shadow: variables.$shadow-sm;
+
+  h1 {
+    font-size: 3rem;
+    color: variables.$error-color;
+  }
+}

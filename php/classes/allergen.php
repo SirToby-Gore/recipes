@@ -44,4 +44,18 @@ class Allergen
         $stmt->bind_param('i', $this->allergen_id);
         return $stmt->execute();
     }
+
+    public function get_allergies(): array
+    {
+        global $conn;
+        $stmt = $conn->prepare('SELECT * FROM `Allergies` WHERE `allergen_id` = ?');
+        $stmt->bind_param('i', $this->allergen_id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        $items = [];
+        while ($row = $res->fetch_assoc()) {
+            $items[] = new Allergy($row['ingredient_id'], $row['allergen_id']);
+        }
+        return $items;
+    }
 }

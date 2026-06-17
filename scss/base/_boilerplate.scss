@@ -1,0 +1,43 @@
+@use "../abstracts/variables" as vars;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: vars.$font-sans;
+  background-color: vars.$bg-light;
+  color: vars.$text-dark;
+  line-height: 1.6;
+  padding-bottom: 3rem;
+}
+
+a {
+  color: vars.$primary-medium;
+  text-decoration: none;
+  &:hover {
+    color: vars.$primary-dark;
+  }
+}
+
+h1, h2, h3 {
+  color: vars.$primary-dark;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+section {
+  max-width: vars.$max-width;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: vars.$text-muted;
+  border-top: 1px solid vars.$border-color;
+  margin-top: 4rem;
+}

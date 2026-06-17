@@ -44,4 +44,26 @@ class Substitution
         $stmt->bind_param('ss', $this->ingredient_id, $this->substitution_id);
         return $stmt->execute();
     }
+
+    public function get_ingredient(): ?Ingredient
+    {
+        global $conn;
+        $stmt = $conn->prepare('SELECT * FROM `Ingredients` WHERE `ingredient_id` = ?');
+        $stmt->bind_param('s', $this->ingredient_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        if (!$result) return null;
+        return new Ingredient($result['ingredient_id'], $result['name'], $result['description'], $result['category']);
+    }
+
+    public function get_substitution(): ?Ingredient
+    {
+        global $conn;
+        $stmt = $conn->prepare('SELECT * FROM `Ingredients` WHERE `ingredient_id` = ?');
+        $stmt->bind_param('s', $this->substitution_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        if (!$result) return null;
+        return new Ingredient($result['ingredient_id'], $result['name'], $result['description'], $result['category']);
+    }
 }

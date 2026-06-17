@@ -1,0 +1,111 @@
+@use '../abstracts/variables' as vars;
+@use '../abstracts/mixins' as mix;
+
+.header-bar {
+	background-color: vars.$primary-dark;
+	padding: 1rem 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	box-shadow: vars.$shadow-sm;
+
+	.content {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		flex-grow: 1;
+
+		.search {
+			width: 100%;
+			max-width: 400px;
+			padding: 0.6rem 1.2rem;
+			border: 1px solid transparent;
+			border-radius: 20px;
+			background-color: rgba(255, 255, 255, 0.15);
+			color: #ffffff;
+			font-size: 0.95rem;
+			transition: vars.$transition-smooth;
+
+			&::placeholder {
+				color: rgba(255, 255, 255, 0.6);
+			}
+
+			&:focus {
+				outline: none;
+				background-color: #ffffff;
+				color: vars.$text-dark;
+				box-shadow: 0 0 0 3px vars.$primary-light;
+			}
+		}
+
+		a {
+			color: #ffffff;
+			font-weight: 600;
+			letter-spacing: 0.05em;
+			font-size: 0.85rem;
+
+			&:hover {
+				color: vars.$primary-light;
+			}
+		}
+	}
+
+	// Modern Pure CSS Hamburger System mapping to your custom input checkbox template markup
+	.hamburger {
+		display: none;
+		appearance: none;
+		width: 24px;
+		height: 24px;
+		position: relative;
+		cursor: pointer;
+
+		&::before {
+			content: '☰';
+			color: #ffffff;
+			font-size: 1.7rem;
+			position: absolute;
+			top: -6px;
+			right: 0;
+		}
+
+		@include mix.respond-to-md {
+			display: block;
+		}
+	}
+
+	.menu {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+
+		a {
+			color: rgba(255, 255, 255, 0.85);
+			font-weight: 600;
+			font-size: 0.9rem;
+
+			&:hover {
+				color: #ffffff;
+			}
+		}
+
+		@include mix.respond-to-md {
+			display: none; // Hides menu rows down to clean burger dropdowns
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			background-color: vars.$primary-dark;
+			flex-direction: column;
+			padding: 1.5rem;
+			gap: 1.2rem;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			z-index: 100;
+		}
+	}
+
+	// Evaluated CSS structural sibling trigger selector matching checkbox layout actions
+	.hamburger:checked ~ .menu {
+		display: flex;
+	}
+}

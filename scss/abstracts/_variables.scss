@@ -1,0 +1,21 @@
+$primary-dark:    #1b4332;
+$primary-medium:  #2d6a4f;
+$primary-light:   #d8f3dc;
+$bg-light:        #f5f4f7;
+$bg-card:         #ffffff;
+$text-dark:       #2d3748;
+$text-muted:      #718096;
+$error-color:     #e53e3e;
+$border-color:    #e2e8f0;
+
+$font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+$max-width: 1200px;
+$breakpoint-md: 768px;
+
+$radius-md: 12px;
+$radius-sm: 6px;
+$shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+$shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+
+$transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);

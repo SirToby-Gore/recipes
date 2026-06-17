@@ -2,3 +2,8 @@
 .github/
 .gitignore
 README.md
+update-db-php.sh
+database.md
+compile_*
+scss
+ts

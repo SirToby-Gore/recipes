@@ -35,4 +35,15 @@ class Tag
         $stmt->bind_param('ss', $this->recipe_id, $this->tag_name);
         return $stmt->execute();
     }
+
+    public function get_recipe(): ?Recipe
+    {
+        global $conn;
+        $stmt = $conn->prepare('SELECT * FROM `Recipes` WHERE `recipe_id` = ?');
+        $stmt->bind_param('s', $this->recipe_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        if (!$result) return null;
+        return new Recipe($result['recipe_id'], $result['title'], $result['description'], $result['total_time'], $result['portions'], $result['parent'], $result['user_id']);
+    }
 }

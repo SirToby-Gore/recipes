@@ -44,4 +44,15 @@ class Token
         $stmt->bind_param('s', $this->token);
         return $stmt->execute();
     }
+
+    public function get_user(): ?User
+    {
+        global $conn;
+        $stmt = $conn->prepare('SELECT * FROM `Users` WHERE `user_id` = ?');
+        $stmt->bind_param('s', $this->user_id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        if (!$result) return null;
+        return new User($result['user_id'], $result['username'], $result['email'], $result['salt'], $result['password_hash'], $result['created_on']);
+    }
 }
