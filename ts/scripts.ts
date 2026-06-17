@@ -95,22 +95,18 @@ function updateBasketDOM(recipeId: string, newCount: number): void {
 /**
  * Handles adding items to the basket asynchronously.
  */
-function handleBasketAdd(url: string, button: HTMLButtonElement | null = null): void {
+function handleBasketAdd(recipeId: string, button: HTMLButtonElement | null = null): void {
 	if (button) {
 		button.disabled = true;
 		button.textContent = 'Adding...';
 	}
 
-	fetch(url, {
+	fetch('/basket/add/recipeId', {
 		method: 'GET',
 		headers: { 'X-Requested-With': 'XMLHttpRequest' },
 	})
 		.then((response) => {
 			if (!response.ok) throw new Error('Failed to add item to basket');
-
-			// Fixed: Added "_" and "-" characters to align perfectly with index.php routing rules
-			const recipeIdMatch = url.match(/\/basket\/add\/([a-zA-Z0-9_-]+)/);
-			const recipeId = recipeIdMatch ? recipeIdMatch[1] : '';
 
 			const managementGroup = document.createElement('div');
 			managementGroup.className = 'basket-management-group';
