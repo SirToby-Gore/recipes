@@ -72,7 +72,7 @@ function recipe_card(Recipe $recipe): string
     if (!$basket_item) {
         $html .= <<<HTML
             <button 
-                onclick="handleBasketAdd(this, '/basket/add/{$recipe->recipe_id}')" 
+                onclick="handleBasketAdd('{$recipe->recipe_id}', this)" 
                 class="add-button"
                 aria-label="Add to Basket">
                 Add To Basket
