@@ -101,7 +101,7 @@ function handleBasketAdd(recipeId: string, button: HTMLButtonElement | null = nu
 		button.textContent = 'Adding...';
 	}
 
-	fetch('/basket/add/recipeId', {
+	fetch(`/basket/add/${recipeId}`, {
 		method: 'GET',
 		headers: { 'X-Requested-With': 'XMLHttpRequest' },
 	})

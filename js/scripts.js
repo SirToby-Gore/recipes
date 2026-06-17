@@ -92,7 +92,7 @@ function handleBasketAdd(recipeId, button) {
         button.disabled = true;
         button.textContent = 'Adding...';
     }
-    fetch('/basket/add/recipeId', {
+    fetch("/basket/add/".concat(recipeId), {
         method: 'GET',
         headers: { 'X-Requested-With': 'XMLHttpRequest' },
     })
