@@ -156,11 +156,6 @@ try {
         case (preg_match('#^/user/preference/([a-zA-Z0-9_-]+)$#', $route, $matches) ? true : false):
             $new_preference = strtolower($matches[1]);
 
-            if (null === $account) {
-                http_response_code(401);
-                exit;
-            }
-
             update_user_unit_preference($new_preference);
 
             break;
@@ -246,6 +241,12 @@ try {
             render_page_view('recipe', compact('recipe', 'account'));
             break;
 
+        case (preg_match('#^/ingredient/?(.*)$#', $route, $matches) ? true : false):
+            $path_str = trim($matches[1], '/');
+            $searched_ids = $path_str !== '' ? explode('/', $path_str) : [];
+            handle_recipe_search_by_ingredients($searched_ids);
+            break;
+
         #endregion recipe
 
         default:
@@ -324,6 +325,12 @@ function handle_user_registration(): void
         } elseif (name_in_use($name)) {
             $name_error = "Name already in use";
         } else {
+            $allowed_regions = ['metric', 'us', 'uk'];
+
+            if (!in_array($_SESSION['preferred_region'], $allowed_regions)) {
+                $_SESSION['preferred_region'] = 'metric';
+            }
+
             $salt = random_string(32);
             $new_user = new User(
                 new_uuid('user_id', 'Users'),
@@ -332,7 +339,7 @@ function handle_user_registration(): void
                 $salt,
                 user_hash_password($password_1, $salt),
                 datetime_now(),
-                'metric'
+                $_SESSION['preferred_region'],
             );
             $new_user->create();
 
@@ -394,8 +401,10 @@ function update_user_unit_preference(string $new_preference): void
         // 1. Update active runtime session state memory
         $_SESSION['preferred_region'] = $new_preference;
 
-        $account->unit_preference = $new_preference;
-        $account->update();
+        if ($account) {
+            $account->unit_preference = $new_preference;
+            $account->update();
+        }
 
         respond_with_json_success(['region' => $new_preference]);
     } else {
@@ -608,6 +617,88 @@ function process_recipe_deletion(string $recipe_id): void
         header("Location: /recipe/{$recipe_id}");
         exit;
     }
+}
+
+function handle_recipe_search_by_ingredients(array $searched_ids): void
+{
+    global $conn;
+    global $account;
+
+    $recipes = [];
+    $focus_ingredient = null;
+    $substitutions = [];
+
+    // 1. Fetch all system ingredients to populate the interactive JS Fuzzy Finder
+    $ing_stmt = $conn->query("SELECT `ingredient_id`, `name` FROM `Ingredients` ORDER BY `name` ASC");
+    $all_ingredients = $ing_stmt->fetch_all(MYSQLI_ASSOC);
+
+    $selected_ingredients = [];
+
+    if (!empty($searched_ids)) {
+        $placeholders = implode(',', array_fill(0, count($searched_ids), '?'));
+
+        // 2. Fetch the specific ingredients mapped in the URL path to pre-render the active search tags
+        $sel_stmt = $conn->prepare("SELECT `ingredient_id`, `name` FROM `Ingredients` WHERE `ingredient_id` IN ($placeholders)");
+        $types = str_repeat('s', count($searched_ids));
+        $sel_stmt->bind_param($types, ...$searched_ids);
+        $sel_stmt->execute();
+        $selected_ingredients = $sel_stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        // 3. Process the proportional match algorithm
+        $sql = <<<SQL
+            SELECT 
+                r.`recipe_id`, 
+                r.`title`, 
+                r.`description`, 
+                r.`total_time`, 
+                r.`portions`,
+                COUNT(DISTINCT iuis.`ingredient_id`) as `matching_ingredients_count`,
+                (
+                    SELECT COUNT(DISTINCT iuis_total.`ingredient_id`)
+                    FROM `Steps` s_total
+                    JOIN `IngredientsUsedInSteps` iuis_total ON s_total.`step_id` = iuis_total.`step_id`
+                    WHERE s_total.`recipe_id` = r.`recipe_id`
+                ) as `total_recipe_ingredients`
+            FROM `Recipes` r
+            JOIN `Steps` s ON r.`recipe_id` = s.`recipe_id`
+            JOIN `IngredientsUsedInSteps` iuis ON s.`step_id` = iuis.`step_id`
+            WHERE iuis.`ingredient_id` IN ($placeholders)
+            GROUP BY r.`recipe_id`
+            ORDER BY (COUNT(DISTINCT iuis.`ingredient_id`) / (
+                SELECT COUNT(DISTINCT iuis_total.`ingredient_id`)
+                FROM `Steps` s_total
+                JOIN `IngredientsUsedInSteps` iuis_total ON s_total.`step_id` = iuis_total.`step_id`
+                WHERE s_total.`recipe_id` = r.`recipe_id`
+            )) DESC
+        SQL;
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param($types, ...$searched_ids);
+        $stmt->execute();
+        $recipes = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        // 4. Capture single-ingredient focused behavior
+        if (1 === count($searched_ids)) {
+            $focus_id = $searched_ids[0];
+            $focus_ingredient = Ingredient::from_id($focus_id);
+
+            if ($focus_ingredient) {
+                $sub_stmt = $conn->prepare(<<<SQL
+                    SELECT 
+                        sub.`description` as `substitution_context`, 
+                        i.`name` as `substitute_name`
+                    FROM `Substitutions` sub
+                    JOIN `Ingredients` i ON sub.`substitution_id` = i.`ingredient_id`
+                    WHERE sub.`ingredient_id` = ?
+                SQL);
+                $sub_stmt->bind_param('s', $focus_id);
+                $sub_stmt->execute();
+                $substitutions = $sub_stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            }
+        }
+    }
+
+    render_page_view('ingredient_search', compact('account', 'recipes', 'focus_ingredient', 'substitutions', 'all_ingredients', 'selected_ingredients'));
 }
 
 #endregion functions

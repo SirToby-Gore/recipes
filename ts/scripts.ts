@@ -320,8 +320,8 @@ interface RecipePayload {
 	steps: StepPayload[];
 }
 
-let dbIngredients: Map<string, DBIngredient>;
-let dbUnits: Map<string, DBUnit>;
+let dbIngredients: Record<string, DBIngredient>;
+let dbUnits: Record<string, DBUnit>;
 
 window.addEventListener('DOMContentLoaded', () => {
 	const ingredientsElement = document.getElementById('db-ingredients-data');
@@ -329,8 +329,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	const existingStepsElement = document.getElementById('existing-steps-data');
 
 	if (ingredientsElement && unitsElement) {
-		dbIngredients = JSON.parse(ingredientsElement.textContent || '[]');
-		dbUnits = JSON.parse(unitsElement.textContent || '[]');
+		dbIngredients = JSON.parse(ingredientsElement.textContent || '{}');
+		dbUnits = JSON.parse(unitsElement.textContent || '{}');
 	}
 
 	const existingSteps: StepPayload[] = existingStepsElement
@@ -432,22 +432,19 @@ function renderIngredientRow(
 	const row = document.createElement('div');
 	row.className = 'step-ingredient-row';
 
-	// 1. Convert Object to Array using Object.values()
-	const ingredientsArray = Object.values(dbIngredients);
-	const unitsArray = Object.values(dbUnits);
+	// 1. Convert Object to Array using mapped Object.keys
+	const ingredientsArray = Object.keys(dbIngredients).map((key) => dbIngredients[key]);
+	const unitsArray = Object.keys(dbUnits).map((key) => dbUnits[key]);
 
 	let ingredientOptions = `<option value="" disabled ${!prefill ? 'selected' : ''}>-- Select Ingredient --</option>`;
 
-	// Now you can loop through the array
 	ingredientsArray.forEach((ing: any) => {
-		// Note: Check if 'ingredient_id' exists in your object structure
 		const selected = prefill && prefill.ingredient_id === ing.ingredient_id ? 'selected' : '';
 		ingredientOptions += `<option value="${ing.ingredient_id}" ${selected}>${ing.name}</option>`;
 	});
 
 	let unitOptions = `<option value="" disabled ${!prefill ? 'selected' : ''}>-- Unit --</option>`;
 
-	// Loop through the units array
 	unitsArray.forEach((unit: any) => {
 		const selected = prefill && prefill.unit_id === unit.unit_id ? 'selected' : '';
 		unitOptions += `<option value="${unit.unit_id}" ${selected}>${unit.short_hand.length ? unit.short_hand : '(each)'}</option>`;
@@ -613,17 +610,6 @@ function updateUserRegionPreference(region: string) {
 		.catch((error) => console.error('Error updating region choice preference:', error));
 }
 
-interface IngredientPayload {
-	ingredient_id: string;
-	amount: number;
-	unit_id: number;
-}
-
-interface StepPayload {
-	step: string;
-	ingredients: IngredientPayload[];
-}
-
 interface RecipeForkPayload {
 	name: string;
 	description: string;
@@ -656,3 +642,112 @@ if (form) {
 		window.location.href = `/recipe/fork/${parentId}/${serializedPayload}`;
 	});
 }
+
+// -------------------------------------------------------------
+// Fuzzy Ingredient Search UI Logic
+// -------------------------------------------------------------
+window.addEventListener('DOMContentLoaded', () => {
+	const fuzzyInput = document.getElementById('ingredient-fuzzy-input') as HTMLInputElement | null;
+	const fuzzyDropdown = document.getElementById('fuzzy-dropdown') as HTMLDivElement | null;
+	const selectedContainer = document.getElementById('selected-ingredients-container') as HTMLDivElement | null;
+	const searchBtn = document.getElementById('search-ingredients-btn') as HTMLButtonElement | null;
+
+	const allIngData = document.getElementById('all-ingredients-data');
+	const selectedIngData = document.getElementById('selected-ingredients-data');
+
+	if (fuzzyInput && fuzzyDropdown && selectedContainer && searchBtn && allIngData && selectedIngData) {
+		const allIngredients: { ingredient_id: string; name: string }[] = JSON.parse(allIngData.textContent || '[]');
+		let selectedIngredients: { ingredient_id: string; name: string }[] = JSON.parse(
+			selectedIngData.textContent || '[]',
+		);
+
+		// Renders the tags inside the container box above the input
+		const renderSelected = () => {
+			selectedContainer.innerHTML = '';
+			selectedIngredients.forEach((ing) => {
+				const tag = document.createElement('span');
+				tag.style.cssText =
+					'background: #e8f0fe; color: #1b4332; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; border: 1px solid #b3d1ff; font-weight: 500;';
+
+				tag.innerHTML = `
+					${ing.name}
+					<button type="button" aria-label="Remove ${ing.name}" style="background: none; border: none; color: #e63946; cursor: pointer; font-weight: bold; font-size: 1rem; display: flex; align-items: center; justify-content: center;">&times;</button>
+				`;
+
+				tag.querySelector('button')?.addEventListener('click', () => {
+					selectedIngredients = selectedIngredients.filter((i) => i.ingredient_id !== ing.ingredient_id);
+					renderSelected();
+				});
+
+				selectedContainer.appendChild(tag);
+			});
+		};
+
+		// Runs the substring fuzzy lookup logic
+		const filterDropdown = () => {
+			const query = fuzzyInput.value.toLowerCase().trim();
+			fuzzyDropdown.innerHTML = '';
+
+			if (query === '') {
+				fuzzyDropdown.style.display = 'none';
+				return;
+			}
+
+			// Exclude anything that is already inside the selected box
+			const matches = allIngredients.filter(
+				(ing) =>
+					ing.name.toLowerCase().indexOf(query) !== -1 &&
+					!selectedIngredients.some((s) => s.ingredient_id === ing.ingredient_id),
+			);
+
+			if (matches.length === 0) {
+				fuzzyDropdown.innerHTML =
+					'<div style="padding: 0.75rem; color: #718096; font-size: 0.9rem;">No matches found</div>';
+			} else {
+				matches.forEach((match) => {
+					const item = document.createElement('div');
+					item.style.cssText =
+						'padding: 0.75rem 1rem; cursor: pointer; border-bottom: 1px solid #f5f4f7; color: #2d3748; transition: background 0.2s;';
+					item.textContent = match.name;
+
+					item.addEventListener('mouseenter', () => (item.style.background = '#f5f4f7'));
+					item.addEventListener('mouseleave', () => (item.style.background = 'transparent'));
+
+					item.addEventListener('click', () => {
+						selectedIngredients.push(match);
+						renderSelected();
+						fuzzyInput.value = '';
+						fuzzyDropdown.style.display = 'none';
+						fuzzyInput.focus();
+					});
+
+					fuzzyDropdown.appendChild(item);
+				});
+			}
+			fuzzyDropdown.style.display = 'block';
+		};
+
+		fuzzyInput.addEventListener('input', filterDropdown);
+
+		// Hide floating drop menu on outer click
+		document.addEventListener('click', (e) => {
+			if (!fuzzyInput.contains(e.target as Node) && !fuzzyDropdown.contains(e.target as Node)) {
+				fuzzyDropdown.style.display = 'none';
+			}
+		});
+
+		fuzzyInput.addEventListener('focus', filterDropdown);
+
+		// Execute navigation push on click
+		searchBtn.addEventListener('click', () => {
+			if (selectedIngredients.length === 0) {
+				window.location.href = '/ingredient';
+				return;
+			}
+			const ids = selectedIngredients.map((i) => i.ingredient_id).join('/');
+			window.location.href = `/ingredient/${ids}`;
+		});
+
+		renderSelected();
+	}
+});

@@ -265,8 +265,8 @@ window.addEventListener('DOMContentLoaded', function () {
     var unitsElement = document.getElementById('db-units-data');
     var existingStepsElement = document.getElementById('existing-steps-data');
     if (ingredientsElement && unitsElement) {
-        dbIngredients = JSON.parse(ingredientsElement.textContent || '[]');
-        dbUnits = JSON.parse(unitsElement.textContent || '[]');
+        dbIngredients = JSON.parse(ingredientsElement.textContent || '{}');
+        dbUnits = JSON.parse(unitsElement.textContent || '{}');
     }
     var existingSteps = existingStepsElement
         ? JSON.parse(existingStepsElement.textContent || '[]')
@@ -338,18 +338,15 @@ function addIngredientToStep(button) {
 function renderIngredientRow(container, prefill) {
     var row = document.createElement('div');
     row.className = 'step-ingredient-row';
-    // 1. Convert Object to Array using Object.values()
-    var ingredientsArray = Object.values(dbIngredients);
-    var unitsArray = Object.values(dbUnits);
+    // 1. Convert Object to Array using mapped Object.keys
+    var ingredientsArray = Object.keys(dbIngredients).map(function (key) { return dbIngredients[key]; });
+    var unitsArray = Object.keys(dbUnits).map(function (key) { return dbUnits[key]; });
     var ingredientOptions = "<option value=\"\" disabled ".concat(!prefill ? 'selected' : '', ">-- Select Ingredient --</option>");
-    // Now you can loop through the array
     ingredientsArray.forEach(function (ing) {
-        // Note: Check if 'ingredient_id' exists in your object structure
         var selected = prefill && prefill.ingredient_id === ing.ingredient_id ? 'selected' : '';
         ingredientOptions += "<option value=\"".concat(ing.ingredient_id, "\" ").concat(selected, ">").concat(ing.name, "</option>");
     });
     var unitOptions = "<option value=\"\" disabled ".concat(!prefill ? 'selected' : '', ">-- Unit --</option>");
-    // Loop through the units array
     unitsArray.forEach(function (unit) {
         var selected = prefill && prefill.unit_id === unit.unit_id ? 'selected' : '';
         unitOptions += "<option value=\"".concat(unit.unit_id, "\" ").concat(selected, ">").concat(unit.short_hand.length ? unit.short_hand : '(each)', "</option>");
@@ -498,3 +495,89 @@ if (form) {
         window.location.href = "/recipe/fork/".concat(parentId, "/").concat(serializedPayload);
     });
 }
+// -------------------------------------------------------------
+// Fuzzy Ingredient Search UI Logic
+// -------------------------------------------------------------
+window.addEventListener('DOMContentLoaded', function () {
+    var fuzzyInput = document.getElementById('ingredient-fuzzy-input');
+    var fuzzyDropdown = document.getElementById('fuzzy-dropdown');
+    var selectedContainer = document.getElementById('selected-ingredients-container');
+    var searchBtn = document.getElementById('search-ingredients-btn');
+    var allIngData = document.getElementById('all-ingredients-data');
+    var selectedIngData = document.getElementById('selected-ingredients-data');
+    if (fuzzyInput && fuzzyDropdown && selectedContainer && searchBtn && allIngData && selectedIngData) {
+        var allIngredients_1 = JSON.parse(allIngData.textContent || '[]');
+        var selectedIngredients_1 = JSON.parse(selectedIngData.textContent || '[]');
+        // Renders the tags inside the container box above the input
+        var renderSelected_1 = function () {
+            selectedContainer.innerHTML = '';
+            selectedIngredients_1.forEach(function (ing) {
+                var _a;
+                var tag = document.createElement('span');
+                tag.style.cssText =
+                    'background: #e8f0fe; color: #1b4332; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; border: 1px solid #b3d1ff; font-weight: 500;';
+                tag.innerHTML = "\n\t\t\t\t\t".concat(ing.name, "\n\t\t\t\t\t<button type=\"button\" aria-label=\"Remove ").concat(ing.name, "\" style=\"background: none; border: none; color: #e63946; cursor: pointer; font-weight: bold; font-size: 1rem; display: flex; align-items: center; justify-content: center;\">&times;</button>\n\t\t\t\t");
+                (_a = tag.querySelector('button')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function () {
+                    selectedIngredients_1 = selectedIngredients_1.filter(function (i) { return i.ingredient_id !== ing.ingredient_id; });
+                    renderSelected_1();
+                });
+                selectedContainer.appendChild(tag);
+            });
+        };
+        // Runs the substring fuzzy lookup logic
+        var filterDropdown = function () {
+            var query = fuzzyInput.value.toLowerCase().trim();
+            fuzzyDropdown.innerHTML = '';
+            if (query === '') {
+                fuzzyDropdown.style.display = 'none';
+                return;
+            }
+            // Exclude anything that is already inside the selected box
+            var matches = allIngredients_1.filter(function (ing) {
+                return ing.name.toLowerCase().indexOf(query) !== -1 &&
+                    !selectedIngredients_1.some(function (s) { return s.ingredient_id === ing.ingredient_id; });
+            });
+            if (matches.length === 0) {
+                fuzzyDropdown.innerHTML =
+                    '<div style="padding: 0.75rem; color: #718096; font-size: 0.9rem;">No matches found</div>';
+            }
+            else {
+                matches.forEach(function (match) {
+                    var item = document.createElement('div');
+                    item.style.cssText =
+                        'padding: 0.75rem 1rem; cursor: pointer; border-bottom: 1px solid #f5f4f7; color: #2d3748; transition: background 0.2s;';
+                    item.textContent = match.name;
+                    item.addEventListener('mouseenter', function () { return (item.style.background = '#f5f4f7'); });
+                    item.addEventListener('mouseleave', function () { return (item.style.background = 'transparent'); });
+                    item.addEventListener('click', function () {
+                        selectedIngredients_1.push(match);
+                        renderSelected_1();
+                        fuzzyInput.value = '';
+                        fuzzyDropdown.style.display = 'none';
+                        fuzzyInput.focus();
+                    });
+                    fuzzyDropdown.appendChild(item);
+                });
+            }
+            fuzzyDropdown.style.display = 'block';
+        };
+        fuzzyInput.addEventListener('input', filterDropdown);
+        // Hide floating drop menu on outer click
+        document.addEventListener('click', function (e) {
+            if (!fuzzyInput.contains(e.target) && !fuzzyDropdown.contains(e.target)) {
+                fuzzyDropdown.style.display = 'none';
+            }
+        });
+        fuzzyInput.addEventListener('focus', filterDropdown);
+        // Execute navigation push on click
+        searchBtn.addEventListener('click', function () {
+            if (selectedIngredients_1.length === 0) {
+                window.location.href = '/ingredient';
+                return;
+            }
+            var ids = selectedIngredients_1.map(function (i) { return i.ingredient_id; }).join('/');
+            window.location.href = "/ingredient/".concat(ids);
+        });
+        renderSelected_1();
+    }
+});

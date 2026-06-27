@@ -178,4 +178,3 @@ function search_recipes_by_name(string $search_term): array
     return $recipes;
 }
 
-

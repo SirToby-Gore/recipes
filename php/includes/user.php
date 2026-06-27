@@ -11,9 +11,16 @@
         </div>
     </section>
 <?php endif ?>
-
 <section class="recipes">
-    <?php foreach ($user->get_recipes() as $recipe): ?>
-        <?= render_recipe_card($recipe) ?>
-    <?php endforeach ?>
+    <?php if (0 === count($user->get_recipes())): ?>
+        <p>No recipes yet</p>
+        <?php if ($user->user_id === ($account ?? Blank::$user)->user_id): ?>
+            <br>
+            <a href="/recipe/create">Create your first recipe</a>
+        <?php endif ?>
+    <?php else: ?>
+        <?php foreach ($user->get_recipes() as $recipe): ?>
+            <?= render_recipe_card($recipe) ?>
+        <?php endforeach ?>
+    <?php endif ?>
 </section>

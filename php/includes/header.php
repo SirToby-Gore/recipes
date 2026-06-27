@@ -1,8 +1,4 @@
-<?php
-
-require_once __DIR__ . '/../init.php';
-
-?>
+<?php global $account ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +28,7 @@ require_once __DIR__ . '/../init.php';
 
         <nav class="menu">
             <a href="/">HOME</a>
+            <a href="/ingredient">INGREDIENTS</a>
             <?php if ($account): ?>
                 <a href="/recipe/create">CREATE</a>
                 <a href="/basket">BASKET</a>

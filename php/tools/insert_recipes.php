@@ -57,7 +57,18 @@ foreach ($recipes_assoc as $recipe) {
 
         foreach ($step['ingredients'] as $ingredient) {
             if (!is_unit_compatible($ingredient['unit'], $ingredient['id'], terminal: true)) {
-                die("Issue with ingredients, units are incompatible on ingredient " . $ingredient['id']->name . ", on recipe id:" . $recipe['id']);
+                $stmt = $conn->prepare('SELECT `unit_id` FROM `IngredientsUsedInSteps` WHERE `ingredient_id`=? LIMIT 1');
+                $stmt->bind_param('s', $ingredient['id']->ingredient_id);
+                $stmt->execute();
+
+                $unit = Unit::from_id($stmt->get_result()->fetch_assoc()['unit_id'] ?? null);
+
+                echo "\n\nERROR:\nIssue with ingredients, units are incompatible on ingredient " . $ingredient['id']->name . ", on recipe id:" . $recipe['name'];
+                echo "\nTry one of these:";
+                echo "\n" . (strlen($unit->short_hand) > 0 ? $unit->short_hand : '(each)') . ",";
+                echo "\n" . implode(",\n", array_map(fn ($unit) => $unit->get_new_unit()->short_hand, $unit->get_compatible_units_by_base_unit()));
+
+                exit;
             }
 
             $ingredient_used = new IngredientsUsedInStep(

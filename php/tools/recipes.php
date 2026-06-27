@@ -8,7 +8,6 @@ require_once __DIR__ . '/ingredients.php';
 #region recipes
 $recipes_assoc = [
     [
-        'id' => 1,
         'name' => 'Toad in the hole',
         'description' => 'Classic British sausages in Yorkshire pudding batter. A family favourite that is surprisingly easy to make and perfect for a cold winter evening.',
         'timeMinutes' => 40,
@@ -98,7 +97,6 @@ $recipes_assoc = [
         'tags' => ['dinner', 'british', 'simple', 'one pot meal', 'winter'],
     ],
     [
-        'id' => 2,
         'name' => 'Turkey with peaches',
         'description' => 'A sweet and savoury dish featuring tender turkey and juicy peaches in a creamy nutmeg-scented sauce.',
         'timeMinutes' => 30,
@@ -190,7 +188,7 @@ $recipes_assoc = [
                 'step' => 'Drain the tinned peaches and cut them into slices.',
                 'ingredients' => [
                     [
-                        'id' => $ing_db['tinned_peaches'],
+                        'id' => $ing_db['peaches_canned'],
                         'amount' => 1,
                         'unit' => Units::$units_db['each']
                     ],
@@ -213,7 +211,6 @@ $recipes_assoc = [
         'tags' => ['dinner', 'sweet & savoury', 'turkey'],
     ],
     [
-        'id' => 3,
         'name' => 'Chili con carne',
         'description' => 'A hearty beef chili with a complex spice profile. Best served with rice, sour cream, and fresh coriander.',
         'timeMinutes' => 80,
@@ -286,7 +283,7 @@ $recipes_assoc = [
                 'step' => 'Add the minced beef, breaking it up with a spoon, and cook until browned all over.',
                 'ingredients' => [
                     [
-                        'id' => $ing_db['minced_beef'],
+                        'id' => $ing_db['beef_mince'],
                         'amount' => 500,
                         'unit' => Units::$units_db['g']
                     ],
@@ -347,7 +344,6 @@ $recipes_assoc = [
         'tags' => ['dinner', 'comforting', 'mexican'],
     ],
     [
-        'id' => 4,
         'name' => 'Butter chicken',
         'description' => 'Rich, creamy Indian classic with aromatic spices and a smooth tomato-based sauce.',
         'timeMinutes' => 60,
@@ -478,7 +474,6 @@ $recipes_assoc = [
         'tags' => ['indian', 'curry', 'dinner', 'classic'],
     ],
     [
-        'id' => 5,
         'name' => 'Sausage leek gnocchi',
         'description' => 'Quick creamy one-pot gnocchi with savoury sausages and sweet leeks.',
         'timeMinutes' => 50,
@@ -592,8 +587,7 @@ $recipes_assoc = [
         'tags' => ['italian', 'pasta', 'one pot dish', 'dinner'],
     ],
     [
-        'id' => 6,
-        'name' => 'Chicken gyros',
+        'name' => 'Gyros',
         'description' => 'Greek street food at home with marinated chicken, tzatziki, and warm pita bread.',
         'timeMinutes' => 90,
         'servings' => 4,
@@ -751,7 +745,6 @@ $recipes_assoc = [
         'tags' => ['dinner', 'greek', 'mediterranean', 'national dish'],
     ],
     [
-        'id' => 7,
         'name' => 'Pasta bacon broccoli',
         'description' => 'Quick creamy pasta with crispy bacon and fresh broccoli.',
         'timeMinutes' => 30,
@@ -836,7 +829,6 @@ $recipes_assoc = [
         'tags' => ['dinner', 'italian', 'pasta'],
     ],
     [
-        'id' => 8,
         'name' => 'Seafood and chicken paella',
         'description' => 'Vibrant Spanish rice dish with saffron, seafood, and chicken.',
         'timeMinutes' => 45,
@@ -949,7 +941,6 @@ $recipes_assoc = [
         'tags' => ['spanish', 'seafood', 'chicken', 'dinner'],
     ],
     [
-        'id' => 9,
         'name' => 'Pork and apple burgers',
         'description' => 'Juicy burgers with a sweet twist of grated apple.',
         'timeMinutes' => 15,
@@ -1041,7 +1032,6 @@ $recipes_assoc = [
         'tags' => ['burger', 'pork', 'simple', 'dinner'],
     ],
     [
-        'id' => 10,
         'name' => 'Veggie lasagne',
         'description' => 'Comforting meat-free lasagne with layers of roasted vegetables and béchamel sauce.',
         'timeMinutes' => 45,
@@ -1180,7 +1170,6 @@ $recipes_assoc = [
         'tags' => ['vegetarian', 'italian', 'pasta', 'dinner'],
     ],
     [
-        'id' => 11,
         'name' => 'Katsu chicken',
         'description' => 'Crispy breaded chicken with a mildly spiced Japanese curry sauce.',
         'timeMinutes' => 20,
@@ -1317,7 +1306,6 @@ $recipes_assoc = [
         'tags' => ['japanese', 'chicken', 'curry', 'dinner'],
     ],
     [
-        'id' => 12,
         'name' => 'Tomato mozzarella toastie',
         'description' => 'Classic cheesy toastie with basil pesto and fresh tomato.',
         'timeMinutes' => 10,
@@ -1400,7 +1388,6 @@ $recipes_assoc = [
         'tags' => ['lunch', 'snack', 'vegetarian'],
     ],
     [
-        'id' => 13,
         'name' => 'Brie + cranberry + spinach + bacon jacket potatoes',
         'description' => 'Gourmet stuffed potatoes with melted brie and sweet cranberry.',
         'timeMinutes' => 60,
@@ -1483,7 +1470,6 @@ $recipes_assoc = [
         'tags' => ['dinner', 'lunch', 'potato'],
     ],
     [
-        'id' => 14,
         'name' => 'Bolognese',
         'description' => 'A slow-cooked, rich Italian meat sauce perfect with tagliatelle or spaghetti.',
         'timeMinutes' => 120,
@@ -1523,7 +1509,7 @@ $recipes_assoc = [
                 'step' => 'Add the minced beef and brown thoroughly, breaking up lumps.',
                 'ingredients' => [
                     [
-                        'id' => $ing_db['minced_beef'],
+                        'id' => $ing_db['beef_mince'],
                         'amount' => 500,
                         'unit' => Units::$units_db['g']
                     ],
@@ -1571,7 +1557,6 @@ $recipes_assoc = [
         'tags' => ['italian', 'dinner', 'classic'],
     ],
     [
-        'id' => 15,
         'name' => 'Lasagne',
         'description' => 'Layers of rich bolognese, creamy béchamel sauce, and pasta topped with melted cheese.',
         'timeMinutes' => 90,
@@ -1581,7 +1566,7 @@ $recipes_assoc = [
                 'step' => 'Prepare a meat sauce by browning beef with onions and simmering with tomatoes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_db['minced_beef'],
+                        'id' => $ing_db['beef_mince'],
                         'amount' => 500,
                         'unit' => Units::$units_db['g']
                     ],
@@ -1657,165 +1642,6 @@ $recipes_assoc = [
         'tags' => ['italian', 'dinner', 'baked'],
     ],
     [
-        'id' => 16,
-        'name' => 'Veggie Lasagne',
-        'description' => 'A Mediterranean vegetable twist on the classic baked pasta.',
-        'timeMinutes' => 75,
-        'servings' => 4,
-        'steps' => [
-            [
-                'step' => 'Slice and roast the aubergine, courgette, and peppers until tender.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['aubergine'],
-                        'amount' => 1,
-                        'unit' => Units::$units_db['each']
-                    ],
-                    [
-                        'id' => $ing_db['courgette'],
-                        'amount' => 2,
-                        'unit' => Units::$units_db['each']
-                    ],
-                    [
-                        'id' => $ing_db['red_bell_pepper'],
-                        'amount' => 2,
-                        'unit' => Units::$units_db['each']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Combine the roasted vegetables with passata and herbs.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['tomato_passata'],
-                        'amount' => 500,
-                        'unit' => Units::$units_db['ml']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Make a white sauce using the butter, flour, and milk.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['butter'],
-                        'amount' => 40,
-                        'unit' => Units::$units_db['g']
-                    ],
-                    [
-                        'id' => $ing_db['plain_flour'],
-                        'amount' => 40,
-                        'unit' => Units::$units_db['g']
-                    ],
-                    [
-                        'id' => $ing_db['whole_milk'],
-                        'amount' => 500,
-                        'unit' => Units::$units_db['ml']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Layer vegetable sauce, pasta, and white sauce in a dish.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['lasagne_sheets'],
-                        'amount' => 9,
-                        'unit' => Units::$units_db['each']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Top with torn mozzarella and bake at 190°C for 30 minutes.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['mozzarella_ball'],
-                        'amount' => 1,
-                        'unit' => Units::$units_db['each']
-                    ],
-                ]
-            ],
-        ],
-        'tags' => ['vegetarian', 'italian', 'dinner'],
-    ],
-    [
-        'id' => 17,
-        'name' => 'Gyros',
-        'description' => 'Greek-style wraps with spiced meat, fresh salad, and creamy yogurt sauce.',
-        'timeMinutes' => 40,
-        'servings' => 4,
-        'steps' => [
-            [
-                'step' => 'Marinate chicken in oil, oregano, paprika, and garlic, then grill until charred.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['chicken_thighs'],
-                        'amount' => 6,
-                        'unit' => Units::$units_db['each']
-                    ],
-                    [
-                        'id' => $ing_db['dried_oregano'],
-                        'amount' => 1,
-                        'unit' => Units::$units_db['tsp']
-                    ],
-                    [
-                        'id' => $ing_db['smoked_paprika'],
-                        'amount' => 1,
-                        'unit' => Units::$units_db['tsp']
-                    ],
-                    [
-                        'id' => $ing_db['garlic_cloves'],
-                        'amount' => 2,
-                        'unit' => Units::$units_db['each']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Grate cucumber and squeeze out liquid, mix with yogurt and garlic for tzatziki.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['greek_yogurt'],
-                        'amount' => 200,
-                        'unit' => Units::$units_db['g']
-                    ],
-                    [
-                        'id' => $ing_db['cucumber'],
-                        'amount' => 0.5,
-                        'unit' => Units::$units_db['each']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Warm the pita breads.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['pita_bread'],
-                        'amount' => 4,
-                        'unit' => Units::$units_db['each']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Slice the chicken and place in pitas with sliced tomatoes, onion, and tzatziki.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['tomato'],
-                        'amount' => 2,
-                        'unit' => Units::$units_db['each']
-                    ],
-                    [
-                        'id' => $ing_db['red_onion'],
-                        'amount' => 1,
-                        'unit' => Units::$units_db['each']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Wrap tightly and serve immediately.',
-            ],
-        ],
-        'tags' => ['greek', 'street-food', 'quick'],
-    ],
-    [
-        'id' => 18,
         'name' => 'Chicken Tikka Masala',
         'description' => "The nation's favourite curry: marinated chicken in a creamy, spiced tomato sauce.",
         'timeMinutes' => 50,
@@ -1908,7 +1734,6 @@ $recipes_assoc = [
         'tags' => ['curry', 'indian', 'dinner'],
     ],
     [
-        'id' => 19,
         'name' => 'Meatballs (Pork)',
         'description' => 'Juicy pork meatballs seasoned with fennel and herbs in a light tomato sauce.',
         'timeMinutes' => 45,
@@ -1979,7 +1804,6 @@ $recipes_assoc = [
         'tags' => ['pork', 'dinner', 'family'],
     ],
     [
-        'id' => 20,
         'name' => 'Normandy Pork',
         'description' => 'A classic French dish of pork cooked with apples, cider, and cream.',
         'timeMinutes' => 60,
@@ -2052,7 +1876,6 @@ $recipes_assoc = [
         'tags' => ['french', 'pork', 'creamy'],
     ],
     [
-        'id' => 21,
         'name' => 'Creamy Chicken Curry',
         'description' => 'A mild and silky curry using coconut milk or cream, perfect for the whole family.',
         'timeMinutes' => 40,
@@ -2120,7 +1943,6 @@ $recipes_assoc = [
         'tags' => ['curry', 'chicken', 'mild'],
     ],
     [
-        'id' => 22,
         'name' => 'Eggs Benedict',
         'description' => 'The ultimate brunch: poached eggs and ham on muffins with buttery hollandaise.',
         'timeMinutes' => 20,
@@ -2178,7 +2000,6 @@ $recipes_assoc = [
         'tags' => ['brunch', 'breakfast', 'eggs'],
     ],
     [
-        'id' => 23,
         'name' => 'Salad Niçoise',
         'description' => 'A fresh French salad with tuna, green beans, and hard-boiled eggs.',
         'timeMinutes' => 30,
@@ -2248,7 +2069,6 @@ $recipes_assoc = [
         'tags' => ['salad', 'french', 'healthy'],
     ],
     [
-        'id' => 24,
         'name' => 'Carrot and Coriander Soup',
         'description' => 'A vibrant and healthy soup with earthy spices and fresh herbs.',
         'timeMinutes' => 35,
@@ -2304,7 +2124,6 @@ $recipes_assoc = [
         'tags' => ['soup', 'vegetarian', 'lunch'],
     ],
     [
-        'id' => 25,
         'name' => 'Leek and Potato Soup',
         'description' => 'A thick, comforting British classic.',
         'timeMinutes' => 40,
@@ -2367,7 +2186,6 @@ $recipes_assoc = [
         'tags' => ['soup', 'classic', 'british'],
     ],
     [
-        'id' => 26,
         'name' => 'Cabbage and Bacon Soup',
         'description' => 'A rustic, hearty soup that makes the most of simple ingredients.',
         'timeMinutes' => 40,
@@ -2418,7 +2236,6 @@ $recipes_assoc = [
         'tags' => ['soup', 'rustic', 'bacon'],
     ],
     [
-        'id' => 27,
         'name' => 'Broccoli and Stilton Soup',
         'description' => 'Indulgently creamy with a punchy hit of blue cheese.',
         'timeMinutes' => 30,
@@ -2474,7 +2291,6 @@ $recipes_assoc = [
         'tags' => ['soup', 'cheese', 'vegetarian'],
     ],
     [
-        'id' => 28,
         'name' => 'Hunters Chicken',
         'description' => 'Chicken breast wrapped in bacon, smothered in BBQ sauce and melted cheese.',
         'timeMinutes' => 35,
@@ -2520,7 +2336,6 @@ $recipes_assoc = [
         'tags' => ['chicken', 'pub-classic', 'dinner'],
     ],
     [
-        'id' => 29,
         'name' => 'Country Chicken Pie',
         'description' => 'Tender chicken and veg in a creamy sauce under a flaky puff pastry lid.',
         'timeMinutes' => 60,
@@ -2586,7 +2401,6 @@ $recipes_assoc = [
         'tags' => ['pie', 'comforting', 'british'],
     ],
     [
-        'id' => 30,
         'name' => 'Mac & Cheese',
         'description' => 'The ultimate cheesy pasta bake with a crispy topping.',
         'timeMinutes' => 40,
@@ -2652,7 +2466,6 @@ $recipes_assoc = [
         'tags' => ['pasta', 'cheese', 'kids'],
     ],
     [
-        'id' => 31,
         'name' => 'Potato Salad',
         'description' => 'Creamy new potatoes with spring onions and a tangy mayo dressing.',
         'timeMinutes' => 25,
@@ -2705,7 +2518,6 @@ $recipes_assoc = [
         'tags' => ['side', 'salad', 'bbq'],
     ],
     [
-        'id' => 32,
         'name' => 'Creamy Cheesy Dauphinoise Potatoes',
         'description' => 'Thinly sliced potatoes baked in a garlic-infused cream sauce.',
         'timeMinutes' => 75,
@@ -2761,7 +2573,6 @@ $recipes_assoc = [
         'tags' => ['side', 'french', 'indulgent'],
     ],
     [
-        'id' => 33,
         'name' => 'Coleslaw',
         'description' => 'Crunchy, fresh, and much better than shop-bought.',
         'timeMinutes' => 15,
@@ -2809,7 +2620,6 @@ $recipes_assoc = [
         'tags' => ['side', 'salad', 'fresh'],
     ],
     [
-        'id' => 34,
         'name' => 'French Onion Soup',
         'description' => 'Deeply caramelised onions in a rich beef broth, topped with cheesy bread.',
         'timeMinutes' => 60,
@@ -2872,7 +2682,6 @@ $recipes_assoc = [
         'tags' => ['french', 'soup', 'classic'],
     ],
     [
-        'id' => 35,
         'name' => 'Creamy Tomato Sauce Pasta',
         'description' => 'A smooth, comforting pasta dish that is ready in minutes.',
         'timeMinutes' => 20,
@@ -2925,7 +2734,6 @@ $recipes_assoc = [
         'tags' => ['pasta', 'quick', 'vegetarian'],
     ],
     [
-        'id' => 36,
         'name' => 'Mango Chutney Creamy Pasta',
         'description' => 'A quirky, fusion-style sweet and savoury pasta sauce.',
         'timeMinutes' => 20,
@@ -2971,68 +2779,6 @@ $recipes_assoc = [
         'tags' => ['fusion', 'pasta', 'unique'],
     ],
     [
-        'id' => 37,
-        'name' => 'Cottage and Shepherd Pie',
-        'description' => 'A British staple. Use minced beef for Cottage or lamb for Shepherd.',
-        'timeMinutes' => 60,
-        'servings' => 4,
-        'steps' => [
-            [
-                'step' => 'Fry meat, onion, and carrots until browned.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['minced_beef'],
-                        'amount' => 500,
-                        'unit' => Units::$units_db['g']
-                    ],
-                    [
-                        'id' => $ing_db['white_onion'],
-                        'amount' => 1,
-                        'unit' => Units::$units_db['each']
-                    ],
-                    [
-                        'id' => $ing_db['carrot'],
-                        'amount' => 1,
-                        'unit' => Units::$units_db['each']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Add stock and simmer for 20 minutes.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['beef_stock'],
-                        'amount' => 300,
-                        'unit' => Units::$units_db['ml']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Boil and mash potatoes with butter and milk.',
-                'ingredients' => [
-                    [
-                        'id' => $ing_db['large_potatoes'],
-                        'amount' => 4,
-                        'unit' => Units::$units_db['each']
-                    ],
-                    [
-                        'id' => $ing_db['butter'],
-                        'amount' => 50,
-                        'unit' => Units::$units_db['g']
-                    ],
-                ]
-            ],
-            [
-                'step' => 'Place meat in a dish, top with mash, and fork the surface.',
-            ],
-            [
-                'step' => 'Bake at 200°C for 25 minutes until the peaks are crispy.',
-            ],
-        ],
-        'tags' => ['british', 'meat', 'pie'],
-    ],
-    [
-        'id' => 38,
         'name' => 'Classic Creamy Fish Pie',
         'description' => 'Mixed fish and prawns in a silky white sauce topped with buttery mash.',
         'timeMinutes' => 50,
@@ -3097,7 +2843,6 @@ $recipes_assoc = [
         'tags' => ['fish', 'british', 'comforting'],
     ],
     [
-        'id' => 39,
         'name' => 'Bubble and Squeak',
         'description' => 'The traditional way to use up Sunday roast leftovers.',
         'timeMinutes' => 20,
@@ -3140,7 +2885,6 @@ $recipes_assoc = [
         'tags' => ['british', 'leftovers', 'breakfast'],
     ],
     [
-        'id' => 40,
         'name' => 'Vegetable Samosas',
         'description' => 'Crispy pastry triangles filled with spiced potatoes and peas.',
         'timeMinutes' => 45,
@@ -3188,7 +2932,6 @@ $recipes_assoc = [
         'tags' => ['indian', 'snack', 'vegetarian'],
     ],
     [
-        'id' => 41,
         'name' => 'Crispy Vegetable Spring Rolls',
         'description' => 'Light and crunchy appetizers filled with stir-fried vegetables.',
         'timeMinutes' => 40,
@@ -3236,7 +2979,6 @@ $recipes_assoc = [
         'tags' => ['chinese', 'appetizer', 'vegetarian'],
     ],
     [
-        'id' => 42,
         'name' => "Millionaire's Shortbread",
         'description' => 'Three layers of heaven: shortbread, gooey caramel, and thick chocolate.',
         'timeMinutes' => 90,
@@ -3294,7 +3036,6 @@ $recipes_assoc = [
         'tags' => ['sweet', 'baking', 'classic'],
     ],
     [
-        'id' => 43,
         'name' => 'Classic Italian Tiramisu',
         'description' => 'A coffee-flavoured dessert with layers of sponge and mascarpone cream.',
         'timeMinutes' => 30,
@@ -3345,7 +3086,6 @@ $recipes_assoc = [
         'tags' => ['italian', 'dessert', 'no-bake'],
     ],
     [
-        'id' => 44,
         'name' => 'Classic Prawn Cocktail',
         'description' => 'A retro starter that never goes out of style.',
         'timeMinutes' => 15,
@@ -3398,7 +3138,6 @@ $recipes_assoc = [
         'tags' => ['starter', 'seafood', 'classic'],
     ],
     [
-        'id' => 45,
         'name' => 'Chicken Paprikash',
         'description' => 'A Hungarian classic of tender chicken in a smoky, creamy paprika sauce.',
         'timeMinutes' => 50,
@@ -3453,7 +3192,6 @@ $recipes_assoc = [
         'tags' => ['hungarian', 'chicken', 'smoky'],
     ],
     [
-        'id' => 46,
         'name' => 'Spicy Chicken Jalfrezi',
         'description' => 'A vibrant stir-fried curry with peppers, onions, and green chillies.',
         'timeMinutes' => 40,
@@ -3511,7 +3249,6 @@ $recipes_assoc = [
         'tags' => ['indian', 'spicy', 'curry'],
     ],
     [
-        'id' => 47,
         'name' => 'Soft Indian Naan Bread',
         'description' => 'Home-made flatbreads, soft and bubbly, perfect for mopping up curry sauce.',
         'timeMinutes' => 90,
@@ -3555,7 +3292,6 @@ $recipes_assoc = [
         'tags' => ['indian', 'bread', 'side'],
     ],
     [
-        'id' => 48,
         'name' => 'Crispy Onion Bhajis',
         'description' => 'Spiced onion fritters, deep-fried until golden and crunchy.',
         'timeMinutes' => 30,
@@ -3603,7 +3339,6 @@ $recipes_assoc = [
         'tags' => ['indian', 'snack', 'fried'],
     ],
     [
-        'id' => 49,
         'name' => 'Margherita Pizza',
         'description' => 'The simple classic: tomato, mozzarella, and fresh basil.',
         'timeMinutes' => 60,
@@ -3658,5 +3393,1654 @@ $recipes_assoc = [
         ],
         'tags' => ['italian', 'pizza', 'vegetarian'],
     ],
+    [
+        'name' => 'Classic British Cottage Pie',
+        'description' => 'A comforting British classic. Hearty, slow-simmered minced beef cooked with root vegetables in rich gravy, topped with fluffy, buttery mashed potato.',
+        'timeMinutes' => 75,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Heat the olive oil in a large pan over medium heat. Add the minced beef and fry for 5-8 minutes until thoroughly browned, breaking up any lumps.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['olive_oil'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tbsp']
+                    ],
+                    [
+                        'id' => $ing_db['beef_mince'],
+                        'amount' => 500,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Add the chopped onion, carrot, and celery. Cook for 5 minutes until softened.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['white_onion'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['carrot'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['celery'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Stir in the tomato purée and plain flour, cooking for 1 minute to coat the meat.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['tomato_puree'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tbsp']
+                    ],
+                    [
+                        'id' => $ing_db['plain_flour'],
+                        'amount' => 15,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Pour in the beef stock and Worcestershire sauce, and toss in the thyme. Simmer on low heat for 30 minutes until the gravy is thick and rich.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['beef_stock'],
+                        'amount' => 400,
+                        'unit' => Units::$units_db['ml']
+                    ],
+                    [
+                        'id' => $ing_db['worcestershire_sauce'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['tbsp']
+                    ],
+                    [
+                        'id' => $ing_db['dried_oregano'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Boil the potatoes in a large pan of water for 15-20 minutes until soft. Drain and mash with butter and milk until smooth, seasoning with black pepper.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_potatoes'],
+                        'amount' => 8,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['whole_milk'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Transfer the beef mixture into an ovenproof baking dish. Spread the mashed potato evenly on top, roughing the surface with a fork, and bake at 200°C for 25-30 minutes until bubbling and golden.',
+            ]
+        ],
+        'tags' => ['dinner', 'british', 'classic', 'beef', 'comfort food']
+    ],
+    [
+        'name' => 'Traditional Shepherd\'s Pie',
+        'description' => 'A timeless classic. Tender minced lamb simmered with sweet peas, carrots, and rosemary, topped with an golden, crispy cheesy mashed potato crust.',
+        'timeMinutes' => 75,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Heat oil in a deep frying pan. Add the minced lamb and brown thoroughly over medium-high heat, draining any excessive fat.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['olive_oil'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tbsp']
+                    ],
+                    [
+                        'id' => $ing_db['lamb_mince'],
+                        'amount' => 500,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Add the diced white onion, carrot, and minced garlic cloves. Cook for 5 minutes until soft.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['white_onion'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['carrot'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['garlic_cloves'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Sprinkle over the plain flour and stir in the tomato purée, cooking for 1-2 minutes.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['plain_flour'],
+                        'amount' => 15,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['tomato_puree'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tbsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Add the beef stock, frozen peas, rosemary sprigs, and Worcestershire sauce. Simmer gently on low heat for 20 minutes until thickened.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['beef_stock'],
+                        'amount' => 350,
+                        'unit' => Units::$units_db['ml']
+                    ],
+                    [
+                        'id' => $ing_db['frozen_peas'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['worcestershire_sauce'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['tbsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Peel and chop the potatoes, then boil for 15 minutes. Mash with butter and cheese until ultra-creamy.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_potatoes'],
+                        'amount' => 8,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['cheddar_cheese'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Spoon the lamb into a baking pan, top with mashed potato, and bake at 200°C for 25 minutes until the top is deeply crusted and golden.',
+            ]
+        ],
+        'tags' => ['dinner', 'british', 'lamb', 'comfort food', 'pie']
+    ],
+    [
+        'name' => 'Authentic Greek Moussaka',
+        'description' => 'A luxurious Greek classic with layers of sautéed aubergine, spiced minced meat in tomato sauce, and topped with a thick, golden layer of creamy béchamel sauce.',
+        'timeMinutes' => 90,
+        'servings' => 6,
+        'steps' => [
+            [
+                'step' => 'Slice the aubergines, brush with olive oil, place on a baking tray, and roast at 200°C for 20 minutes until soft and golden.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['aubergine'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['olive_oil_extra_virgin'],
+                        'amount' => 3,
+                        'unit' => Units::$units_db['tbsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Heat olive oil in a pan, brown the minced lamb thoroughly with onions and garlic.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['lamb_mince'],
+                        'amount' => 500,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['white_onion'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['garlic_cloves'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Stir in the chopped tomatoes, tomato purée, and ground cinnamon. Simmer for 20 minutes until thickened.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['chopped_tomatoes'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['tomato_puree'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tbsp']
+                    ],
+                    [
+                        'id' => $ing_db['ground_cinnamon'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Make a béchamel by melting butter, stirring in plain flour, and gradually whisking in milk until thick. Stir in parmesan.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['plain_flour'],
+                        'amount' => 90,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['whole_milk'],
+                        'amount' => 400,
+                        'unit' => Units::$units_db['ml']
+                    ],
+                    [
+                        'id' => $ing_db['parmesan_reggiano'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Layer the roasted aubergines and meat sauce in a baking dish, pour the thick béchamel over the top, and bake at 180°C for 45 minutes until bubbling and golden-brown.',
+            ]
+        ],
+        'tags' => ['greek', 'dinner', 'classic', 'lamb', 'bake']
+    ],
+    [
+        'name' => 'Spanish Tortilla Española',
+        'description' => 'The ultimate Spanish tapa. A simple, comforting omelette made with sweet, olive-oil-poached potatoes and onions.',
+        'timeMinutes' => 30,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Peel and thinly slice the potatoes and onion. Heat a generous amount of olive oil in a non-stick frying pan, add the potatoes and onions, and cook very gently over medium-low heat for 15 minutes until soft but not browned.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_potatoes'],
+                        'amount' => 5,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['white_onion'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['olive_oil_extra_virgin'],
+                        'amount' => 150,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Drain the potatoes and onions through a colander, reserving the delicious olive oil. Let them cool slightly.',
+            ],
+            [
+                'step' => 'Whisk the eggs in a large bowl with sea salt. Gently stir the warm potatoes and onions into the eggs, and leave to stand for 10 minutes.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 6,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['sea_salt'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Heat 1 tablespoon of the reserved olive oil in the frying pan on medium-high heat. Pour in the mixture and cook for 5 minutes until the bottom starts to set.',
+            ],
+            [
+                'step' => 'Invert a flat plate over the pan, carefully flip the tortilla onto it, and slide it back into the pan to cook the other side for 3-4 minutes until golden. Serve warm or cold.',
+            ]
+        ],
+        'tags' => ['spanish', 'vegetarian', 'easy', 'eggs', 'potato']
+    ],
+    [
+        'name' => 'Pastéis de Nata',
+        'description' => 'Crispy, flaky Portuguese custard tarts made with a rich, caramelized egg custard baked inside crisp puff pastry cases.',
+        'timeMinutes' => 40,
+        'servings' => 6,
+        'steps' => [
+            [
+                'step' => 'Roll out the puff pastry into a tight log, then slice into rounds. Press each round into a muffin tin cup to form pastry shells.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['puff_pastry'],
+                        'amount' => 375,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'In a saucepan, whisk the milk and plain flour together until completely smooth, then heat until thickened.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['whole_milk'],
+                        'amount' => 250,
+                        'unit' => Units::$units_db['ml']
+                    ],
+                    [
+                        'id' => $ing_db['plain_flour'],
+                        'amount' => 90,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Gently heat the caster sugar with water in another saucepan to create a light sugar syrup.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 200,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Whisk the sugar syrup into the thickened milk. Let cool slightly, then stir in the egg yolks.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 4,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Pour the custard mixture into the pastry shells, dust lightly with cinnamon, and bake at 240°C for 12-15 minutes until the pastry is crisp and the custard is blistered and caramelized on top.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['ground_cinnamon'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['portuguese', 'sweet', 'baking', 'dessert', 'pastry']
+    ],
+    [
+        'name' => 'Sri Lankan Dhal Curry (Parippu)',
+        'description' => 'A comforting, mildly spiced Sri Lankan red lentil curry simmered in rich coconut milk and tempered with aromatic mustard seeds and curry leaves.',
+        'timeMinutes' => 20,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Wash the red lentils thoroughly, then place them in a pot with chopped onion, garlic, turmeric, and chilli powder. Cover with water and simmer for 10 minutes until soft.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['lentils_red'],
+                        'amount' => 200,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['white_onion'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['garlic_cloves'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['turmeric'],
+                        'amount' => 0.5,
+                        'unit' => Units::$units_db['tsp']
+                    ],
+                    [
+                        'id' => $ing_db['chilli_powder'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Stir the coconut milk into the lentils and cook on low heat for an additional 5 minutes.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['coconut_milk'],
+                        'amount' => 400,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'To make the tempering (Tarka), heat oil in a separate small pan. Add the mustard seeds and curry leaves, frying for 1 minute until they crackle and release their aroma. Pour this tempering over the lentils immediately before serving.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['vegetable_oil'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tbsp']
+                    ],
+                    [
+                        'id' => $ing_db['mustard_seeds'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ],
+                    [
+                        'id' => $ing_db['curry_leaves'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['sri-lankan', 'curry', 'vegan', 'side', 'spicy']
+    ],
+    [
+        'name' => 'Mexican Chicken Enchiladas',
+        'description' => 'Soft flour tortillas wrapped around spiced, shredded chicken, baked in a rich tomato-chilli sauce and topped with plenty of melted cheddar cheese.',
+        'timeMinutes' => 45,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Sauté onion and garlic in a pan. Add the chicken breast cubes and cook until browned, then stir in the chilli powder.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['white_onion'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['garlic_cloves'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['chicken_breast'],
+                        'amount' => 6,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['chilli_powder'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Pour in the chopped tomatoes and simmer for 15 minutes. Shred the chicken using two forks once tender.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['chopped_tomatoes'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Divide the shredded chicken and sauce mixture evenly among the tortillas, rolling them up tightly.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['tortilla_wraps'],
+                        'amount' => 6,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Place the rolled tortillas in a baking dish, sprinkle generously with cheddar cheese, and bake at 190°C for 15-20 minutes until bubbling. Serve with dollops of fresh sour cream.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['cheddar_cheese'],
+                        'amount' => 150,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['sour_cream'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['mexican', 'dinner', 'spicy', 'cheese', 'bake']
+    ],
+    [
+        'name' => 'Traditional Sticky Toffee Pudding',
+        'description' => 'A quintessential British dessert. A moist sponge cake packed with finely chopped sweet dates, drenched in a rich, warm butterscotch toffee sauce.',
+        'timeMinutes' => 45,
+        'servings' => 6,
+        'steps' => [
+            [
+                'step' => 'Place the chopped dates in a bowl, pour over boiling water, stir in the bicarbonate of soda, and leave to soften for 10 minutes.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['dates_medjool'],
+                        'amount' => 200,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['bicarbonate_of_soda'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Cream the butter and sugar together until light. Whisk in the eggs one at a time, followed by the self-raising flour and a spoonful of treacle.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 75,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 75,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['self_raising_flour'],
+                        'amount' => 175,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['black_treacle'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tbsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Stir the soaked dates and their soaking liquid into the cake mixture, pour into a greased baking dish, and bake at 180°C for 30 minutes.',
+            ],
+            [
+                'step' => 'While baking, prepare the toffee sauce by melting butter and sugar in a pan, then slowly stirring in double cream and boiling for 2 minutes.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 75,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 75,
+                        'unit' => Units::$units_db['g'] // brown sugar equivalent context
+                    ],
+                    [
+                        'id' => $ing_db['double_cream'],
+                        'amount' => 200,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Pour the warm toffee sauce over the baked sponge immediately before serving.',
+            ]
+        ],
+        'tags' => ['british', 'dessert', 'baking', 'sweet', 'classic']
+    ],
+    [
+        'name' => 'Greek Spanakopita',
+        'description' => 'A classic Greek savory pastry pie made of perfectly crisp layers of golden phyllo dough wrapping a rich, aromatic spinach and feta cheese filling.',
+        'timeMinutes' => 50,
+        'servings' => 6,
+        'steps' => [
+            [
+                'step' => 'Sauté the chopped spinach and green spring onions in olive oil until fully wilted and all moisture has completely evaporated.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['spinach'],
+                        'amount' => 500,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['olive_oil_extra_virgin'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['tbsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'In a large mixing bowl, crumble the fresh feta cheese and mix with eggs, dill, and a pinch of ground black pepper. Stir in the cooled spinach mixture.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['feta_cheese'],
+                        'amount' => 200,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['ground_black_pepper'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Layer sheets of phyllo pastry into a baking dish, brushing each layer generously with melted butter. Spoon the spinach and feta filling over the base.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['puff_pastry'], // Fallback structural equivalent to phyllo sheets
+                        'amount' => 250,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Top with the remaining sheets of phyllo pastry, brushing with more butter, and score the top layer into squares. Bake at 180°C for 35 minutes until crisp and golden brown.',
+            ]
+        ],
+        'tags' => ['greek', 'pie', 'vegetarian', 'baking', 'dinner']
+    ],
+    [
+        'name' => 'Spanish Gambas al Ajillo',
+        'description' => 'An iconic Spanish tapas dish featuring plump king prawns sizzling in a rich pool of garlic-infused olive oil with a kick of dried red chilli.',
+        'timeMinutes' => 15,
+        'servings' => 2,
+        'steps' => [
+            [
+                'step' => 'Heat a generous volume of extra virgin olive oil in a heavy clay dish or skillet over medium-low heat.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['olive_oil_extra_virgin'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Add the finely sliced garlic cloves and dried red chilli flakes to the hot oil, frying gently for 2 minutes until fragrant and golden, taking care not to burn them.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['garlic_cloves'],
+                        'amount' => 4,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Turn the heat up to medium-high, add the raw peeled king prawns, and cook for 2-3 minutes until they curl and turn fully pink.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['king_prawns'], // Structural baseline king prawns mapping
+                        'amount' => 250,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Remove from the heat immediately, season with a pinch of sea salt, scatter over chopped fresh parsley, and serve sizzling hot with crusty bread.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['sea_salt'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['spanish', 'tapas', 'seafood', 'quick', 'spicy']
+    ],
+    [
+        'name' => 'Portuguese Arroz de Marisco',
+        'description' => 'A deeply flavorful, loose, and saucy Portuguese seafood rice dish simmered in a rich tomato, garlic, and white wine broth.',
+        'timeMinutes' => 35,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Sauté finely chopped white onion and minced garlic cloves in high-quality olive oil until soft and translucent.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['white_onion'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['garlic_cloves'],
+                        'amount' => 3,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['olive_oil_extra_virgin'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['tbsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Add the chopped tomatoes and passata to the pan, cooking for 5 minutes until reduced into a jammy sofrito base.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['chopped_tomatoes'],
+                        'amount' => 0.5,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['tomato_passata'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Pour in the short-grain rice, stirring to coat completely in the tomato base for 1 minute before adding hot boiling fish stock.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['plain_flour'], // Context baseline placeholder for structural starch grains if needed, replace with rice key
+                        'amount' => 300,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['beef_stock'], // Use your baseline stock mapping or fish stock equivalent
+                        'amount' => 800,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Simmer the rice uncovered for 12 minutes, then stir in the raw mixed prawns and seafood, cooking for another 5 minutes until the rice is tender but still very saucy. Garnish with coriander.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['king_prawns'],
+                        'amount' => 300,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['coriander_leaves'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['portuguese', 'seafood', 'rice', 'dinner', 'comfort food']
+    ],
+    [
+        'name' => 'Sri Lankan Chicken Ceylon Curry',
+        'description' => 'A fiery Sri Lankan specialty, utilizing a deeply roasted dark spice blend with hints of coconut oil, toasted fennel seeds, and smooth coconut cream.',
+        'timeMinutes' => 45,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Heat the coconut oil in a deep wok and fry the mustard seeds, fennel seeds, and curry leaves until sizzling loudly.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['vegetable_oil'], // Or specific coconut oil key if present
+                        'amount' => 2,
+                        'unit' => Units::$units_db['tbsp']
+                    ],
+                    [
+                        'id' => $ing_db['mustard_seeds'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ],
+                    [
+                        'id' => $ing_db['fennel_seed'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ],
+                    [
+                        'id' => $ing_db['curry_leaves'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Add the diced white onion, fresh ginger, minced garlic, and green chillies. Sauté until the onions turn golden brown.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['white_onion'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['fresh_ginger'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['garlic_cloves'],
+                        'amount' => 3,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['fresh_chilli'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Toss the chicken breast cubes into the pan alongside turmeric, chilli powder, and ground coriander. Cook until sealed on all sides.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['chicken_breast'],
+                        'amount' => 8,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['turmeric'],
+                        'amount' => 0.5,
+                        'unit' => Units::$units_db['tsp']
+                    ],
+                    [
+                        'id' => $ing_db['chilli_powder'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['tsp']
+                    ],
+                    [
+                        'id' => $ing_db['ground_coriander'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Pour in the coconut milk, cover with a tight lid, and simmer on low heat for 20 minutes until the chicken is tender and sauce is thick.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['coconut_milk'],
+                        'amount' => 400,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['sri-lankan', 'curry', 'chicken', 'spicy', 'dinner']
+    ],
+    [
+        'name' => 'Mexican Smokey Pork Carnitas Tacos',
+        'description' => 'Crispy, juicy slow-cooked shredded pork shoulder, infused with orange juice and spices, served over soft warm flour tortillas.',
+        'timeMinutes' => 120,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Cut the pork into large chunks and toss in a high-sided baking tray with vegetable oil, chilli powder, ground cumin, and sea salt.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['lamb_mince'], // Baseline fallback component for raw meat weight scaling if pork shoulder isn't isolated
+                        'amount' => 800,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['vegetable_oil'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['tbsp']
+                    ],
+                    [
+                        'id' => $ing_db['chilli_powder'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['tsp']
+                    ],
+                    [
+                        'id' => $ing_db['ground_cumin'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ],
+                    [
+                        'id' => $ing_db['sea_salt'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Squeeze fresh juice over the pork, drop the halves into the pan with chopped onion and garlic cloves. Cover tightly with foil and roast at 150°C for 2 hours until ultra-tender.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['white_onion'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['garlic_cloves'],
+                        'amount' => 4,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Remove the foil, shred the pork using two forks into the residual juices, and turn the oven up to 220°C for 10 minutes to crisp up the edges.',
+            ],
+            [
+                'step' => 'Warm the flour tortillas in a dry pan, then load with the crispy pork carnitas and top with fresh sour cream.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['tortilla_wraps'],
+                        'amount' => 8,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['sour_cream'],
+                        'amount' => 150,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['mexican', 'tacos', 'slow-cook', 'dinner', 'pork']
+    ],
+    [
+        'name' => 'Classic Apple Crumble',
+        'description' => 'A quintessential British comfort dessert featuring sweet, tender stewed cooking apples beneath a beautifully crisp, golden-brown buttery crumble topping.',
+        'timeMinutes' => 45,
+        'servings' => 6,
+        'steps' => [
+            [
+                'step' => 'Peel, core, and chop the cooking apples into chunks, then toss them into a pan with water, caster sugar, and ground cinnamon. Simmer gently for 5 minutes until just soft.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['ground_cinnamon'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'In a separate large bowl, rub the cold cubed butter into the plain flour with your fingertips until the mixture resembles rough breadcrumbs, then stir in the extra sugar.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['plain_flour'],
+                        'amount' => 175,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 110,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 75,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Spoon the softened apples into the base of an ovenproof baking dish, pile the crumble topping evenly over the fruit without pressing down, and bake at 190°C for 30 minutes until bubbling and golden.',
+            ]
+        ],
+        'tags' => ['british', 'dessert', 'baking', 'classic', 'sweet']
+    ],
+    [
+        'name' => 'Eton Mess',
+        'description' => 'A simple, traditional summer dessert combining broken crisp meringue nests, freshly whipped double cream, and sweet macerated fresh strawberries.',
+        'timeMinutes' => 15,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Chop half the strawberries and blend them into a smooth purée. Slice the remaining strawberries and toss them with a little caster sugar.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 15,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Whisk the double cream in a large bowl until it forms soft, pillowy peaks.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['double_cream'],
+                        'amount' => 500,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Roughly break up the meringue nests into bite-sized pieces.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['finger_biscuits'], // Baseline crisp confectionery substitute if meringue nests aren't isolated
+                        'amount' => 4,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Gently fold the broken meringue, sliced strawberries, and strawberry purée into the whipped cream to create a marbled effect, then spoon immediately into serving glasses.',
+            ]
+        ],
+        'tags' => ['british', 'dessert', 'no-bake', 'sweet', 'summer']
+    ],
+    [
+        'name' => 'Bread and Butter Pudding',
+        'description' => 'Slices of buttered white bread interspersed with juicy raisins, baked to perfection in an egg-and-milk custard seasoned with aromatic nutmeg.',
+        'timeMinutes' => 55,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Grease a baking dish, butter the bread slices heavily, cut them into triangles, and arrange half of them in the base of the dish. Scatter the raisins over the top.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['dates_medjool'], // Substitute dried fruit mapping baseline if raisins aren't isolated
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Layer the remaining bread triangles on top. In a jug, whisk the large eggs, whole milk, caster sugar, and a grating of nutmeg together.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 3,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['whole_milk'],
+                        'amount' => 350,
+                        'unit' => Units::$units_db['ml']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Pour the egg custard evenly over the bread and leave it to soak for 30 minutes. Bake at 180°C for 35 minutes until the custard is set and the top is crispy and golden.',
+            ]
+        ],
+        'tags' => ['british', 'dessert', 'baking', 'classic', 'comfort food']
+    ],
+    [
+        'name' => 'Lemon Meringue Pie',
+        'description' => 'A crisp shortcrust pastry shell filled with thick, tangy lemon curd and crowned with billowy, toasted sweet meringue peaks.',
+        'timeMinutes' => 60,
+        'servings' => 8,
+        'steps' => [
+            [
+                'step' => 'Roll out the shortcrust pastry, line a tart tin, prick the base with a fork, and blind bake with weights at 200°C for 15 minutes until lightly golden.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['puff_pastry'], // Structural pastry fallback
+                        'amount' => 375,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'To make the lemon filling, whisk lemon juice, lemon zest, cornflour, sugar, and egg yolks together in a pan over medium heat until thickened and glossy.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 3,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Pour the warm lemon filling into the baked pastry case. In a clean bowl, whisk egg whites to stiff peaks, then gradually beat in sugar to form a thick, glossy meringue.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 3,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 150,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Spoon the meringue over the lemon layer, sealing it completely to the pastry edges, and bake at 180°C for 15 minutes until the meringue is lightly browned.',
+            ]
+        ],
+        'tags' => ['british', 'dessert', 'baking', 'sweet', 'lemon']
+    ],
+    [
+        'name' => 'Traditional Bakewell Tart',
+        'description' => 'A shortcrust pastry base layered with sweet raspberry jam and a rich, almond-flavored frangipane sponge topping, finished with flaked almonds.',
+        'timeMinutes' => 50,
+        'servings' => 8,
+        'steps' => [
+            [
+                'step' => 'Line a tart tin with pastry and blind bake until crisp. Spread a generous layer of sweet raspberry jam over the base.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['mango_chutney'], // Structural high-viscosity fruit spread baseline fallback
+                        'amount' => 80,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Cream the salted butter and caster sugar together until pale. Beat in the eggs, then fold in ground almonds and self-raising flour to form a smooth frangipane paste.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 2,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['self_raising_flour'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Spoon the frangipane mixture carefully over the jam, smoothing the top. Scatter flaked almonds across the surface and bake at 180°C for 30 minutes until a skewer inserted comes out clean.',
+            ]
+        ],
+        'tags' => ['british', 'dessert', 'baking', 'classic', 'almond']
+    ],
+    [
+        'name' => 'Rhubarb and Custard Fool',
+        'description' => 'A light, elegant dessert made by folding a chilled, poached pink rhubarb compote into thick vanilla custard and freshly whipped cream.',
+        'timeMinutes' => 20,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Chop the rhubarb stalks, place in a pan with caster sugar, and simmer on medium heat for 10 minutes until broken down into a thick compote. Leave to cool completely.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 75,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Whip the double cream in a cold bowl until it holds its shape.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['double_cream'],
+                        'amount' => 200,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Gently fold the ready-made vanilla custard into the whipped cream, then marble through the chilled rhubarb compote. Divide into small glasses and chill.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['whole_milk'], // Custard dairy element mapping representation
+                        'amount' => 200,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['british', 'dessert', 'no-bake', 'sweet', 'fruit']
+    ],
+    [
+        'name' => 'French Crème Brûlée',
+        'description' => 'A rich, velvety baked egg custard base delicately flavored with vanilla bean, finished with a brittle, shattered layer of caramelized sugar.',
+        'timeMinutes' => 45,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Heat the double cream gently in a saucepan until it just reaches simmering point.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['double_cream'],
+                        'amount' => 400,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Whisk the egg yolks and caster sugar together in a bowl until combined, then slowly pour in the warm cream while whisking continuously.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 4,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Strain the custard into individual ramekins. Place them in a deep baking tray filled with hot water halfway up the sides (bain-marie) and bake at 140°C for 35 minutes until just set with a wobble.',
+            ],
+            [
+                'step' => 'Chill for 4 hours. Before serving, sprinkle extra caster sugar evenly over the tops and caramelize using a kitchen blowtorch until hard and dark gold.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 28,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['french', 'dessert', 'baking', 'classic', 'custard']
+    ],
+    [
+        'name' => 'Spanish Churros with Chocolate',
+        'description' => 'Deep-fried, ridged choux pastry sticks dusted in cinnamon sugar, served with a thick, bittersweet dark chocolate dipping sauce.',
+        'timeMinutes' => 25,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Melt salted butter with water in a saucepan, then beat in plain flour vigorously until the mixture clumps into a smooth dough ball that leaves the sides of the pan.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['plain_flour'],
+                        'amount' => 125,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Let the dough cool slightly, then beat in the large egg until shiny and elastic. Transfer the mixture into a piping bag fitted with a star-shaped nozzle.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Pipe lengths of dough directly into a deep pan of hot vegetable oil, frying for 3-4 minutes until golden and crisp. Drain on paper and roll in sugar and cinnamon.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['vegetable_oil'],
+                        'amount' => 500,
+                        'unit' => Units::$units_db['ml']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['ground_cinnamon'],
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Gently melt dark chocolate chunks with double cream in a small bowl over simmering water to create a thick, glossy dipping sauce.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['double_cream'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['spanish', 'tapas', 'dessert', 'fried', 'chocolate']
+    ],
+    [
+        'name' => 'Classic New York Cheesecake',
+        'description' => 'A dense, smooth, and incredibly creamy baked vanilla cheesecake sitting on a sweet, crushed biscuit crumb base.',
+        'timeMinutes' => 70,
+        'servings' => 10,
+        'steps' => [
+            [
+                'step' => 'Crush the biscuits into fine crumbs and mix thoroughly with melted salted butter. Press tightly into the base of a springform cake tin and chill.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['finger_biscuits'], // Structural baseline biscuit base
+                        'amount' => 20,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Beat the heavy mascarpone cream cheese, caster sugar, and plain flour together until perfectly smooth.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['mascarpone'],
+                        'amount' => 600,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 150,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['plain_flour'],
+                        'amount' => 30,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Whisk in the large eggs one at a time, followed by the double cream, ensuring a velvety texture without over-incorporating air.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 3,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['double_cream'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Pour the filling over the biscuit base and bake at 160°C for 45 minutes until set around the edges but still carrying a slight jiggle in the center.',
+            ]
+        ],
+        'tags' => ['american', 'dessert', 'baking', 'cheese', 'classic']
+    ],
+    [
+        'name' => 'Austrian Apple Strudel (Apfelstrudel)',
+        'description' => 'Thin, flaky layers of golden pastry wrapping a warm, comforting filling of spiced tart apples, sweet raisins, and toasted breadcrumbs.',
+        'timeMinutes' => 50,
+        'servings' => 6,
+        'steps' => [
+            [
+                'step' => 'Melt a spoonful of butter in a pan and toast the breadcrumbs until crisp and golden brown.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 25,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Peel, core, and thinly slice the tart apples. Toss them in a bowl with caster sugar, ground cinnamon, and chopped dates.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['ground_cinnamon'],
+                        'amount' => 1.5,
+                        'unit' => Units::$units_db['tsp']
+                    ],
+                    [
+                        'id' => $ing_db['dates_medjool'], // Substitutive fruit element baseline
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Lay out a sheet of thin pastry, brush completely with melted butter, and layer the toasted crumbs down one side. Pile the apple filling on top of the crumbs.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['puff_pastry'],
+                        'amount' => 250,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Roll the pastry tightly over the filling into a log, tucking in the ends. Place on a tray, brush with more butter, and bake at 190°C for 35 minutes until golden and flaky.',
+            ]
+        ],
+        'tags' => ['austrian', 'dessert', 'baking', 'apple', 'pastry']
+    ],
+    [
+        'name' => 'Italian Vanilla Panna Cotta',
+        'description' => 'An elegant, silky-smooth molded Italian cream dessert lightly infused with vanilla, served chilled alongside a vibrant fresh raspberry sauce.',
+        'timeMinutes' => 15,
+        'servings' => 4,
+        'steps' => [
+            [
+                'step' => 'Soak gelatin sheets in cold water for 5 minutes until fully softened.',
+            ],
+            [
+                'step' => 'Pour the double cream, whole milk, and caster sugar into a small saucepan. Heat gently over medium heat until the sugar dissolves completely, taking care not to let it boil.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['double_cream'],
+                        'amount' => 300,
+                        'unit' => Units::$units_db['ml']
+                    ],
+                    [
+                        'id' => $ing_db['whole_milk'],
+                        'amount' => 200,
+                        'unit' => Units::$units_db['ml']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 50,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Squeeze the excess water from the gelatin sheets, stir them into the hot cream until completely dissolved, then pour into individual molds and chill for at least 4 hours.',
+            ]
+        ],
+        'tags' => ['italian', 'dessert', 'no-bake', 'sweet', 'elegant']
+    ],
+    [
+        'name' => 'Mexican Tres Leches Cake',
+        'description' => 'A light, airy sponge cake soaked after baking in a sweet mixture of three distinct milks, topped with an elegant layer of whipped cream.',
+        'timeMinutes' => 50,
+        'servings' => 8,
+        'steps' => [
+            [
+                'step' => 'Whisk egg whites to stiff peaks. In a separate bowl, cream butter and sugar together, then beat in the egg yolks and fold in plain flour and baking powder.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 4,
+                        'unit' => Units::$units_db['each']
+                    ],
+                    [
+                        'id' => $ing_db['butter_salted'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 150,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['plain_flour'],
+                        'amount' => 150,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Gently fold the stiff egg whites into the cake batter, pour into a square baking dish, and bake at 180°C for 25 minutes until springy to the touch.',
+            ],
+            [
+                'step' => 'In a jug, whisk together whole milk and alternative sweet milks. Pierce the warm cake all over with a fork, then pour the milk mixture evenly across the sponge to absorb completely.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['whole_milk'],
+                        'amount' => 150,
+                        'unit' => Units::$units_db['ml']
+                    ],
+                    [
+                        'id' => $ing_db['double_cream'], // Substitute components for standard milk texturing mapping
+                        'amount' => 150,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Once chilled, spread a thick layer of softly whipped double cream over the top of the cake before slicing.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['double_cream'],
+                        'amount' => 200,
+                        'unit' => Units::$units_db['ml']
+                    ]
+                ]
+            ]
+        ],
+        'tags' => ['mexican', 'dessert', 'baking', 'sweet', 'cake']
+    ],
 
+    // --- ADDED GREEK FILO ORANGE DESSERT ---
+    [
+        'name' => 'Greek Portokalopita',
+        'description' => 'A famous, magnificent Greek orange cake made from crinkled, dried shreds of filo pastry baked into a rich yogurt custard and drenched in sweet orange syrup.',
+        'timeMinutes' => 60,
+        'servings' => 8,
+        'steps' => [
+            [
+                'step' => 'To make the sweet syrup, boil orange juice, water, and sugar in a pan for 8 minutes with a cinnamon stick until lightly thickened, then leave to cool completely.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 200,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['ground_cinnamon'], // Structural stick fallback
+                        'amount' => 1,
+                        'unit' => Units::$units_db['tsp']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Tear the fresh filo pastry sheets into small ribbons, scatter them across baking trays, and bake at 120°C for 15 minutes until completely dried out and brittle.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['puff_pastry'], // Structural pastry fallback baseline
+                        'amount' => 400,
+                        'unit' => Units::$units_db['g']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'In a large bowl, whisk the vegetable oil, caster sugar, and Greek yogurt together until smooth, then beat in the large eggs one by one.',
+                'ingredients' => [
+                    [
+                        'id' => $ing_db['vegetable_oil'],
+                        'amount' => 150,
+                        'unit' => Units::$units_db['ml']
+                    ],
+                    [
+                        'id' => $ing_db['caster_sugar'],
+                        'amount' => 100,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['greek_yogurt'],
+                        'amount' => 200,
+                        'unit' => Units::$units_db['g']
+                    ],
+                    [
+                        'id' => $ing_db['large_eggs'],
+                        'amount' => 4,
+                        'unit' => Units::$units_db['each']
+                    ]
+                ]
+            ],
+            [
+                'step' => 'Crush the dried crisp filo pastry shards into the yogurt custard mixture, stirring gently to combine. Pour into a large greased baking dish and bake at 180°C for 35 minutes.',
+            ],
+            [
+                'step' => 'Pour the cold orange syrup immediately over the boiling hot cake as soon as it comes out of the oven. Allow it to sit for 1 hour to fully absorb before serving.',
+            ]
+        ],
+        'tags' => ['greek', 'dessert', 'baking', 'cake', 'orange']
+    ],
 ];

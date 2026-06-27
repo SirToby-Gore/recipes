@@ -41,9 +41,17 @@ $parent = $recipe->get_parent();
 
     <div class="recipe-actions">
         <?php if ($account && $recipe->user_id === $account->user_id): ?>
-            <a href="/recipe/delete/<?= $recipe->recipe_id ?>" class="btn" style="color: red; font-weight: 1000;">
-                DELETE RECIPE (Can not be undone)
-            </a>
+            <button popovertarget="delete-button" popovertargetaction="open" class="btn"
+                style="color: red; font-weight: 1000;">
+                DELETE RECIPE
+            </button>
+            <div popover id="delete-button">
+                <button popovertarget="delete-button" popovertargetaction="close">X</button>
+                <button href="/recipe/delete/<?= $recipe->recipe_id ?>" class="btn" style="color: red; font-weight: 1000;">
+                    DELETE RECIPE (This can not be undone)
+                </button>
+            </div>
+
             <a href="/recipe/edit/<?= $recipe->recipe_id ?>" class="btn" style="color: blue; font-weight: 1000;">
                 EDIT RECIPE
             </a>
@@ -143,7 +151,11 @@ $parent = $recipe->get_parent();
                 $safe_unit_short = $unit ? htmlspecialchars($unit->short_hand, ENT_QUOTES, 'UTF-8') : '';
                 $formatted_amount = format_number($converted->amount);
                 ?>
-                <li><?= $formatted_amount ?>     <?= $safe_unit_short ?>     <?= $safe_ing_name ?></li>
+                <li>
+                    <a href="/ingredient/<?= $ingredients_list->ingredient_id ?>">
+                        <?= $formatted_amount ?>     <?= $safe_unit_short ?>     <?= $safe_ing_name ?>
+                    </a>
+                </li>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -186,7 +198,11 @@ $parent = $recipe->get_parent();
                                     $safe_unit_short = $unit ? htmlspecialchars($unit->short_hand, ENT_QUOTES, 'UTF-8') : '';
                                     $formatted_amount = format_number($converted->amount);
                                     ?>
-                                    <li><?= $formatted_amount ?>             <?= $safe_unit_short ?>             <?= $safe_ing_name ?></li>
+                                    <li>
+                                        <a href="/ingredient/<?= $step_ing->ingredient_id ?>">
+                                            <?= $formatted_amount ?>             <?= $safe_unit_short ?>             <?= $safe_ing_name ?>
+                                        </a>
+                                    </li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>
