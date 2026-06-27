@@ -23,7 +23,7 @@ $favourite_recipes = $account->get_favourite_recipes();
     <?php else: ?>
         <section class="recipes">
             <?php foreach ($favourite_recipes as $recipe): ?>
-                <?= recipe_card($recipe) ?>
+                <?= render_recipe_card($recipe) ?>
             <?php endforeach ?>
         </section>s
     <?php endif; ?>

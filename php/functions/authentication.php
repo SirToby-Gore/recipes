@@ -2,24 +2,43 @@
 
 require_once __DIR__ . '/_functions.php';
 
-/**
- * Fetches the currently authenticated user from session.
- */
 function get_account(): ?User
 {
-    if (!isset($_SESSION['account'])) {
-        $_SESSION['account'] = null;
+    global $conn;
+
+    if (!get_token()) {
+        return null;
     }
 
-    return $_SESSION['account'];
+    // Instantiates the User object from your classes layer
+    $user = get_token()->get_user();
+
+    if ($user) {
+        // FETCH SIDE: Read directly from the DB row if not already populated in session
+        if (!isset($_SESSION['preferred_region'])) {
+            $stmt = $conn->prepare("SELECT `unit_preference` FROM `Users` WHERE `user_id` = ?");
+            $stmt->bind_param('s', $user->user_id);
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_assoc();
+
+            if ($result && !empty($result['unit_preference'])) {
+                $_SESSION['preferred_region'] = $result['unit_preference'];
+            } else {
+                $_SESSION['preferred_region'] = 'metric'; // Default fallback
+            }
+        }
+    }
+
+    return $user;
 }
 
 /**
  * Registers an active user object into session.
  */
-function set_account(?User $account): void
+function set_account(?User $new_account): void
 {
-    $_SESSION['account'] = $account;
+    global $account;
+    $account = $new_account;
 }
 
 /**
@@ -110,6 +129,7 @@ function user_hash_password(string $password, string $salt): string
 function login(string $email, string $password): bool
 {
     global $conn;
+    global $account;
 
     $stmt = $conn->prepare("SELECT * FROM `Users` WHERE `email` = ? LIMIT 1");
     $stmt->bind_param('s', $email);
@@ -131,7 +151,8 @@ function login(string $email, string $password): bool
         $user_assoc['email'],
         $user_assoc['salt'],
         $user_assoc['password_hash'],
-        $user_assoc['created_on']
+        $user_assoc['created_on'],
+        $user_assoc['unit_preference'],
     ));
 
     $token = new Token(new_token(), $user_assoc['user_id'], datetime_now());

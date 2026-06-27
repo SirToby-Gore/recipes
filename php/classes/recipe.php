@@ -68,7 +68,7 @@ class Recipe
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
         if (!$result) return null;
-        return new User($result['user_id'], $result['username'], $result['email'], $result['salt'], $result['password_hash'], $result['created_on']);
+        return new User($result['user_id'], $result['username'], $result['email'], $result['salt'], $result['password_hash'], $result['created_on'], $result['unit_preference']);
     }
 
     public function get_recipes(): array

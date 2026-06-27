@@ -42,7 +42,8 @@ function search_users_for(string $search_term): array
             $row['email'],
             $row['salt'],
             $row['password_hash'],
-            $row['created_on']
+            $row['created_on'],
+            $row['unit_preference']
         );
     }
 

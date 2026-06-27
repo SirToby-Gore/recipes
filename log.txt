@@ -1,9 +1,7 @@
 
 
-[2026-06-17 17:35:01]:
-mysqli_sql_exception: Duplicate entry '09afdf44be0b12e7522e6a8e43504786-1726e7e17c8b4a793321171cf44e...' for key 'PRIMARY' in /home/toby/programs/php/recipe-app/php/classes/shopping_list_item.php:32
+[2026-06-18 13:59:50]:
+mysqli_sql_exception: Unknown column 'unit' in 'field list' in /home/toby/programs/php/recipe-app/index.php:380
 Stack trace:
-#0 /home/toby/programs/php/recipe-app/php/classes/shopping_list_item.php(32): mysqli_stmt->execute()
-#1 /home/toby/programs/php/recipe-app/php/functions/recipe.php(106): ShoppingListItem->create()
-#2 /home/toby/programs/php/recipe-app/index.php(62): create_shopping_list(Object(Recipe))
-#3 {main}
+#0 /home/toby/programs/php/recipe-app/index.php(380): mysqli->prepare('INSERT INTO `In...')
+#1 {main}

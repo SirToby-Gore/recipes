@@ -6,101 +6,7 @@ if (!$account) {
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['preferred_region'])) {
-    $_SESSION['preferred_region'] = $_POST['preferred_region'];
-}
-
-$preferred_region = $_SESSION['preferred_region'] ?? 'metric';
 $basket_items = $account->get_baskets();
-
-$unit_categories = [
-    'piece' => 'count',
-    'clove' => 'count',
-    'pinch' => 'count',
-    'g' => 'mass',
-    'kg' => 'mass',
-    'oz (us)' => 'mass',
-    'lb (us)' => 'mass',
-    'oz (uk)' => 'mass',
-    'lb (uk)' => 'mass',
-    'stone (uk)' => 'mass',
-    'ml' => 'volume',
-    'l' => 'volume',
-    'tsp (us)' => 'volume',
-    'tbsp (us)' => 'volume',
-    'fl oz (us)' => 'volume',
-    'cup (us)' => 'volume',
-    'pint (us)' => 'volume',
-    'quart (us)' => 'volume',
-    'gallon (us)' => 'volume',
-    'tsp (uk)' => 'volume',
-    'tbsp (uk)' => 'volume',
-    'fl oz (uk)' => 'volume',
-    'cup (uk)' => 'volume',
-    'pint (uk)' => 'volume',
-    'quart (uk)' => 'volume',
-    'gallon (uk)' => 'volume',
-    'cup (metric)' => 'volume'
-];
-
-$unit_mappings = [
-    'piece' => 1,
-    'clove' => 2,
-    'pinch' => 3,
-    'g' => 4,
-    'kg' => 5,
-    'ml' => 6,
-    'l' => 7,
-    'oz (us)' => 8,
-    'lb (us)' => 9,
-    'oz (uk)' => 10,
-    'lb (uk)' => 11,
-    'stone (uk)' => 12,
-    'tsp (us)' => 13,
-    'tbsp (us)' => 14,
-    'fl oz (us)' => 15,
-    'cup (us)' => 16,
-    'pint (us)' => 17,
-    'quart (us)' => 18,
-    'gallon (us)' => 19,
-    'tsp (uk)' => 20,
-    'tbsp (uk)' => 21,
-    'fl oz (uk)' => 22,
-    'cup (uk)' => 23,
-    'pint (uk)' => 24,
-    'quart (uk)' => 25,
-    'gallon (uk)' => 26,
-    'cup (metric)' => 27
-];
-
-$region_targets = [
-    'metric' => ['mass' => 'g', 'volume' => 'ml'],
-    'us' => ['mass' => 'oz (us)', 'volume' => 'cup (us)'],
-    'uk' => ['mass' => 'oz (uk)', 'volume' => 'cup (uk)']
-];
-
-function get_multiplier_to_base(int $source_unit_id, int $base_unit_id): float
-{
-    global $conn;
-    if ($source_unit_id === $base_unit_id) {
-        return 1.0;
-    }
-    $stmt = $conn->prepare("SELECT `multiplier` FROM `CompatibleUnits` WHERE `base_unit` = ? AND `new_unit` = ?");
-    $stmt->bind_param('ii', $base_unit_id, $source_unit_id);
-    $stmt->execute();
-    $result = $stmt->get_result()->fetch_assoc();
-    if ($result) {
-        return (float) $result['multiplier'];
-    }
-    $stmt = $conn->prepare("SELECT `multiplier` FROM `CompatibleUnits` WHERE `base_unit` = ? AND `new_unit` = ?");
-    $stmt->bind_param('ii', $source_unit_id, $base_unit_id);
-    $stmt->execute();
-    $result = $stmt->get_result()->fetch_assoc();
-    if ($result) {
-        return 1.0 / (float) $result['multiplier'];
-    }
-    return 1.0;
-}
 
 $aggregated_ingredients = [];
 
@@ -167,16 +73,16 @@ uasort($aggregated_ingredients, fn ($a, $b) => $a['category'] <=> $b['category']
 <section class="basket-full">
     <h3>Your Shopping Basket</h3>
 
-    <div class="region-selector-container">
-        <form method="POST" action="/basket">
-            <label for="preferred_region">Preferred System:</label>
-            <select name="preferred_region" id="preferred_region" onchange="this.form.submit()">
-                <option value="metric" <?= $preferred_region === 'metric' ? 'selected' : '' ?>>Metric (g, ml)</option>
-                <option value="us" <?= $preferred_region === 'us' ? 'selected' : '' ?>>US Customary (oz, cup)</option>
-                <option value="uk" <?= $preferred_region === 'uk' ? 'selected' : '' ?>>UK Imperial (oz, cup)</option>
-            </select>
-        </form>
+    <?php global $preferred_region ?>
+    <div class="preference-selector recipe-unit-switcher">
+        <label for="recipe-region-select">View Ingredients In:</label>
+        <select id="recipe-region-select" onchange="updateUserRegionPreference(this.value)">
+            <option value="metric" <?= $preferred_region === 'metric' ? 'selected' : '' ?>>Metric (g, ml)</option>
+            <option value="us" <?= $preferred_region === 'us' ? 'selected' : '' ?>>US Customary (oz, cups)</option>
+            <option value="uk" <?= $preferred_region === 'uk' ? 'selected' : '' ?>>UK Imperial (oz, imperial cups)</option>
+        </select>
     </div>
+
     <br>
 
     <?php if (empty($basket_items)): ?>

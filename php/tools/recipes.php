@@ -2,8 +2,8 @@
 
 require_once __DIR__ . '/../init.php';
 
-require_once __DIR__ . '/_units.php';
-require_once __DIR__ . '/_ingredients.php';
+require_once __DIR__ . '/units.php';
+require_once __DIR__ . '/ingredients.php';
 
 #region recipes
 $recipes_assoc = [
@@ -21,14 +21,14 @@ $recipes_assoc = [
                 'step' => 'Sift the flour and a pinch of salt into a large mixing bowl.',
                 'ingredients' => [
                     [
-                        'id' => $ing_plain_flour,
+                        'id' => $ing_db['plain_flour'],
                         'amount' => 110,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_sea_salt,
+                        'id' => $ing_db['sea_salt'],
                         'amount' => 2,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -36,9 +36,9 @@ $recipes_assoc = [
                 'step' => 'Make a well in the centre of the flour and crack in the eggs.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_eggs,
+                        'id' => $ing_db['large_eggs'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -49,9 +49,9 @@ $recipes_assoc = [
                 'step' => 'Slowly pour in the milk, whisking continuously to form a smooth batter.',
                 'ingredients' => [
                     [
-                        'id' => $ing_whole_milk,
+                        'id' => $ing_db['whole_milk'],
                         'amount' => 300,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -59,14 +59,14 @@ $recipes_assoc = [
                 'step' => 'Stir in the fennel seeds and ground black pepper.',
                 'ingredients' => [
                     [
-                        'id' => $ing_fennel_seed,
+                        'id' => $ing_db['fennel_seed'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_black_pepper,
+                        'id' => $ing_db['ground_black_pepper'],
                         'amount' => 2,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -77,14 +77,14 @@ $recipes_assoc = [
                 'step' => 'Place the sausages in a roasting tin, drizzle with a little oil, and bake for 15 minutes until browned.',
                 'ingredients' => [
                     [
-                        'id' => $ing_pork_sausages,
+                        'id' => $ing_db['pork_sausages'],
                         'amount' => 8,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_vegetable_oil,
+                        'id' => $ing_db['vegetable_oil'],
                         'amount' => 5,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -108,9 +108,9 @@ $recipes_assoc = [
                 'step' => 'Slice the turkey breast into bite-sized pieces.',
                 'ingredients' => [
                     [
-                        'id' => $ing_turkey_breast,
+                        'id' => $ing_db['turkey_breast'],
                         'amount' => 500,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -118,24 +118,24 @@ $recipes_assoc = [
                 'step' => 'In a bowl, mix the flour, ground nutmeg, salt, and pepper.',
                 'ingredients' => [
                     [
-                        'id' => $ing_plain_flour,
+                        'id' => $ing_db['plain_flour'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_ground_nutmeg,
+                        'id' => $ing_db['ground_nutmeg'],
                         'amount' => 2,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_sea_salt,
+                        'id' => $ing_db['sea_salt'],
                         'amount' => 2,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_black_pepper,
+                        'id' => $ing_db['ground_black_pepper'],
                         'amount' => 2,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -146,9 +146,9 @@ $recipes_assoc = [
                 'step' => 'Heat the vegetable oil in a large frying pan over medium-high heat.',
                 'ingredients' => [
                     [
-                        'id' => $ing_vegetable_oil,
+                        'id' => $ing_db['vegetable_oil'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -159,14 +159,14 @@ $recipes_assoc = [
                 'step' => 'Finely chop the white onion and crush the garlic cloves.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -180,9 +180,9 @@ $recipes_assoc = [
                 'step' => 'Gradually pour in the chicken stock, stirring continuously to prevent lumps.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_stock,
+                        'id' => $ing_db['chicken_stock'],
                         'amount' => 300,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -190,9 +190,9 @@ $recipes_assoc = [
                 'step' => 'Drain the tinned peaches and cut them into slices.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tinned_peaches,
+                        'id' => $ing_db['tinned_peaches'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -200,9 +200,9 @@ $recipes_assoc = [
                 'step' => 'Stir the crème fraîche and sliced peaches into the sauce.',
                 'ingredients' => [
                     [
-                        'id' => $ing_creme_fraiche,
+                        'id' => $ing_db['creme_fraiche'],
                         'amount' => 300,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -223,19 +223,19 @@ $recipes_assoc = [
                 'step' => 'Finely chop the white onion, celery, and red bell pepper.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_celery,
+                        'id' => $ing_db['celery'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_red_bell_pepper,
+                        'id' => $ing_db['red_bell_pepper'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -243,9 +243,9 @@ $recipes_assoc = [
                 'step' => 'Heat a little oil in a large heavy-based pot over medium heat.',
                 'ingredients' => [
                     [
-                        'id' => $ing_vegetable_oil,
+                        'id' => $ing_db['vegetable_oil'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -256,9 +256,9 @@ $recipes_assoc = [
                 'step' => 'Crush the garlic and add it to the pot, cooking for another minute.',
                 'ingredients' => [
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -266,19 +266,19 @@ $recipes_assoc = [
                 'step' => 'Stir in the chilli powder, cumin, and smoked paprika, and cook for 1 minute until fragrant.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chilli_powder,
+                        'id' => $ing_db['chilli_powder'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_cumin,
+                        'id' => $ing_db['ground_cumin'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_smoked_paprika,
+                        'id' => $ing_db['smoked_paprika'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -286,9 +286,9 @@ $recipes_assoc = [
                 'step' => 'Add the minced beef, breaking it up with a spoon, and cook until browned all over.',
                 'ingredients' => [
                     [
-                        'id' => $ing_minced_beef,
+                        'id' => $ing_db['minced_beef'],
                         'amount' => 500,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -296,9 +296,9 @@ $recipes_assoc = [
                 'step' => 'Stir in the tomato purée and cook for 2 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tomato_puree,
+                        'id' => $ing_db['tomato_puree'],
                         'amount' => 2,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -306,24 +306,24 @@ $recipes_assoc = [
                 'step' => 'Pour in the beef stock and chopped tomatoes, then add the dried oregano and sugar.',
                 'ingredients' => [
                     [
-                        'id' => $ing_beef_stock,
+                        'id' => $ing_db['beef_stock'],
                         'amount' => 500,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_chopped_tomatoes,
+                        'id' => $ing_db['chopped_tomatoes'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_dried_oregano,
+                        'id' => $ing_db['dried_oregano'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_caster_sugar,
+                        'id' => $ing_db['caster_sugar'],
                         'amount' => 15,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -334,9 +334,9 @@ $recipes_assoc = [
                 'step' => 'Drain and rinse the red kidney beans, then stir them into the chili.',
                 'ingredients' => [
                     [
-                        'id' => $ing_red_kidney_beans,
+                        'id' => $ing_db['red_kidney_beans'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -357,9 +357,9 @@ $recipes_assoc = [
                 'step' => 'Cut the chicken thighs into bite-sized pieces.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_thighs,
+                        'id' => $ing_db['chicken_thighs'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -367,29 +367,29 @@ $recipes_assoc = [
                 'step' => 'In a bowl, mix the chicken with the lemon juice, Greek yogurt, half of the garlic (crushed), half of the ginger (grated), and a pinch of salt. Leave to marinate for at least 30 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_greek_yogurt,
+                        'id' => $ing_db['greek_yogurt'],
                         'amount' => 25,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_lemon_juice,
+                        'id' => $ing_db['lemon_juice'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_fresh_ginger,
+                        'id' => $ing_db['fresh_ginger'],
                         'amount' => 20,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_sea_salt,
+                        'id' => $ing_db['sea_salt'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -397,9 +397,9 @@ $recipes_assoc = [
                 'step' => 'Heat the sunflower oil in a large pan over high heat and fry the marinated chicken until charred and cooked through. Remove and set aside.',
                 'ingredients' => [
                     [
-                        'id' => $ing_sunflower_oil,
+                        'id' => $ing_db['sunflower_oil'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -407,9 +407,9 @@ $recipes_assoc = [
                 'step' => 'In the same pan, melt the butter over medium heat.',
                 'ingredients' => [
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -417,9 +417,9 @@ $recipes_assoc = [
                 'step' => 'Lightly crush the cardamom pods and add them to the butter along with the remaining crushed garlic and grated ginger. Fry for 1 minute.',
                 'ingredients' => [
                     [
-                        'id' => $ing_cardamom_pods,
+                        'id' => $ing_db['cardamom_pods'],
                         'amount' => 6,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -427,24 +427,24 @@ $recipes_assoc = [
                 'step' => 'Stir in the garam masala, cumin, coriander, and smoked paprika, cooking for 30 seconds until fragrant.',
                 'ingredients' => [
                     [
-                        'id' => $ing_garam_masala,
+                        'id' => $ing_db['garam_masala'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_cumin,
+                        'id' => $ing_db['ground_cumin'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_coriander,
+                        'id' => $ing_db['ground_coriander'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_smoked_paprika,
+                        'id' => $ing_db['smoked_paprika'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -452,9 +452,9 @@ $recipes_assoc = [
                 'step' => 'Pour in the tomato passata and bring to a gentle simmer.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tomato_passata,
+                        'id' => $ing_db['tomato_passata'],
                         'amount' => 400,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -465,9 +465,9 @@ $recipes_assoc = [
                 'step' => 'Stir in the double cream and return the cooked chicken to the pan.',
                 'ingredients' => [
                     [
-                        'id' => $ing_double_cream,
+                        'id' => $ing_db['double_cream'],
                         'amount' => 100,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -488,24 +488,24 @@ $recipes_assoc = [
                 'step' => 'Slice the leeks, finely chop the onion, crush the garlic, and roughly chop the tomatoes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_leeks,
+                        'id' => $ing_db['leeks'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_tomato,
+                        'id' => $ing_db['tomato'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -513,9 +513,9 @@ $recipes_assoc = [
                 'step' => 'Squeeze the sausage meat out of its casings.',
                 'ingredients' => [
                     [
-                        'id' => $ing_pork_sausages,
+                        'id' => $ing_db['pork_sausages'],
                         'amount' => 8,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -523,9 +523,9 @@ $recipes_assoc = [
                 'step' => 'Heat a little olive oil in a large deep frying pan or casserole dish over medium-high heat.',
                 'ingredients' => [
                     [
-                        'id' => $ing_olive_oil,
+                        'id' => $ing_db['olive_oil'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -542,9 +542,9 @@ $recipes_assoc = [
                 'step' => 'Pour in the vegetable stock and bring to a gentle simmer.',
                 'ingredients' => [
                     [
-                        'id' => $ing_vegetable_stock,
+                        'id' => $ing_db['vegetable_stock'],
                         'amount' => 300,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -552,9 +552,9 @@ $recipes_assoc = [
                 'step' => 'Add the gnocchi to the pan and simmer for 2-3 minutes, or until they float to the surface.',
                 'ingredients' => [
                     [
-                        'id' => $ing_gnocchi,
+                        'id' => $ing_db['gnocchi'],
                         'amount' => 400,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -562,14 +562,14 @@ $recipes_assoc = [
                 'step' => 'Stir in the crème fraîche, chopped tomatoes, and grated parmesan cheese.',
                 'ingredients' => [
                     [
-                        'id' => $ing_creme_fraiche,
+                        'id' => $ing_db['creme_fraiche'],
                         'amount' => 300,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_parmesan_cheese,
+                        'id' => $ing_db['parmesan_cheese'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -577,14 +577,14 @@ $recipes_assoc = [
                 'step' => 'Season with sea salt and ground black pepper to taste, and simmer for another 2 minutes until the sauce coats the gnocchi.',
                 'ingredients' => [
                     [
-                        'id' => $ing_sea_salt,
+                        'id' => $ing_db['sea_salt'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_black_pepper,
+                        'id' => $ing_db['ground_black_pepper'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -602,49 +602,49 @@ $recipes_assoc = [
                 'step' => 'For the marinade: Mix half the Greek yogurt, 3 crushed garlic cloves, 4 tbsp olive oil, 3 tbsp lemon juice, and all the spices in a large bowl.',
                 'ingredients' => [
                     [
-                        'id' => $ing_greek_yogurt,
+                        'id' => $ing_db['greek_yogurt'],
                         'amount' => 300,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_olive_oil,
+                        'id' => $ing_db['olive_oil'],
                         'amount' => 4,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                     [
-                        'id' => $ing_lemon_juice,
+                        'id' => $ing_db['lemon_juice'],
                         'amount' => 3,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                     [
-                        'id' => $ing_ground_coriander,
+                        'id' => $ing_db['ground_coriander'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_dried_oregano,
+                        'id' => $ing_db['dried_oregano'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_smoked_paprika,
+                        'id' => $ing_db['smoked_paprika'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_cinnamon,
+                        'id' => $ing_db['ground_cinnamon'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_cayenne_pepper,
+                        'id' => $ing_db['cayenne_pepper'],
                         'amount' => 0.25,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -652,9 +652,9 @@ $recipes_assoc = [
                 'step' => 'Cut the chicken thighs into chunks, coat thoroughly in the marinade, cover, and chill for at least 1 hour.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_thighs,
+                        'id' => $ing_db['chicken_thighs'],
                         'amount' => 8,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -671,9 +671,9 @@ $recipes_assoc = [
                 'step' => 'Cook the frozen chips according to the packet instructions.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chips,
+                        'id' => $ing_db['chips'],
                         'amount' => 200,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -681,34 +681,34 @@ $recipes_assoc = [
                 'step' => 'To make the tzatziki: Grate the cucumber and squeeze out the excess water. Mix with the remaining Greek yogurt, 3 crushed garlic cloves, 3 tbsp lemon juice, chopped mint, and a pinch of salt.',
                 'ingredients' => [
                     [
-                        'id' => $ing_cucumber,
+                        'id' => $ing_db['cucumber'],
                         'amount' => 0.5,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_greek_yogurt,
+                        'id' => $ing_db['greek_yogurt'],
                         'amount' => 300,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_lemon_juice,
+                        'id' => $ing_db['lemon_juice'],
                         'amount' => 3,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                     [
-                        'id' => $ing_fresh_mint,
+                        'id' => $ing_db['fresh_mint'],
                         'amount' => 2,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_sea_salt,
+                        'id' => $ing_db['sea_salt'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -716,14 +716,14 @@ $recipes_assoc = [
                 'step' => 'Finely slice the red onion and tomatoes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_red_onion,
+                        'id' => $ing_db['red_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_tomato,
+                        'id' => $ing_db['tomato'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -731,9 +731,9 @@ $recipes_assoc = [
                 'step' => 'Warm the pita breads in the oven or a toaster.',
                 'ingredients' => [
                     [
-                        'id' => $ing_pita_bread,
+                        'id' => $ing_db['pita_bread'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -741,9 +741,9 @@ $recipes_assoc = [
                 'step' => 'To assemble: Spread tzatziki on a warm pita, add pieces of roasted chicken, chips, sliced red onion, and tomato. Squeeze over some fresh lemon juice before wrapping.',
                 'ingredients' => [
                     [
-                        'id' => $ing_whole_lemon,
+                        'id' => $ing_db['whole_lemon'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -761,9 +761,9 @@ $recipes_assoc = [
                 'step' => 'Bring a large pan of salted water to the boil and cook the penne according to the packet instructions.',
                 'ingredients' => [
                     [
-                        'id' => $ing_penne,
+                        'id' => $ing_db['penne'],
                         'amount' => 300,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -771,9 +771,9 @@ $recipes_assoc = [
                 'step' => 'Chop the broccoli into small florets.',
                 'ingredients' => [
                     [
-                        'id' => $ing_floret_broccoli,
+                        'id' => $ing_db['floret_broccoli'],
                         'amount' => 0.5,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -784,14 +784,14 @@ $recipes_assoc = [
                 'step' => 'Meanwhile, chop the bacon rashers and finely dice the white onion.',
                 'ingredients' => [
                     [
-                        'id' => $ing_bacon_rashers,
+                        'id' => $ing_db['bacon_rashers'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -808,9 +808,9 @@ $recipes_assoc = [
                 'step' => 'Add the pasta, broccoli, crème fraîche, and a splash of the pasta water to the frying pan with the bacon and onion.',
                 'ingredients' => [
                     [
-                        'id' => $ing_creme_fraiche,
+                        'id' => $ing_db['creme_fraiche'],
                         'amount' => 300,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -821,14 +821,14 @@ $recipes_assoc = [
                 'step' => 'Season generously with black pepper and a little sea salt before serving.',
                 'ingredients' => [
                     [
-                        'id' => $ing_ground_black_pepper,
+                        'id' => $ing_db['ground_black_pepper'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_sea_salt,
+                        'id' => $ing_db['sea_salt'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -846,9 +846,9 @@ $recipes_assoc = [
                 'step' => 'Place the saffron strands in a small bowl with 2 tablespoons of warm water and leave to infuse.',
                 'ingredients' => [
                     [
-                        'id' => $ing_saffron,
+                        'id' => $ing_db['saffron'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -856,29 +856,29 @@ $recipes_assoc = [
                 'step' => 'Chop the chicken thighs into chunks, slice the chorizo, finely chop the onion, dice the red pepper, and crush the garlic.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_thighs,
+                        'id' => $ing_db['chicken_thighs'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_chorizo_sausage,
+                        'id' => $ing_db['chorizo_sausage'],
                         'amount' => 150,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_red_bell_pepper,
+                        'id' => $ing_db['red_bell_pepper'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -886,9 +886,9 @@ $recipes_assoc = [
                 'step' => 'Heat the olive oil in a large, wide paella pan or frying pan over medium-high heat.',
                 'ingredients' => [
                     [
-                        'id' => $ing_olive_oil,
+                        'id' => $ing_db['olive_oil'],
                         'amount' => 2,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -902,9 +902,9 @@ $recipes_assoc = [
                 'step' => 'Stir in the paella rice, ensuring all the grains are coated in the flavorful oils.',
                 'ingredients' => [
                     [
-                        'id' => $ing_paella_rice,
+                        'id' => $ing_db['paella_rice'],
                         'amount' => 300,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -912,9 +912,9 @@ $recipes_assoc = [
                 'step' => 'Pour in the chicken stock and the infused saffron water. Season with a little salt.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_stock,
+                        'id' => $ing_db['chicken_stock'],
                         'amount' => 700,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -928,14 +928,14 @@ $recipes_assoc = [
                 'step' => 'Scatter the raw prawns and frozen peas over the top of the rice and push them down slightly into the mixture.',
                 'ingredients' => [
                     [
-                        'id' => $ing_raw_prawns,
+                        'id' => $ing_db['raw_prawns'],
                         'amount' => 300,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_frozen_peas,
+                        'id' => $ing_db['frozen_peas'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -959,14 +959,14 @@ $recipes_assoc = [
                 'step' => 'Peel and coarsely grate the apple. Finely dice the half white onion.',
                 'ingredients' => [
                     [
-                        'id' => $ing_desert_apple,
+                        'id' => $ing_db['desert_apple'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 0.5,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -974,19 +974,19 @@ $recipes_assoc = [
                 'step' => 'In a large bowl, combine the pork mince, grated apple, diced onion, breadcrumbs, and egg.',
                 'ingredients' => [
                     [
-                        'id' => $ing_pork_mince,
+                        'id' => $ing_db['pork_mince'],
                         'amount' => 500,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_breadcrumbs,
+                        'id' => $ing_db['breadcrumbs'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_large_eggs,
+                        'id' => $ing_db['large_eggs'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -994,14 +994,14 @@ $recipes_assoc = [
                 'step' => 'Season well with sea salt and ground black pepper.',
                 'ingredients' => [
                     [
-                        'id' => $ing_sea_salt,
+                        'id' => $ing_db['sea_salt'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_black_pepper,
+                        'id' => $ing_db['ground_black_pepper'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -1015,9 +1015,9 @@ $recipes_assoc = [
                 'step' => 'Heat the vegetable oil in a large frying pan over medium heat.',
                 'ingredients' => [
                     [
-                        'id' => $ing_vegetable_oil,
+                        'id' => $ing_db['vegetable_oil'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -1028,9 +1028,9 @@ $recipes_assoc = [
                 'step' => 'Slice the burger buns in half and lightly toast them if desired.',
                 'ingredients' => [
                     [
-                        'id' => $ing_burger_buns,
+                        'id' => $ing_db['burger_buns'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1054,14 +1054,14 @@ $recipes_assoc = [
                 'step' => 'Dice the aubergine and courgettes into roughly 2cm cubes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_aubergine,
+                        'id' => $ing_db['aubergine'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_courgette,
+                        'id' => $ing_db['courgette'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1069,9 +1069,9 @@ $recipes_assoc = [
                 'step' => 'Spread the vegetables on a baking tray, drizzle with olive oil, season, and roast for 20-25 minutes until soft and slightly charred.',
                 'ingredients' => [
                     [
-                        'id' => $ing_olive_oil,
+                        'id' => $ing_db['olive_oil'],
                         'amount' => 2,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -1079,9 +1079,9 @@ $recipes_assoc = [
                 'step' => 'Meanwhile, to make the white sauce, melt the butter in a saucepan over medium heat.',
                 'ingredients' => [
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 30,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1089,9 +1089,9 @@ $recipes_assoc = [
                 'step' => 'Stir in the flour and cook for 1-2 minutes to form a paste (roux).',
                 'ingredients' => [
                     [
-                        'id' => $ing_plain_flour,
+                        'id' => $ing_db['plain_flour'],
                         'amount' => 25,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1099,9 +1099,9 @@ $recipes_assoc = [
                 'step' => 'Gradually whisk in the whole milk, stirring constantly until the sauce thickens and is completely smooth.',
                 'ingredients' => [
                     [
-                        'id' => $ing_whole_milk,
+                        'id' => $ing_db['whole_milk'],
                         'amount' => 1,
-                        'unit' => Units::$l
+                        'unit' => Units::$units_db['l']
                     ],
                 ]
             ],
@@ -1109,9 +1109,9 @@ $recipes_assoc = [
                 'step' => 'Remove the sauce from the heat and stir in half of the grated cheddar cheese.',
                 'ingredients' => [
                     [
-                        'id' => $ing_cheddar_cheese,
+                        'id' => $ing_db['cheddar_cheese'],
                         'amount' => 125,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1119,9 +1119,9 @@ $recipes_assoc = [
                 'step' => 'In a separate pan, briefly wilt the fresh spinach.',
                 'ingredients' => [
                     [
-                        'id' => $ing_spinach,
+                        'id' => $ing_db['spinach'],
                         'amount' => 200,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1129,9 +1129,9 @@ $recipes_assoc = [
                 'step' => 'To assemble the lasagne, spread a thin layer of tomato passata in the base of a baking dish.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tomato_passata,
+                        'id' => $ing_db['tomato_passata'],
                         'amount' => 250,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -1139,14 +1139,14 @@ $recipes_assoc = [
                 'step' => 'Add a layer of lasagne sheets, followed by half of the roasted vegetables, half of the wilted spinach, and more passata.',
                 'ingredients' => [
                     [
-                        'id' => $ing_lasagne_sheets,
+                        'id' => $ing_db['lasagne_sheets'],
                         'amount' => 6,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_tomato_passata,
+                        'id' => $ing_db['tomato_passata'],
                         'amount' => 250,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -1154,9 +1154,9 @@ $recipes_assoc = [
                 'step' => 'Repeat the layers (lasagne sheets, remaining veg, remaining spinach, passata).',
                 'ingredients' => [
                     [
-                        'id' => $ing_lasagne_sheets,
+                        'id' => $ing_db['lasagne_sheets'],
                         'amount' => 6,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1167,9 +1167,9 @@ $recipes_assoc = [
                 'step' => 'Sprinkle the remaining grated cheddar cheese over the top.',
                 'ingredients' => [
                     [
-                        'id' => $ing_cheddar_cheese,
+                        'id' => $ing_db['cheddar_cheese'],
                         'amount' => 125,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1190,9 +1190,9 @@ $recipes_assoc = [
                 'step' => 'Place the chicken breasts between two sheets of cling film and bash them gently with a rolling pin until they are about 1cm thick.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_breast,
+                        'id' => $ing_db['chicken_breast'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1200,19 +1200,19 @@ $recipes_assoc = [
                 'step' => 'Set up a breading station: seasoned flour on one plate, a beaten egg in a shallow bowl, and breadcrumbs on another plate.',
                 'ingredients' => [
                     [
-                        'id' => $ing_plain_flour,
+                        'id' => $ing_db['plain_flour'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_large_eggs,
+                        'id' => $ing_db['large_eggs'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_breadcrumbs,
+                        'id' => $ing_db['breadcrumbs'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1223,9 +1223,9 @@ $recipes_assoc = [
                 'step' => 'Heat 2 tbsp of vegetable oil in a large frying pan over medium-high heat.',
                 'ingredients' => [
                     [
-                        'id' => $ing_vegetable_oil,
+                        'id' => $ing_db['vegetable_oil'],
                         'amount' => 2,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -1236,24 +1236,24 @@ $recipes_assoc = [
                 'step' => 'To make the sauce: Finely chop the onions and carrots, crush the garlic, and grate the ginger.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_carrot,
+                        'id' => $ing_db['carrot'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_fresh_ginger,
+                        'id' => $ing_db['fresh_ginger'],
                         'amount' => 10,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1261,9 +1261,9 @@ $recipes_assoc = [
                 'step' => 'In a separate saucepan, heat the remaining 1 tbsp of oil and fry the onion and carrots until softened.',
                 'ingredients' => [
                     [
-                        'id' => $ing_vegetable_oil,
+                        'id' => $ing_db['vegetable_oil'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -1274,9 +1274,9 @@ $recipes_assoc = [
                 'step' => 'Add the mild curry powder and stir well to coat the vegetables.',
                 'ingredients' => [
                     [
-                        'id' => $ing_mild_curry_powder,
+                        'id' => $ing_db['mild_curry_powder'],
                         'amount' => 3,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -1284,14 +1284,14 @@ $recipes_assoc = [
                 'step' => 'Pour in the chicken stock and soy sauce. Bring to a boil, then reduce the heat and simmer for 15 minutes until the carrots are tender.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_stock,
+                        'id' => $ing_db['chicken_stock'],
                         'amount' => 500,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_soy_sauce,
+                        'id' => $ing_db['soy_sauce'],
                         'amount' => 2,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -1302,14 +1302,14 @@ $recipes_assoc = [
                 'step' => 'Slice the crispy chicken and serve with rice, pouring the warm katsu curry sauce over the top.',
                 'ingredients' => [
                     [
-                        'id' => $ing_ground_black_pepper,
+                        'id' => $ing_db['ground_black_pepper'],
                         'amount' => 2,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_sea_salt,
+                        'id' => $ing_db['sea_salt'],
                         'amount' => 2,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -1327,14 +1327,14 @@ $recipes_assoc = [
                 'step' => 'Butter one side of each slice of bread.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_bread,
+                        'id' => $ing_db['white_bread'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 10,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1342,14 +1342,14 @@ $recipes_assoc = [
                 'step' => 'Slice the tomato and the mozzarella ball.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tomato,
+                        'id' => $ing_db['tomato'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_mozzarella_ball,
+                        'id' => $ing_db['mozzarella_ball'],
                         'amount' => 0.5,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1360,9 +1360,9 @@ $recipes_assoc = [
                 'step' => 'Spread the basil pesto over the unbuttered side facing up.',
                 'ingredients' => [
                     [
-                        'id' => $ing_pesto,
+                        'id' => $ing_db['pesto'],
                         'amount' => 4,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -1373,14 +1373,14 @@ $recipes_assoc = [
                 'step' => 'Season the tomatoes with a little sea salt and ground black pepper.',
                 'ingredients' => [
                     [
-                        'id' => $ing_sea_salt,
+                        'id' => $ing_db['sea_salt'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_black_pepper,
+                        'id' => $ing_db['ground_black_pepper'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -1413,19 +1413,19 @@ $recipes_assoc = [
                 'step' => 'Prick the large potatoes several times with a fork, rub them lightly with a little olive oil, and sprinkle with sea salt.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_potatoes,
+                        'id' => $ing_db['large_potatoes'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_olive_oil,
+                        'id' => $ing_db['olive_oil'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_sea_salt,
+                        'id' => $ing_db['sea_salt'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -1436,14 +1436,14 @@ $recipes_assoc = [
                 'step' => 'While the potatoes are baking, slice the brie and roughly chop the bacon rashers.',
                 'ingredients' => [
                     [
-                        'id' => $ing_brie,
+                        'id' => $ing_db['brie'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_bacon_rashers,
+                        'id' => $ing_db['bacon_rashers'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1454,9 +1454,9 @@ $recipes_assoc = [
                 'step' => 'In the same pan using the residual bacon fat, briefly wilt the fresh spinach.',
                 'ingredients' => [
                     [
-                        'id' => $ing_spinach,
+                        'id' => $ing_db['spinach'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1467,9 +1467,9 @@ $recipes_assoc = [
                 'step' => 'Dollop a spoonful of cranberry sauce into each potato.',
                 'ingredients' => [
                     [
-                        'id' => $ing_cranberry_sauce,
+                        'id' => $ing_db['cranberry_sauce'],
                         'amount' => 2,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -1493,19 +1493,19 @@ $recipes_assoc = [
                 'step' => 'Finely dice the onion, carrot, and celery.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_carrot,
+                        'id' => $ing_db['carrot'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_celery,
+                        'id' => $ing_db['celery'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1513,9 +1513,9 @@ $recipes_assoc = [
                 'step' => 'Sauté the vegetables in olive oil over medium heat until softened.',
                 'ingredients' => [
                     [
-                        'id' => $ing_olive_oil,
+                        'id' => $ing_db['olive_oil'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -1523,9 +1523,9 @@ $recipes_assoc = [
                 'step' => 'Add the minced beef and brown thoroughly, breaking up lumps.',
                 'ingredients' => [
                     [
-                        'id' => $ing_minced_beef,
+                        'id' => $ing_db['minced_beef'],
                         'amount' => 500,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1533,14 +1533,14 @@ $recipes_assoc = [
                 'step' => 'Stir in the garlic and tomato purée, cooking for 2 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_tomato_puree,
+                        'id' => $ing_db['tomato_puree'],
                         'amount' => 2,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -1548,19 +1548,19 @@ $recipes_assoc = [
                 'step' => 'Add chopped tomatoes, beef stock, and oregano.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chopped_tomatoes,
+                        'id' => $ing_db['chopped_tomatoes'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_beef_stock,
+                        'id' => $ing_db['beef_stock'],
                         'amount' => 200,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_dried_oregano,
+                        'id' => $ing_db['dried_oregano'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -1581,24 +1581,24 @@ $recipes_assoc = [
                 'step' => 'Prepare a meat sauce by browning beef with onions and simmering with tomatoes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_minced_beef,
+                        'id' => $ing_db['minced_beef'],
                         'amount' => 500,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_chopped_tomatoes,
+                        'id' => $ing_db['chopped_tomatoes'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' =>  $ing_red_wine,
+                        'id' => $ing_db['red_wine'],
                         'amount' => 200,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ]
                 ]
             ],
@@ -1606,19 +1606,19 @@ $recipes_assoc = [
                 'step' => 'Make a béchamel by melting butter, stirring in flour, and gradually whisking in milk until thick.',
                 'ingredients' => [
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_plain_flour,
+                        'id' => $ing_db['plain_flour'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_whole_milk,
+                        'id' => $ing_db['whole_milk'],
                         'amount' => 600,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -1626,9 +1626,9 @@ $recipes_assoc = [
                 'step' => 'In an ovenproof dish, layer meat sauce, then pasta sheets, then white sauce.',
                 'ingredients' => [
                     [
-                        'id' => $ing_lasagne_sheets,
+                        'id' => $ing_db['lasagne_sheets'],
                         'amount' => 12,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1639,14 +1639,14 @@ $recipes_assoc = [
                 'step' => 'Sprinkle with cheddar and parmesan.',
                 'ingredients' => [
                     [
-                        'id' => $ing_cheddar_cheese,
+                        'id' => $ing_db['cheddar_cheese'],
                         'amount' => 150,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_parmesan_cheese,
+                        'id' => $ing_db['parmesan_cheese'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1667,19 +1667,19 @@ $recipes_assoc = [
                 'step' => 'Slice and roast the aubergine, courgette, and peppers until tender.',
                 'ingredients' => [
                     [
-                        'id' => $ing_aubergine,
+                        'id' => $ing_db['aubergine'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_courgette,
+                        'id' => $ing_db['courgette'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_red_bell_pepper,
+                        'id' => $ing_db['red_bell_pepper'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1687,9 +1687,9 @@ $recipes_assoc = [
                 'step' => 'Combine the roasted vegetables with passata and herbs.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tomato_passata,
+                        'id' => $ing_db['tomato_passata'],
                         'amount' => 500,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -1697,19 +1697,19 @@ $recipes_assoc = [
                 'step' => 'Make a white sauce using the butter, flour, and milk.',
                 'ingredients' => [
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 40,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_plain_flour,
+                        'id' => $ing_db['plain_flour'],
                         'amount' => 40,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_whole_milk,
+                        'id' => $ing_db['whole_milk'],
                         'amount' => 500,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -1717,9 +1717,9 @@ $recipes_assoc = [
                 'step' => 'Layer vegetable sauce, pasta, and white sauce in a dish.',
                 'ingredients' => [
                     [
-                        'id' => $ing_lasagne_sheets,
+                        'id' => $ing_db['lasagne_sheets'],
                         'amount' => 9,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1727,9 +1727,9 @@ $recipes_assoc = [
                 'step' => 'Top with torn mozzarella and bake at 190°C for 30 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_mozzarella_ball,
+                        'id' => $ing_db['mozzarella_ball'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1747,24 +1747,24 @@ $recipes_assoc = [
                 'step' => 'Marinate chicken in oil, oregano, paprika, and garlic, then grill until charred.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_thighs,
+                        'id' => $ing_db['chicken_thighs'],
                         'amount' => 6,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_dried_oregano,
+                        'id' => $ing_db['dried_oregano'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_smoked_paprika,
+                        'id' => $ing_db['smoked_paprika'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1772,14 +1772,14 @@ $recipes_assoc = [
                 'step' => 'Grate cucumber and squeeze out liquid, mix with yogurt and garlic for tzatziki.',
                 'ingredients' => [
                     [
-                        'id' => $ing_greek_yogurt,
+                        'id' => $ing_db['greek_yogurt'],
                         'amount' => 200,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_cucumber,
+                        'id' => $ing_db['cucumber'],
                         'amount' => 0.5,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1787,9 +1787,9 @@ $recipes_assoc = [
                 'step' => 'Warm the pita breads.',
                 'ingredients' => [
                     [
-                        'id' => $ing_pita_bread,
+                        'id' => $ing_db['pita_bread'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1797,14 +1797,14 @@ $recipes_assoc = [
                 'step' => 'Slice the chicken and place in pitas with sliced tomatoes, onion, and tzatziki.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tomato,
+                        'id' => $ing_db['tomato'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_red_onion,
+                        'id' => $ing_db['red_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1825,29 +1825,29 @@ $recipes_assoc = [
                 'step' => 'Coat diced chicken in yogurt and half the spices; grill until slightly charred.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_breast,
+                        'id' => $ing_db['chicken_breast'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_greek_yogurt,
+                        'id' => $ing_db['greek_yogurt'],
                         'amount' => 150,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_garam_masala,
+                        'id' => $ing_db['garam_masala'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_cumin,
+                        'id' => $ing_db['ground_cumin'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_turmeric,
+                        'id' => $ing_db['turmeric'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -1855,14 +1855,14 @@ $recipes_assoc = [
                 'step' => 'Fry onions, ginger, and garlic in a pan until soft.',
                 'ingredients' => [
                     [
-                        'id' => $ing_fresh_ginger,
+                        'id' => $ing_db['fresh_ginger'],
                         'amount' => 20,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1870,24 +1870,24 @@ $recipes_assoc = [
                 'step' => 'Add remaining spices and passata, simmer for 15 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tomato_passata,
+                        'id' => $ing_db['tomato_passata'],
                         'amount' => 400,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_garam_masala,
+                        'id' => $ing_db['garam_masala'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_cumin,
+                        'id' => $ing_db['ground_cumin'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_turmeric,
+                        'id' => $ing_db['turmeric'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -1895,9 +1895,9 @@ $recipes_assoc = [
                 'step' => 'Stir in the grilled chicken and double cream.',
                 'ingredients' => [
                     [
-                        'id' => $ing_double_cream,
+                        'id' => $ing_db['double_cream'],
                         'amount' => 100,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -1918,29 +1918,29 @@ $recipes_assoc = [
                 'step' => 'Mix pork mince, breadcrumbs, egg, crushed fennel seeds, and garlic.',
                 'ingredients' => [
                     [
-                        'id' => $ing_pork_mince,
+                        'id' => $ing_db['pork_mince'],
                         'amount' => 500,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_breadcrumbs,
+                        'id' => $ing_db['breadcrumbs'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_large_eggs,
+                        'id' => $ing_db['large_eggs'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_fennel_seed,
+                        'id' => $ing_db['fennel_seed'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -1954,14 +1954,14 @@ $recipes_assoc = [
                 'step' => 'Pour over the passata and oregano, then simmer for 20 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tomato_passata,
+                        'id' => $ing_db['tomato_passata'],
                         'amount' => 500,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_dried_oregano,
+                        'id' => $ing_db['dried_oregano'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -1969,9 +1969,9 @@ $recipes_assoc = [
                 'step' => 'Serve over pasta with a grating of parmesan.',
                 'ingredients' => [
                     [
-                        'id' => $ing_parmesan_cheese,
+                        'id' => $ing_db['parmesan_cheese'],
                         'amount' => 30,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -1989,14 +1989,14 @@ $recipes_assoc = [
                 'step' => 'Slice pork into medallions and brown in butter; remove from pan.',
                 'ingredients' => [
                     [
-                        'id' => $ing_pork_loin,
+                        'id' => $ing_db['pork_loin'],
                         'amount' => 600,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 25,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2004,14 +2004,14 @@ $recipes_assoc = [
                 'step' => 'Sauté sliced onions and apples until golden.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_desert_apple,
+                        'id' => $ing_db['desert_apple'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2019,14 +2019,14 @@ $recipes_assoc = [
                 'step' => 'Pour in cider and stock, return pork to the pan.',
                 'ingredients' => [
                     [
-                        'id' => $ing_cider,
+                        'id' => $ing_db['cider'],
                         'amount' => 300,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_chicken_stock,
+                        'id' => $ing_db['chicken_stock'],
                         'amount' => 150,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2037,14 +2037,14 @@ $recipes_assoc = [
                 'step' => 'Stir in the cream and heat gently before serving.',
                 'ingredients' => [
                     [
-                        'id' => $ing_double_cream,
+                        'id' => $ing_db['double_cream'],
                         'amount' => 100,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_dried_oregano,
+                        'id' => $ing_db['dried_oregano'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -2062,19 +2062,19 @@ $recipes_assoc = [
                 'step' => 'Fry onion and diced chicken until chicken is browned.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_thighs,
+                        'id' => $ing_db['chicken_thighs'],
                         'amount' => 5,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_vegetable_oil,
+                        'id' => $ing_db['vegetable_oil'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -2082,9 +2082,9 @@ $recipes_assoc = [
                 'step' => 'Stir in curry powder and cook for 1 minute.',
                 'ingredients' => [
                     [
-                        'id' => $ing_mild_curry_powder,
+                        'id' => $ing_db['mild_curry_powder'],
                         'amount' => 2,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -2092,9 +2092,9 @@ $recipes_assoc = [
                 'step' => 'Add chicken stock and simmer for 15 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_stock,
+                        'id' => $ing_db['chicken_stock'],
                         'amount' => 200,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2102,14 +2102,14 @@ $recipes_assoc = [
                 'step' => 'Add peas and double cream, simmering for another 5 minutes until thickened.',
                 'ingredients' => [
                     [
-                        'id' => $ing_frozen_peas,
+                        'id' => $ing_db['frozen_peas'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_double_cream,
+                        'id' => $ing_db['double_cream'],
                         'amount' => 150,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2130,19 +2130,19 @@ $recipes_assoc = [
                 'step' => 'Make hollandaise by whisking 2 egg yolks and lemon juice over a bain-marie, slowly adding melted butter.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_eggs,
+                        'id' => $ing_db['large_eggs'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_lemon_juice,
+                        'id' => $ing_db['lemon_juice'],
                         'amount' => 10,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2150,14 +2150,14 @@ $recipes_assoc = [
                 'step' => 'Toast the bread (or muffins) and fry the bacon until crispy.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_bread,
+                        'id' => $ing_db['white_bread'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_bacon_rashers,
+                        'id' => $ing_db['bacon_rashers'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2165,9 +2165,9 @@ $recipes_assoc = [
                 'step' => 'Poach the remaining eggs in simmering water for 3 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_eggs,
+                        'id' => $ing_db['large_eggs'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2188,14 +2188,14 @@ $recipes_assoc = [
                 'step' => 'Boil potatoes until tender; blanch green beans in the same water.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_potatoes,
+                        'id' => $ing_db['large_potatoes'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_green_beans,
+                        'id' => $ing_db['green_beans'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2203,9 +2203,9 @@ $recipes_assoc = [
                 'step' => 'Hard-boil the eggs, then peel and quarter.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_eggs,
+                        'id' => $ing_db['large_eggs'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2213,9 +2213,9 @@ $recipes_assoc = [
                 'step' => 'Sear tuna steaks in a hot pan for 2 minutes each side.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tuna_steak,
+                        'id' => $ing_db['tuna_steak'],
                         'amount' => 200,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2223,14 +2223,14 @@ $recipes_assoc = [
                 'step' => 'Arrange lettuce, potatoes, beans, tomatoes, olives, and eggs on a plate.',
                 'ingredients' => [
                     [
-                        'id' => $ing_black_olives,
+                        'id' => $ing_db['black_olives'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_tomato,
+                        'id' => $ing_db['tomato'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2238,9 +2238,9 @@ $recipes_assoc = [
                 'step' => 'Top with sliced tuna and a dressing of olive oil and lemon.',
                 'ingredients' => [
                     [
-                        'id' => $ing_olive_oil,
+                        'id' => $ing_db['olive_oil'],
                         'amount' => 3,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -2258,19 +2258,19 @@ $recipes_assoc = [
                 'step' => 'Sauté diced onion and carrots in a large pot.',
                 'ingredients' => [
                     [
-                        'id' => $ing_carrot,
+                        'id' => $ing_db['carrot'],
                         'amount' => 6,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_vegetable_oil,
+                        'id' => $ing_db['vegetable_oil'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -2278,9 +2278,9 @@ $recipes_assoc = [
                 'step' => 'Add ground coriander and cook for 1 minute.',
                 'ingredients' => [
                     [
-                        'id' => $ing_ground_coriander,
+                        'id' => $ing_db['ground_coriander'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -2288,9 +2288,9 @@ $recipes_assoc = [
                 'step' => 'Pour in the stock and simmer for 20 minutes until carrots are soft.',
                 'ingredients' => [
                     [
-                        'id' => $ing_vegetable_stock,
+                        'id' => $ing_db['vegetable_stock'],
                         'amount' => 1000,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2314,19 +2314,19 @@ $recipes_assoc = [
                 'step' => 'Clean and slice the leeks; peel and dice the potatoes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_leeks,
+                        'id' => $ing_db['leeks'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_large_potatoes,
+                        'id' => $ing_db['large_potatoes'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2334,9 +2334,9 @@ $recipes_assoc = [
                 'step' => 'Melt butter and sweat the leeks and onions until soft but not brown.',
                 'ingredients' => [
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 30,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2344,9 +2344,9 @@ $recipes_assoc = [
                 'step' => 'Add potatoes and stock; simmer for 20 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_vegetable_stock,
+                        'id' => $ing_db['vegetable_stock'],
                         'amount' => 800,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2357,9 +2357,9 @@ $recipes_assoc = [
                 'step' => 'Stir in the cream and season.',
                 'ingredients' => [
                     [
-                        'id' => $ing_double_cream,
+                        'id' => $ing_db['double_cream'],
                         'amount' => 50,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2377,9 +2377,9 @@ $recipes_assoc = [
                 'step' => 'Fry chopped bacon until crisp; remove half for garnish.',
                 'ingredients' => [
                     [
-                        'id' => $ing_bacon_rashers,
+                        'id' => $ing_db['bacon_rashers'],
                         'amount' => 6,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2387,14 +2387,14 @@ $recipes_assoc = [
                 'step' => 'Add onion and diced potato to the pan, cooking for 5 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_large_potatoes,
+                        'id' => $ing_db['large_potatoes'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2402,9 +2402,9 @@ $recipes_assoc = [
                 'step' => 'Add shredded cabbage and stock.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_stock,
+                        'id' => $ing_db['chicken_stock'],
                         'amount' => 1000,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2428,9 +2428,9 @@ $recipes_assoc = [
                 'step' => 'Sauté onion until soft.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2438,14 +2438,14 @@ $recipes_assoc = [
                 'step' => 'Add chopped broccoli and stock; simmer for 10-12 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_floret_broccoli,
+                        'id' => $ing_db['floret_broccoli'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_vegetable_stock,
+                        'id' => $ing_db['vegetable_stock'],
                         'amount' => 800,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2456,14 +2456,14 @@ $recipes_assoc = [
                 'step' => 'Stir in the crumbled Stilton and cream until melted.',
                 'ingredients' => [
                     [
-                        'id' => $ing_stilton_cheese,
+                        'id' => $ing_db['stilton_cheese'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_double_cream,
+                        'id' => $ing_db['double_cream'],
                         'amount' => 50,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2484,14 +2484,14 @@ $recipes_assoc = [
                 'step' => 'Wrap each chicken breast in two rashers of bacon.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_breast,
+                        'id' => $ing_db['chicken_breast'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_bacon_rashers,
+                        'id' => $ing_db['bacon_rashers'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2502,14 +2502,14 @@ $recipes_assoc = [
                 'step' => 'Pour BBQ sauce over the chicken and top with cheese.',
                 'ingredients' => [
                     [
-                        'id' => $ing_bbq_sauce,
+                        'id' => $ing_db['bbq_sauce'],
                         'amount' => 100,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_cheddar_cheese,
+                        'id' => $ing_db['cheddar_cheese'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2530,19 +2530,19 @@ $recipes_assoc = [
                 'step' => 'Fry chicken, leeks, and carrots until softened.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_thighs,
+                        'id' => $ing_db['chicken_thighs'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_leeks,
+                        'id' => $ing_db['leeks'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_carrot,
+                        'id' => $ing_db['carrot'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2550,14 +2550,14 @@ $recipes_assoc = [
                 'step' => 'Add stock and cream; simmer until the sauce thickens slightly.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_stock,
+                        'id' => $ing_db['chicken_stock'],
                         'amount' => 300,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_double_cream,
+                        'id' => $ing_db['double_cream'],
                         'amount' => 100,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2568,14 +2568,14 @@ $recipes_assoc = [
                 'step' => 'Top with puff pastry, brush with beaten egg, and cut a steam vent.',
                 'ingredients' => [
                     [
-                        'id' => $ing_puff_pastry,
+                        'id' => $ing_db['puff_pastry'],
                         'amount' => 320,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_large_eggs,
+                        'id' => $ing_db['large_eggs'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2596,9 +2596,9 @@ $recipes_assoc = [
                 'step' => 'Boil pasta for 2 minutes less than the pack instructions.',
                 'ingredients' => [
                     [
-                        'id' => $ing_penne,
+                        'id' => $ing_db['penne'],
                         'amount' => 400,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2606,24 +2606,24 @@ $recipes_assoc = [
                 'step' => 'Make a cheese sauce by making a roux with butter/flour, adding milk, then cheese.',
                 'ingredients' => [
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_plain_flour,
+                        'id' => $ing_db['plain_flour'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_whole_milk,
+                        'id' => $ing_db['whole_milk'],
                         'amount' => 600,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_cheddar_cheese,
+                        'id' => $ing_db['cheddar_cheese'],
                         'amount' => 150,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2634,14 +2634,14 @@ $recipes_assoc = [
                 'step' => 'Transfer to a dish, top with breadcrumbs and extra cheese.',
                 'ingredients' => [
                     [
-                        'id' => $ing_breadcrumbs,
+                        'id' => $ing_db['breadcrumbs'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_cheddar_cheese,
+                        'id' => $ing_db['cheddar_cheese'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2662,9 +2662,9 @@ $recipes_assoc = [
                 'step' => 'Boil cubed potatoes in salted water until tender.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_potatoes,
+                        'id' => $ing_db['large_potatoes'],
                         'amount' => 7,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2675,19 +2675,19 @@ $recipes_assoc = [
                 'step' => 'Mix mayonnaise, mustard, and lemon juice.',
                 'ingredients' => [
                     [
-                        'id' => $ing_mayonaisse,
+                        'id' => $ing_db['mayonaisse'],
                         'amount' => 150,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_dijon_mustard,
+                        'id' => $ing_db['dijon_mustard'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_lemon_juice,
+                        'id' => $ing_db['lemon_juice'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -2695,9 +2695,9 @@ $recipes_assoc = [
                 'step' => 'Toss potatoes with the dressing and sliced spring onions.',
                 'ingredients' => [
                     [
-                        'id' => $ing_spring_onion,
+                        'id' => $ing_db['spring_onion'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2715,9 +2715,9 @@ $recipes_assoc = [
                 'step' => 'Thinly slice potatoes (approx 2mm thick).',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_potatoes,
+                        'id' => $ing_db['large_potatoes'],
                         'amount' => 7,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2725,19 +2725,19 @@ $recipes_assoc = [
                 'step' => 'Heat cream, milk, and crushed garlic in a pan until just simmering.',
                 'ingredients' => [
                     [
-                        'id' => $ing_double_cream,
+                        'id' => $ing_db['double_cream'],
                         'amount' => 400,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_whole_milk,
+                        'id' => $ing_db['whole_milk'],
                         'amount' => 100,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2751,9 +2751,9 @@ $recipes_assoc = [
                 'step' => 'Top with cheese and bake at 160°C for 1 hour.',
                 'ingredients' => [
                     [
-                        'id' => $ing_cheddar_cheese,
+                        'id' => $ing_db['cheddar_cheese'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2771,9 +2771,9 @@ $recipes_assoc = [
                 'step' => 'Finely shred the cabbage and onion.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 0.5,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2781,9 +2781,9 @@ $recipes_assoc = [
                 'step' => 'Grate the carrots.',
                 'ingredients' => [
                     [
-                        'id' => $ing_carrot,
+                        'id' => $ing_db['carrot'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2791,14 +2791,14 @@ $recipes_assoc = [
                 'step' => 'Whisk mayonnaise and lemon juice together.',
                 'ingredients' => [
                     [
-                        'id' => $ing_mayonaisse,
+                        'id' => $ing_db['mayonaisse'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_lemon_juice,
+                        'id' => $ing_db['lemon_juice'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -2819,14 +2819,14 @@ $recipes_assoc = [
                 'step' => 'Slowly cook sliced onions in butter for 40 minutes until dark brown.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 6,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2834,9 +2834,9 @@ $recipes_assoc = [
                 'step' => 'Add brandy and deglaze the pan.',
                 'ingredients' => [
                     [
-                        'id' => $ing_brandy,
+                        'id' => $ing_db['brandy'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -2844,9 +2844,9 @@ $recipes_assoc = [
                 'step' => 'Add stock and simmer for 15 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_beef_stock,
+                        'id' => $ing_db['beef_stock'],
                         'amount' => 1200,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -2854,14 +2854,14 @@ $recipes_assoc = [
                 'step' => 'Toast bread, top with cheese, and grill until melted.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_bread,
+                        'id' => $ing_db['white_bread'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_gruyere_cheese,
+                        'id' => $ing_db['gruyere_cheese'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2882,9 +2882,9 @@ $recipes_assoc = [
                 'step' => 'Boil pasta in salted water.',
                 'ingredients' => [
                     [
-                        'id' => $ing_penne,
+                        'id' => $ing_db['penne'],
                         'amount' => 200,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2892,14 +2892,14 @@ $recipes_assoc = [
                 'step' => 'Gently heat passata with crushed garlic for 10 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tomato_passata,
+                        'id' => $ing_db['tomato_passata'],
                         'amount' => 300,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_garlic_cloves,
+                        'id' => $ing_db['garlic_cloves'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -2907,14 +2907,14 @@ $recipes_assoc = [
                 'step' => 'Stir in the cream and fresh basil.',
                 'ingredients' => [
                     [
-                        'id' => $ing_double_cream,
+                        'id' => $ing_db['double_cream'],
                         'amount' => 50,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_fresh_basil,
+                        'id' => $ing_db['fresh_basil'],
                         'amount' => 10,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2935,9 +2935,9 @@ $recipes_assoc = [
                 'step' => 'Cook the pasta according to instructions.',
                 'ingredients' => [
                     [
-                        'id' => $ing_penne,
+                        'id' => $ing_db['penne'],
                         'amount' => 200,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -2945,19 +2945,19 @@ $recipes_assoc = [
                 'step' => 'In a pan, mix crème fraîche, mango chutney, and curry powder.',
                 'ingredients' => [
                     [
-                        'id' => $ing_creme_fraiche,
+                        'id' => $ing_db['creme_fraiche'],
                         'amount' => 150,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_mango_chutney,
+                        'id' => $ing_db['mango_chutney'],
                         'amount' => 20,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_mild_curry_powder,
+                        'id' => $ing_db['mild_curry_powder'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -2981,19 +2981,19 @@ $recipes_assoc = [
                 'step' => 'Fry meat, onion, and carrots until browned.',
                 'ingredients' => [
                     [
-                        'id' => $ing_minced_beef,
+                        'id' => $ing_db['minced_beef'],
                         'amount' => 500,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_carrot,
+                        'id' => $ing_db['carrot'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -3001,9 +3001,9 @@ $recipes_assoc = [
                 'step' => 'Add stock and simmer for 20 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_beef_stock,
+                        'id' => $ing_db['beef_stock'],
                         'amount' => 300,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -3011,14 +3011,14 @@ $recipes_assoc = [
                 'step' => 'Boil and mash potatoes with butter and milk.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_potatoes,
+                        'id' => $ing_db['large_potatoes'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3042,19 +3042,19 @@ $recipes_assoc = [
                 'step' => 'Poach fish in milk, then remove and flake. Reserve the milk.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_fish_fillet,
+                        'id' => $ing_db['white_fish_fillet'],
                         'amount' => 300,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_salmon_fillet,
+                        'id' => $ing_db['salmon_fillet'],
                         'amount' => 200,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_whole_milk,
+                        'id' => $ing_db['whole_milk'],
                         'amount' => 500,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -3062,14 +3062,14 @@ $recipes_assoc = [
                 'step' => 'Make a white sauce using butter, flour, and the reserved milk.',
                 'ingredients' => [
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_plain_flour,
+                        'id' => $ing_db['plain_flour'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3077,9 +3077,9 @@ $recipes_assoc = [
                 'step' => 'Stir fish and prawns into the sauce.',
                 'ingredients' => [
                     [
-                        'id' => $ing_cooked_prawns,
+                        'id' => $ing_db['cooked_prawns'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3087,9 +3087,9 @@ $recipes_assoc = [
                 'step' => 'Top with mashed potatoes and bake at 200°C for 25 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_potatoes,
+                        'id' => $ing_db['large_potatoes'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -3107,9 +3107,9 @@ $recipes_assoc = [
                 'step' => 'Mash leftover potatoes and mix with finely chopped cooked cabbage.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_potatoes,
+                        'id' => $ing_db['large_potatoes'],
                         'amount' => 4,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -3117,9 +3117,9 @@ $recipes_assoc = [
                 'step' => 'Fry bacon in a pan until fat renders.',
                 'ingredients' => [
                     [
-                        'id' => $ing_bacon_rashers,
+                        'id' => $ing_db['bacon_rashers'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -3127,9 +3127,9 @@ $recipes_assoc = [
                 'step' => 'Add the veg mix to the pan and press down into a cake.',
                 'ingredients' => [
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 20,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3150,24 +3150,24 @@ $recipes_assoc = [
                 'step' => 'Boil and cube potatoes; mix with peas and spices.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_potatoes,
+                        'id' => $ing_db['large_potatoes'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_frozen_peas,
+                        'id' => $ing_db['frozen_peas'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_garam_masala,
+                        'id' => $ing_db['garam_masala'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_turmeric,
+                        'id' => $ing_db['turmeric'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -3175,9 +3175,9 @@ $recipes_assoc = [
                 'step' => 'Cut pastry into strips, place filling at the end, and fold into triangles.',
                 'ingredients' => [
                     [
-                        'id' => $ing_phyllo_pastry,
+                        'id' => $ing_db['phyllo_pastry'],
                         'amount' => 270,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3198,24 +3198,24 @@ $recipes_assoc = [
                 'step' => 'Stir fry shredded carrots, ginger, and sprouts with soy sauce.',
                 'ingredients' => [
                     [
-                        'id' => $ing_carrot,
+                        'id' => $ing_db['carrot'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_fresh_ginger,
+                        'id' => $ing_db['fresh_ginger'],
                         'amount' => 10,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_beansprouts,
+                        'id' => $ing_db['beansprouts'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_soy_sauce,
+                        'id' => $ing_db['soy_sauce'],
                         'amount' => 1,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -3223,9 +3223,9 @@ $recipes_assoc = [
                 'step' => 'Place filling on wrappers, roll tightly, and seal with a little water.',
                 'ingredients' => [
                     [
-                        'id' => $ing_spring_roll_wrappers,
+                        'id' => $ing_db['spring_roll_wrappers'],
                         'amount' => 8,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -3246,19 +3246,19 @@ $recipes_assoc = [
                 'step' => 'Rub 175g butter into flour and sugar; press into a tin and bake at 180°C for 20 mins.',
                 'ingredients' => [
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 175,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_plain_flour,
+                        'id' => $ing_db['plain_flour'],
                         'amount' => 250,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_caster_sugar,
+                        'id' => $ing_db['caster_sugar'],
                         'amount' => 75,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3266,14 +3266,14 @@ $recipes_assoc = [
                 'step' => 'Boil remaining butter, syrup, and condensed milk (pantry) until thick and golden.',
                 'ingredients' => [
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 50,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_golden_syrup,
+                        'id' => $ing_db['golden_syrup'],
                         'amount' => 30,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3284,9 +3284,9 @@ $recipes_assoc = [
                 'step' => 'Melt chocolate and pour over the caramel. Chill until firm.',
                 'ingredients' => [
                     [
-                        'id' => $ing_dark_chocolate,
+                        'id' => $ing_db['dark_chocolate'],
                         'amount' => 200,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3304,19 +3304,19 @@ $recipes_assoc = [
                 'step' => 'Whisk egg yolks and sugar until pale, then fold into mascarpone.',
                 'ingredients' => [
                     [
-                        'id' => $ing_large_eggs,
+                        'id' => $ing_db['large_eggs'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_caster_sugar,
+                        'id' => $ing_db['caster_sugar'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_mascarpone,
+                        'id' => $ing_db['mascarpone'],
                         'amount' => 500,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3324,14 +3324,14 @@ $recipes_assoc = [
                 'step' => 'Dip biscuits quickly in coffee and layer in a dish.',
                 'ingredients' => [
                     [
-                        'id' => $ing_finger_biscuits,
+                        'id' => $ing_db['finger_biscuits'],
                         'amount' => 24,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_espresso,
+                        'id' => $ing_db['espresso'],
                         'amount' => 300,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -3355,9 +3355,9 @@ $recipes_assoc = [
                 'step' => 'Shred the lettuce and place in the bottom of glasses.',
                 'ingredients' => [
                     [
-                        'id' => $ing_iceberg_lettuce,
+                        'id' => $ing_db['iceberg_lettuce'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -3365,19 +3365,19 @@ $recipes_assoc = [
                 'step' => 'Mix mayo with a splash of ketchup (pantry), lemon juice, and paprika.',
                 'ingredients' => [
                     [
-                        'id' => $ing_mayonaisse,
+                        'id' => $ing_db['mayonaisse'],
                         'amount' => 150,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_lemon_juice,
+                        'id' => $ing_db['lemon_juice'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_smoked_paprika,
+                        'id' => $ing_db['smoked_paprika'],
                         'amount' => 0.5,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -3385,9 +3385,9 @@ $recipes_assoc = [
                 'step' => 'Toss prawns in the sauce and spoon over lettuce.',
                 'ingredients' => [
                     [
-                        'id' => $ing_cooked_prawns,
+                        'id' => $ing_db['cooked_prawns'],
                         'amount' => 400,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3408,9 +3408,9 @@ $recipes_assoc = [
                 'step' => 'Brown chicken thighs and remove from pan.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_thighs,
+                        'id' => $ing_db['chicken_thighs'],
                         'amount' => 6,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -3418,14 +3418,14 @@ $recipes_assoc = [
                 'step' => "Sauté onions, then stir in paprika (don't burn it!).",
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_smoked_paprika,
+                        'id' => $ing_db['smoked_paprika'],
                         'amount' => 2,
-                        'unit' => Units::$tbsp
+                        'unit' => Units::$units_db['tbsp']
                     ],
                 ]
             ],
@@ -3433,9 +3433,9 @@ $recipes_assoc = [
                 'step' => 'Add stock and return chicken; simmer for 30 minutes.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_stock,
+                        'id' => $ing_db['chicken_stock'],
                         'amount' => 300,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -3443,9 +3443,9 @@ $recipes_assoc = [
                 'step' => 'Stir in crème fraîche at the end and serve with noodles or rice.',
                 'ingredients' => [
                     [
-                        'id' => $ing_creme_fraiche,
+                        'id' => $ing_db['creme_fraiche'],
                         'amount' => 150,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3463,9 +3463,9 @@ $recipes_assoc = [
                 'step' => 'Fry chicken until sealed; remove from pan.',
                 'ingredients' => [
                     [
-                        'id' => $ing_chicken_breast,
+                        'id' => $ing_db['chicken_breast'],
                         'amount' => 3,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -3473,14 +3473,14 @@ $recipes_assoc = [
                 'step' => 'Stir fry peppers and onions until slightly charred.',
                 'ingredients' => [
                     [
-                        'id' => $ing_red_bell_pepper,
+                        'id' => $ing_db['red_bell_pepper'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_diced_green_bell_pepper,
+                        'id' => $ing_db['diced_green_bell_pepper'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -3488,19 +3488,19 @@ $recipes_assoc = [
                 'step' => 'Add spices, return chicken, and pour in passata.',
                 'ingredients' => [
                     [
-                        'id' => $ing_garam_masala,
+                        'id' => $ing_db['garam_masala'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_turmeric,
+                        'id' => $ing_db['turmeric'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_tomato_passata,
+                        'id' => $ing_db['tomato_passata'],
                         'amount' => 200,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -3521,24 +3521,24 @@ $recipes_assoc = [
                 'step' => 'Mix flour, yeast, yogurt, and warm water into a dough; knead for 10 mins.',
                 'ingredients' => [
                     [
-                        'id' => $ing_strong_bread_flour,
+                        'id' => $ing_db['strong_bread_flour'],
                         'amount' => 250,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_yeast,
+                        'id' => $ing_db['yeast'],
                         'amount' => 7,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_greek_yogurt,
+                        'id' => $ing_db['greek_yogurt'],
                         'amount' => 20,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_butter,
+                        'id' => $ing_db['butter'],
                         'amount' => 20,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3565,24 +3565,24 @@ $recipes_assoc = [
                 'step' => 'Thinly slice onions and toss with spices and flour.',
                 'ingredients' => [
                     [
-                        'id' => $ing_white_onion,
+                        'id' => $ing_db['white_onion'],
                         'amount' => 2,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                     [
-                        'id' => $ing_plain_flour,
+                        'id' => $ing_db['plain_flour'],
                         'amount' => 100,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_turmeric,
+                        'id' => $ing_db['turmeric'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                     [
-                        'id' => $ing_ground_cumin,
+                        'id' => $ing_db['ground_cumin'],
                         'amount' => 1,
-                        'unit' => Units::$tsp
+                        'unit' => Units::$units_db['tsp']
                     ],
                 ]
             ],
@@ -3593,9 +3593,9 @@ $recipes_assoc = [
                 'step' => 'Drop spoonfuls into hot oil and fry for 3-4 minutes until crisp.',
                 'ingredients' => [
                     [
-                        'id' => $ing_sunflower_oil,
+                        'id' => $ing_db['sunflower_oil'],
                         'amount' => 500,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                 ]
             ],
@@ -3613,14 +3613,14 @@ $recipes_assoc = [
                 'step' => 'Make a dough with flour, yeast, and water; let rise.',
                 'ingredients' => [
                     [
-                        'id' => $ing_strong_bread_flour,
+                        'id' => $ing_db['strong_bread_flour'],
                         'amount' => 300,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                     [
-                        'id' => $ing_yeast,
+                        'id' => $ing_db['yeast'],
                         'amount' => 7,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
@@ -3631,14 +3631,14 @@ $recipes_assoc = [
                 'step' => 'Spread passata, top with torn mozzarella.',
                 'ingredients' => [
                     [
-                        'id' => $ing_tomato_passata,
+                        'id' => $ing_db['tomato_passata'],
                         'amount' => 150,
-                        'unit' => Units::$ml
+                        'unit' => Units::$units_db['ml']
                     ],
                     [
-                        'id' => $ing_mozzarella_ball,
+                        'id' => $ing_db['mozzarella_ball'],
                         'amount' => 1,
-                        'unit' => Units::$each
+                        'unit' => Units::$units_db['each']
                     ],
                 ]
             ],
@@ -3649,14 +3649,14 @@ $recipes_assoc = [
                 'step' => 'Top with fresh basil and a drizzle of olive oil.',
                 'ingredients' => [
                     [
-                        'id' => $ing_fresh_basil,
+                        'id' => $ing_db['fresh_basil'],
                         'amount' => 5,
-                        'unit' => Units::$g
+                        'unit' => Units::$units_db['g']
                     ],
                 ]
             ],
         ],
         'tags' => ['italian', 'pizza', 'vegetarian'],
     ],
-    
+
 ];

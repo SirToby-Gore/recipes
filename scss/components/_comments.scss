@@ -11,6 +11,12 @@
 
 	@include mix.recipe-details();
 
+	.recipe-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+	}
+
 	.recipe-header {
 		margin-bottom: 1.5rem;
 

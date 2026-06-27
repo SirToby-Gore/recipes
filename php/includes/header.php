@@ -11,7 +11,7 @@ require_once __DIR__ . '/../init.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe App</title>
     <style>
-        <?= file_get_contents(__DIR__ . '/../../css/styles.css') ?>
+        <?= str_replace("\n", '', file_get_contents(__DIR__ . '/../../css/styles.css')) ?>
     </style>
 </head>
 
@@ -33,6 +33,7 @@ require_once __DIR__ . '/../init.php';
         <nav class="menu">
             <a href="/">HOME</a>
             <?php if ($account): ?>
+                <a href="/recipe/create">CREATE</a>
                 <a href="/basket">BASKET</a>
                 <a href="/favourites">FAVOURITES</a>
                 <a href="/user/<?= $account->user_id ?>">ACCOUNT</a>

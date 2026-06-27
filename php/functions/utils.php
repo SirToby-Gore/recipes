@@ -163,3 +163,75 @@ function is_unit_compatible(Unit $unit, Ingredient $ingredient, bool $terminal =
 
     return false;
 }
+
+function get_amount_and_unit_for_user(IngredientsUsedInStep $ingredient, User $user): IngredientsUsedInStep
+{
+    // 1. Establish data states from your global structures
+    global $unit_categories, $unit_mappings, $region_targets;
+
+    // Fallback logic to check a region preference property on the User object, matching 'basket.php' session strings
+    $preferred_region = isset($user->preferred_region) ? $user->preferred_region : ($_SESSION['preferred_region'] ?? 'metric');
+
+    // Retrieve Unit lookup context via your application's Model methods
+    // (Adjust methods if your application uses a different method name to load details)
+    $unit = Unit::from_id($ingredient->unit_id);
+    if (!$unit) {
+        return $ingredient;
+    }
+
+    $source_shorthand = $unit->short_hand;
+    $category = $unit_categories[$source_shorthand] ?? 'count';
+    $source_amount = (float) $ingredient->amount;
+
+    // If unit is static (e.g. pieces, cloves, pinches), bypass conversion calculations
+    if ($category === 'count') {
+        return $ingredient;
+    }
+
+    // 2. Normalize values down to system bases (g or ml)
+    $base_shorthand = ($category === 'mass') ? 'g' : 'ml';
+    $base_unit_id = $unit_mappings[$base_shorthand];
+    $source_unit_id = $unit_mappings[$source_shorthand] ?? $unit->unit_id;
+
+    $to_base_multiplier = get_multiplier_to_base($source_unit_id, $base_unit_id);
+    $amount_in_base = $source_amount * $to_base_multiplier;
+
+    // 3. Scale base metrics upwards toward regional profiles
+    $target_shorthand = $region_targets[$preferred_region][$category] ?? $source_shorthand;
+    $target_unit_id = $unit_mappings[$target_shorthand];
+
+    $from_base_multiplier = get_multiplier_to_base($target_unit_id, $base_unit_id);
+    $final_amount = $amount_in_base / $from_base_multiplier;
+
+    // 4. Build return instance containing altered states
+    // This assumes your model can accept parameters or set values dynamically
+    $converted_ingredient = clone $ingredient;
+    $converted_ingredient->amount = $final_amount;
+    $converted_ingredient->unit_id = $target_unit_id; // Mapping updated ID integer reference
+
+    return $converted_ingredient;
+}
+
+
+function get_multiplier_to_base(int $source_unit_id, int $base_unit_id): float
+{
+    global $conn;
+    if ($source_unit_id === $base_unit_id) {
+        return 1.0;
+    }
+    $stmt = $conn->prepare("SELECT `multiplier` FROM `CompatibleUnits` WHERE `base_unit` = ? AND `new_unit` = ?");
+    $stmt->bind_param('ii', $base_unit_id, $source_unit_id);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc();
+    if ($result) {
+        return (float) $result['multiplier'];
+    }
+    $stmt = $conn->prepare("SELECT `multiplier` FROM `CompatibleUnits` WHERE `base_unit` = ? AND `new_unit` = ?");
+    $stmt->bind_param('ii', $source_unit_id, $base_unit_id);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc();
+    if ($result) {
+        return 1.0 / (float) $result['multiplier'];
+    }
+    return 1.0;
+}

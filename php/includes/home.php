@@ -12,7 +12,7 @@ if (!$search_term) {
 if (str_starts_with($search_term, '@')) {
     $search_term = substr($search_term, 1);
 
-    $users = search_recipes_by_name($search_term);
+    $users = search_users_for($search_term);
 
     goto _exit;
 }
@@ -54,7 +54,7 @@ _exit:
                 </summary>
                 <div class="recipes">
                     <?php foreach ($recipes as $recipe): ?>
-                        <?= recipe_card($recipe) ?>
+                        <?= render_recipe_card($recipe) ?>
                     <?php endforeach ?>
                 </div>
             </details>
@@ -69,7 +69,7 @@ _exit:
                 </summary>
                 <div class="users">
                     <?php foreach ($users as $user): ?>
-                        <?= user_card($user) ?>
+                        <?= render_user_card($user) ?>
                     <?php endforeach ?>
                 </div>
             </details>

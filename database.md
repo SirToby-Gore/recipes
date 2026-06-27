@@ -19,6 +19,7 @@
 * salt (string:32)
 * password_hash (string:255) // Secure modern hashing algorithm (e.g., Argon2id/Bcrypt) handled natively via PHP
 * created_on (datetime)
+* unit_preference (string: 10)
 
 # Tokens
 

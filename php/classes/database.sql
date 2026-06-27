@@ -41,6 +41,7 @@ CREATE TABLE `Users` (
     `salt` VARCHAR(32) NOT NULL,
     `password_hash` VARCHAR(255) NOT NULL,
     `created_on` DATETIME NOT NULL,
+    `unit_preference` VARCHAR(10) NOT NULL,
     PRIMARY KEY (`user_id`)
 );
 

@@ -25,11 +25,33 @@ foreach ($recipe->get_tags() as $tag) {
     HTML;
 }
 
+$parent = $recipe->get_parent();
+
 ?>
 <section class="recipe-full">
     <h3 class="title"><?= $safe_title ?></h3>
     <div class="sub-heading">
         <a href="/user/<?= $recipe->user_id ?>" class="author"><?= $safe_author_name ?></a>
+    </div>
+
+
+    <?php if ($parent): ?>
+        <a href="/recipe/<?= $parent->recipe_id ?>">Go to original recipe</a>
+    <?php endif ?>
+
+    <div class="recipe-actions">
+        <?php if ($account && $recipe->user_id === $account->user_id): ?>
+            <a href="/recipe/delete/<?= $recipe->recipe_id ?>" class="btn" style="color: red; font-weight: 1000;">
+                DELETE RECIPE (Can not be undone)
+            </a>
+            <a href="/recipe/edit/<?= $recipe->recipe_id ?>" class="btn" style="color: blue; font-weight: 1000;">
+                EDIT RECIPE
+            </a>
+        <?php endif ?>
+
+        <a href="/recipe/fork/<?= $recipe->recipe_id ?>" class="btn" style="color: green; font-weight: 1000;">
+            FORK RECIPE
+        </a>
     </div>
 
     <div class="tags">
@@ -87,6 +109,16 @@ foreach ($recipe->get_tags() as $tag) {
 
     <hr>
 
+    <?php global $preferred_region ?>
+    <div class="preference-selector recipe-unit-switcher">
+        <label for="recipe-region-select">View Ingredients In:</label>
+        <select id="recipe-region-select" onchange="updateUserRegionPreference(this.value)">
+            <option value="metric" <?= $preferred_region === 'metric' ? 'selected' : '' ?>>Metric (g, ml)</option>
+            <option value="us" <?= $preferred_region === 'us' ? 'selected' : '' ?>>US Customary (oz, cups)</option>
+            <option value="uk" <?= $preferred_region === 'uk' ? 'selected' : '' ?>>UK Imperial (oz, imperial cups)</option>
+        </select>
+    </div>
+
     <div class="recipe-ingredients">
         <h3>Ingredients</h3>
         <ul class="ingredient-list">
@@ -99,13 +131,17 @@ foreach ($recipe->get_tags() as $tag) {
             <?php foreach ($sorted_ing as $ingredients_list): ?>
                 <?php
                 $ingredient = $ingredients_list->get_ingredient();
-                $unit = $ingredients_list->get_unit();
-                if (!$ingredient || !$unit) {
+                if (!$ingredient) {
                     continue;
                 }
+
+                // Fetch the converted amount and unit object matching the user's preferred standard
+                $converted = get_amount_and_unit_for_user($ingredients_list, $current_user);
+                $unit = $converted->get_unit();
+
                 $safe_ing_name = htmlspecialchars($ingredient->name, ENT_QUOTES, 'UTF-8');
-                $safe_unit_short = htmlspecialchars($unit->short_hand, ENT_QUOTES, 'UTF-8');
-                $formatted_amount = (float) $ingredients_list->amount;
+                $safe_unit_short = $unit ? htmlspecialchars($unit->short_hand, ENT_QUOTES, 'UTF-8') : '';
+                $formatted_amount = format_number($converted->amount);
                 ?>
                 <li><?= $formatted_amount ?>     <?= $safe_unit_short ?>     <?= $safe_ing_name ?></li>
             <?php endforeach; ?>
@@ -139,13 +175,16 @@ foreach ($recipe->get_tags() as $tag) {
                                 <?php foreach ($step_ingredients as $step_ing): ?>
                                     <?php
                                     $ingredient = $step_ing->get_ingredient();
-                                    $unit = $step_ing->get_unit();
-                                    if (!$ingredient || !$unit) {
+                                    if (!$ingredient) {
                                         continue;
                                     }
+
+                                    $converted = get_amount_and_unit_for_user($step_ing, $current_user);
+                                    $unit = $converted->get_unit();
+
                                     $safe_ing_name = htmlspecialchars($ingredient->name, ENT_QUOTES, 'UTF-8');
-                                    $safe_unit_short = htmlspecialchars($unit->short_hand, ENT_QUOTES, 'UTF-8');
-                                    $formatted_amount = (float) $step_ing->amount;
+                                    $safe_unit_short = $unit ? htmlspecialchars($unit->short_hand, ENT_QUOTES, 'UTF-8') : '';
+                                    $formatted_amount = format_number($converted->amount);
                                     ?>
                                     <li><?= $formatted_amount ?>             <?= $safe_unit_short ?>             <?= $safe_ing_name ?></li>
                                 <?php endforeach; ?>
@@ -198,5 +237,31 @@ foreach ($recipe->get_tags() as $tag) {
                 </div>
             <?php endforeach; ?>
         </div>
+    </div>
+
+    <?php
+
+    $count_db = [];
+
+    function get_score(Recipe $recipe): int
+    {
+        global $count_db;
+
+        if (!array_key_exists($recipe->recipe_id, $count_db)) {
+            $count_db[$recipe->recipe_id] = count($recipe->get_recipe_likes()) + count($recipe->get_favourite_count());
+        }
+
+        return $count_db[$recipe->recipe_id];
+    }
+
+    $child_recipes = $recipe->get_recipes();
+
+    uasort($child_recipes, fn ($a, $b) => get_score($a) <=> get_score($b));
+    ?>
+
+    <div class="child-recipes">
+        <?php foreach ($child_recipes as $child_recipe): ?>
+            <?= render_recipe_card($child_recipe) ?>
+        <?php endforeach ?>
     </div>
 </section>

@@ -11,6 +11,7 @@ class User
         public string $salt,
         public string $password_hash,
         public string $created_on,
+        public string $unit_preference,
     ) {}
 
     public static function from_id(string $user_id): ?self
@@ -21,22 +22,22 @@ class User
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
         if (!$result) return null;
-        return new self($result['user_id'], $result['username'], $result['email'], $result['salt'], $result['password_hash'], $result['created_on']);
+        return new self($result['user_id'], $result['username'], $result['email'], $result['salt'], $result['password_hash'], $result['created_on'], $result['unit_preference']);
     }
 
     public function create(): bool
     {
         global $conn;
-        $stmt = $conn->prepare('INSERT INTO `Users` (`user_id`, `username`, `email`, `salt`, `password_hash`, `created_on`) VALUES (?, ?, ?, ?, ?, ?)');
-        $stmt->bind_param('ssssss', $this->user_id, $this->username, $this->email, $this->salt, $this->password_hash, $this->created_on);
+        $stmt = $conn->prepare('INSERT INTO `Users` (`user_id`, `username`, `email`, `salt`, `password_hash`, `created_on`, `unit_preference`) VALUES (?, ?, ?, ?, ?, ?, ?)');
+        $stmt->bind_param('sssssss', $this->user_id, $this->username, $this->email, $this->salt, $this->password_hash, $this->created_on, $this->unit_preference);
         return $stmt->execute();
     }
 
     public function update(): bool
     {
         global $conn;
-        $stmt = $conn->prepare('UPDATE `Users` SET `username` = ?, `email` = ?, `salt` = ?, `password_hash` = ?, `created_on` = ? WHERE `user_id` = ?');
-        $stmt->bind_param('ssssss', $this->username, $this->email, $this->salt, $this->password_hash, $this->created_on, $this->user_id);
+        $stmt = $conn->prepare('UPDATE `Users` SET `username` = ?, `email` = ?, `salt` = ?, `password_hash` = ?, `created_on` = ?, `unit_preference` = ? WHERE `user_id` = ?');
+        $stmt->bind_param('sssssss', $this->username, $this->email, $this->salt, $this->password_hash, $this->created_on, $this->unit_preference, $this->user_id);
         return $stmt->execute();
     }
 

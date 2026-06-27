@@ -2,9 +2,9 @@
 
 require_once __DIR__ . '/../init.php';
 
-require_once __DIR__ . '/_units.php';
-require_once __DIR__ . '/_ingredients.php';
-require_once __DIR__ . '/_recipes.php';
+require_once __DIR__ . '/units.php';
+require_once __DIR__ . '/ingredients.php';
+require_once __DIR__ . '/recipes.php';
 
 $conn->query('DELETE FROM `Users` WHERE 1');
 
@@ -14,7 +14,8 @@ $recipe_user = new User(
     '',
     random_string(32),
     '',
-    datetime_now()
+    datetime_now(),
+    'metric'
 );
 $recipe_user->password_hash = user_hash_password(random_string(256), $recipe_user->salt);
 $recipe_user->create();

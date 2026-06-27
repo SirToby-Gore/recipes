@@ -48,7 +48,7 @@
 @mixin recipe-details() {
 	.heading {
 		margin-bottom: 0.25rem;
-		.title {
+		.title, .profile-button {
 			font-size: 1.25rem;
 			font-weight: 700;
 			color: vars.$primary-dark;
@@ -244,10 +244,9 @@
 			}
 		}
 
-		.title,
+		.view-recipe-button,
 		.profile-button {
-			@include button-base(vars.$primary-medium, #ffffff);
-			grid-column: span 2;
+			@include button-base($bg: vars.$primary-medium, $text: #ffffff);
 			flex: 1 1 100%;
 			order: 4;
 		}

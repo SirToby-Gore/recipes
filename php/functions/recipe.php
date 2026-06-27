@@ -132,3 +132,4 @@ function delete_shopping_list(Recipe $recipe)
     $stmt->bind_param('ss', $account->user_id, $recipe->recipe_id);
     $stmt->execute();
 }
+

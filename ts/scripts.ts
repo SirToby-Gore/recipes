@@ -287,3 +287,372 @@ function handleCommentLike(button: HTMLButtonElement, commentId: string): void {
 			}
 		});
 }
+
+interface DBIngredient {
+	ingredient_id: string;
+	name: string;
+	description: string;
+	category: string;
+}
+
+interface DBUnit {
+	unit_id: number;
+	short_hand: string;
+}
+
+interface StepIngredientPayload {
+	ingredient_id: string;
+	amount: number;
+	unit_id: number;
+}
+
+interface StepPayload {
+	step: string;
+	ingredients: StepIngredientPayload[];
+}
+
+interface RecipePayload {
+	name: string;
+	description: string;
+	timeMinutes: number;
+	servings: number;
+	tags: string[];
+	steps: StepPayload[];
+}
+
+let dbIngredients: Map<string, DBIngredient>;
+let dbUnits: Map<string, DBUnit>;
+
+window.addEventListener('DOMContentLoaded', () => {
+	const ingredientsElement = document.getElementById('db-ingredients-data');
+	const unitsElement = document.getElementById('db-units-data');
+	const existingStepsElement = document.getElementById('existing-steps-data');
+
+	if (ingredientsElement && unitsElement) {
+		dbIngredients = JSON.parse(ingredientsElement.textContent || '[]');
+		dbUnits = JSON.parse(unitsElement.textContent || '[]');
+	}
+
+	const existingSteps: StepPayload[] = existingStepsElement
+		? JSON.parse(existingStepsElement.textContent || '[]')
+		: [];
+
+	if (existingSteps.length > 0) {
+		existingSteps.forEach((stepData) => {
+			addNewFormStep(step_data_to_form_obj(stepData));
+		});
+	} else {
+		addNewStep();
+	}
+});
+
+function addNewFormStep(prefillData?: {
+	step: string;
+	ingredients: { ingredient_id: string; amount: number; unit_id: number }[];
+}): void {
+	const stepsWrapper = document.getElementById('steps-wrapper');
+	if (!stepsWrapper) return;
+
+	const stepIndex = stepsWrapper.children.length + 1;
+	const stepCard = document.createElement('div');
+	stepCard.className = 'step-card';
+	stepCard.setAttribute('data-step-index', stepIndex.toString());
+
+	stepCard.innerHTML = `
+		<div class="step-card-header">
+			<h4>Step <span class="step-num-display">${stepIndex}</span></h4>
+			<button type="button" onclick="removeFormStep(this)" class="remove-step-btn" aria-label="Remove step">✕</button>
+		</div>
+		<div class="form-group">
+			<textarea class="step-description-input" placeholder="Describe the cooking instructions for this step..." required>${prefillData ? prefillData.step : ''}</textarea>
+		</div>
+		<div class="step-ingredients-section">
+			<h5>Ingredients Used in This Step</h5>
+			<div class="step-ingredients-list-container"></div>
+			<button type="button" onclick="addIngredientToStep(this)" class="add-ing-to-step-btn">+ Add Ingredient</button>
+		</div>
+	`;
+
+	stepsWrapper.appendChild(stepCard);
+
+	if (prefillData && prefillData.ingredients.length > 0) {
+		const listContainer = stepCard.querySelector('.step-ingredients-list-container');
+		if (listContainer) {
+			prefillData.ingredients.forEach((ing) => {
+				renderIngredientRow(listContainer, ing);
+			});
+		}
+	}
+}
+
+function addNewStep(): void {
+	addNewFormStep();
+}
+
+function removeFormStep(button: HTMLButtonElement): void {
+	const stepCard = button.closest('.step-card');
+	if (!stepCard) return;
+
+	const stepsWrapper = document.getElementById('steps-wrapper');
+	if (!stepsWrapper) return;
+
+	if (stepsWrapper.children.length <= 1) {
+		showFormError('A recipe must have at least one step.');
+		return;
+	}
+
+	stepCard.remove();
+	reindexFormSteps();
+}
+
+function reindexFormSteps(): void {
+	const stepsWrapper = document.getElementById('steps-wrapper');
+	if (!stepsWrapper) return;
+
+	const steps = stepsWrapper.querySelectorAll('.step-card');
+	steps.forEach((step, idx) => {
+		const stepNum = idx + 1;
+		step.setAttribute('data-step-index', stepNum.toString());
+		const numDisplay = step.querySelector('.step-num-display');
+		if (numDisplay) numDisplay.textContent = stepNum.toString();
+	});
+}
+
+function addIngredientToStep(button: HTMLButtonElement): void {
+	const container = button.previousElementSibling;
+	if (container && container.classList.contains('step-ingredients-list-container')) {
+		renderIngredientRow(container);
+	}
+}
+
+function renderIngredientRow(
+	container: Element,
+	prefill?: { ingredient_id: string; amount: number; unit_id: number },
+): void {
+	const row = document.createElement('div');
+	row.className = 'step-ingredient-row';
+
+	// 1. Convert Object to Array using Object.values()
+	const ingredientsArray = Object.values(dbIngredients);
+	const unitsArray = Object.values(dbUnits);
+
+	let ingredientOptions = `<option value="" disabled ${!prefill ? 'selected' : ''}>-- Select Ingredient --</option>`;
+
+	// Now you can loop through the array
+	ingredientsArray.forEach((ing: any) => {
+		// Note: Check if 'ingredient_id' exists in your object structure
+		const selected = prefill && prefill.ingredient_id === ing.ingredient_id ? 'selected' : '';
+		ingredientOptions += `<option value="${ing.ingredient_id}" ${selected}>${ing.name}</option>`;
+	});
+
+	let unitOptions = `<option value="" disabled ${!prefill ? 'selected' : ''}>-- Unit --</option>`;
+
+	// Loop through the units array
+	unitsArray.forEach((unit: any) => {
+		const selected = prefill && prefill.unit_id === unit.unit_id ? 'selected' : '';
+		unitOptions += `<option value="${unit.unit_id}" ${selected}>${unit.short_hand.length ? unit.short_hand : '(each)'}</option>`;
+	});
+
+	row.innerHTML = `
+        <select class="ing-select" required>
+            ${ingredientOptions}
+        </select>
+        <input type="number" step="any" class="ing-amount" placeholder="Amount" value="${prefill ? prefill.amount : ''}" min="0.001" required>
+        <select class="unit-select" required>
+            ${unitOptions}
+        </select>
+        <button type="button" onclick="removeIngredientRow(this)" class="remove-ing-row-btn" aria-label="Remove ingredient">✕</button>
+    `;
+
+	container.appendChild(row);
+}
+
+function removeIngredientRow(button: HTMLButtonElement): void {
+	const row = button.closest('.step-ingredient-row');
+	if (row) row.remove();
+}
+
+function submitRecipeForm(event: Event, existingRecipeId: string): void {
+	event.preventDefault();
+
+	const banner = document.getElementById('form-error-banner');
+	if (banner) {
+		banner.style.display = 'none';
+		banner.textContent = '';
+	}
+
+	const titleInput = document.getElementById('recipe-title') as HTMLInputElement | null;
+	const descInput = document.getElementById('recipe-description') as HTMLTextAreaElement | null;
+	const timeInput = document.getElementById('recipe-time') as HTMLInputElement | null;
+	const servingsInput = document.getElementById('recipe-servings') as HTMLInputElement | null;
+	const tagsInput = document.getElementById('recipe-tags') as HTMLInputElement | null;
+
+	if (!titleInput || !descInput || !timeInput || !servingsInput) return;
+
+	const title = titleInput.value.trim();
+	const description = descInput.value.trim();
+	const timeMinutes = parseInt(timeInput.value, 10);
+	const servings = parseInt(servingsInput.value, 10);
+
+	const tagsRaw = tagsInput ? tagsInput.value.trim() : '';
+	const tags = tagsRaw
+		? tagsRaw
+				.split(',')
+				.map((t) => t.trim().toLowerCase())
+				.filter((t) => t !== '')
+		: [];
+
+	const stepsWrapper = document.getElementById('steps-wrapper');
+	if (!stepsWrapper) return;
+
+	const stepCards = stepsWrapper.querySelectorAll('.step-card');
+	const stepsPayload: StepPayload[] = [];
+
+	let validationPassed = true;
+
+	stepCards.forEach((card) => {
+		const textarea = card.querySelector('.step-description-input') as HTMLTextAreaElement | null;
+		if (!textarea) return;
+
+		const stepText = textarea.value.trim();
+		if (stepText === '') {
+			validationPassed = false;
+			return;
+		}
+
+		const ingredientRows = card.querySelectorAll('.step-ingredient-row');
+		const stepIngredients: StepIngredientPayload[] = [];
+
+		ingredientRows.forEach((row) => {
+			const ingSelect = row.querySelector('.ing-select') as HTMLSelectElement | null;
+			const amountInput = row.querySelector('.ing-amount') as HTMLInputElement | null;
+			const unitSelect = row.querySelector('.unit-select') as HTMLSelectElement | null;
+
+			if (ingSelect && amountInput && unitSelect) {
+				const ingredientId = ingSelect.value;
+				const amount = parseFloat(amountInput.value);
+				const unitId = parseInt(unitSelect.value, 10);
+
+				if (!ingredientId || isNaN(amount) || isNaN(unitId)) {
+					validationPassed = false;
+					return;
+				}
+
+				stepIngredients.push({
+					ingredient_id: ingredientId,
+					amount: amount,
+					unit_id: unitId,
+				});
+			}
+		});
+
+		stepsPayload.push({
+			step: stepText,
+			ingredients: stepIngredients,
+		});
+	});
+
+	if (!validationPassed || stepsPayload.length === 0) {
+		showFormError('Please fill out all steps and ensure ingredients have valid amounts and selected units.');
+		return;
+	}
+
+	const payload: RecipePayload = {
+		name: title,
+		description: description,
+		timeMinutes: timeMinutes,
+		servings: servings,
+		tags: tags,
+		steps: stepsPayload,
+	};
+
+	const urlSegment = existingRecipeId ? `/recipe/edit/${existingRecipeId}` : '/recipe/create';
+	const baseSubmitUrl = `${urlSegment}/${encodeURIComponent(JSON.stringify(payload))}`;
+
+	window.location.href = baseSubmitUrl;
+}
+
+function showFormError(message: string): void {
+	const banner = document.getElementById('form-error-banner');
+	if (banner) {
+		banner.textContent = message;
+		banner.style.display = 'block';
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
+}
+
+function step_data_to_form_obj(raw: any): {
+	step: string;
+	ingredients: { ingredient_id: string; amount: number; unit_id: number }[];
+} {
+	return {
+		step: raw.step,
+		ingredients: raw.ingredients.map((ing: any) => ({
+			ingredient_id: ing.ingredient_id,
+			amount: ing.amount,
+			unit_id: ing.unit_id,
+		})),
+	};
+}
+
+function updateUserRegionPreference(region: string) {
+	fetch(`/user/preference/${region}`, {
+		method: 'POST',
+		headers: {
+			'X-Requested-With': 'XMLHttpRequest',
+		},
+	})
+		.then((response) => {
+			if (response.ok) {
+				// Refresh the current page to display updated conversions instantly
+				window.location.reload();
+			} else {
+				console.error('Failed to save measurement region configuration change.');
+			}
+		})
+		.catch((error) => console.error('Error updating region choice preference:', error));
+}
+
+interface IngredientPayload {
+	ingredient_id: string;
+	amount: number;
+	unit_id: number;
+}
+
+interface StepPayload {
+	step: string;
+	ingredients: IngredientPayload[];
+}
+
+interface RecipeForkPayload {
+	name: string;
+	description: string;
+	timeMinutes: number;
+	servings: number;
+	steps: StepPayload[];
+	tags: string[];
+}
+
+const form = document.getElementById('fork-recipe-form') as HTMLFormElement | null;
+
+if (form) {
+	form.addEventListener('submit', (event: Event) => {
+		event.preventDefault();
+
+		const parentId = form.getAttribute('data-parent-id') || '';
+
+		const payload: RecipeForkPayload = {
+			name: (document.getElementById('title') as HTMLInputElement).value,
+			description: (document.getElementById('description') as HTMLTextAreaElement).value,
+			timeMinutes: parseInt((document.getElementById('total_time') as HTMLInputElement).value, 10) || 0,
+			servings: parseInt((document.getElementById('portions') as HTMLInputElement).value, 10) || 1,
+			steps: [], // Target and map your DOM step items here
+			tags: [], // Target and map your DOM tag items here
+		};
+
+		// Convert data object to an URL-safe string path parameter segment
+		const serializedPayload = encodeURIComponent(JSON.stringify(payload));
+
+		window.location.href = `/recipe/fork/${parentId}/${serializedPayload}`;
+	});
+}

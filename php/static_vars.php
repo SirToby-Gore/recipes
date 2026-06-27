@@ -11,4 +11,4 @@ class Blank {
     public static User $user;
 }
 
-Blank::$user = new User('', '', '', '', '', '');
+Blank::$user = new User('', '', '', '', '', '', '');

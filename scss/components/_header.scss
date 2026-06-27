@@ -4,11 +4,16 @@
 .header-bar {
 	background-color: vars.$primary-dark;
 	padding: 1rem 2rem;
+
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	position: relative;
 	box-shadow: vars.$shadow-sm;
+
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	width: 100%;
 
 	.content {
 		display: flex;

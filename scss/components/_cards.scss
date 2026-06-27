@@ -11,8 +11,7 @@
 	width: 100%;
 }
 
-.recipe-card,
-.user-card {
+.recipe-card {
 	@include mix.card-base;
 	display: flex;
 	flex-direction: column;
@@ -20,4 +19,12 @@
 	width: 20rem;
 
 	@include mix.recipe-details();
+}
+
+.user-card {
+	@include mix.card-base;
+	display: flex;
+	flex-direction: column;
+	padding: 1.5rem;
+	width: 20rem;
 }
